@@ -3,7 +3,7 @@ import { Facebook, Twitter, Instagram, Linkedin, Youtube } from 'lucide-react';
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           <div>
             <h3 className="text-white text-lg font-bold mb-4">Programs</h3>
@@ -72,7 +72,7 @@ export default function Footer() {
             </div>
 
             <div className="text-sm">
-              © 2025 Learnmize. All rights reserved.
+              © 2025 Learn. All rights reserved.
             </div>
           </div>
         </div>

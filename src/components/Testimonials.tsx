@@ -173,7 +173,7 @@ export default function VideoTestimonials() {
                     <div>
                         <h2 className="text-5xl md:text-7xl font-extrabold tracking-tight text-gray-900 mb-4">
                             Real Results,{" "}
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-700">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-cyan-700 underline decoration-4 decoration-teal-600">
                                 Real Stories.
                             </span>
                         </h2>
