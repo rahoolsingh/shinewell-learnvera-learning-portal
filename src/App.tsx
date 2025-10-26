@@ -1,35 +1,39 @@
-import Header from './components/Header';
-import Hero from './components/Hero';
-import StatsBar from './components/StatsBar';
-import Features from './components/Features';
-import Opportunities from './components/Opportunities';
-import Courses from './components/Courses';
-import Testimonials from './components/Testimonials';
-import RecordedCourses from './components/RecordedCourses';
-import FounderMessage from './components/FounderMessage';
-import CallToAction from './components/CallToAction';
-import LearningEnvironment from './components/LearningEnvironment';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import { createBrowserRouter } from "react-router";
+import { RouterProvider } from "react-router/dom";
+import Home from "./pages/Home";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Home />,
+    },
+    {
+        path: "/course-details/:id",
+        element: <Home />,
+    },
+    {
+        path: "*",
+        element: <Home />,
+    }
+]);
 
 function App() {
-  return (
-    <div className="min-h-screen bg-white">
-      <Header />
-      <Hero />
-      <StatsBar />
-      <Features />
-      <Opportunities />
-      <Courses />
-      <Testimonials />
-      <RecordedCourses />
-      <FounderMessage />
-      <CallToAction />
-      <LearningEnvironment />
-      <Contact />
-      <Footer />
-    </div>
-  );
+    return (
+        <Layout>
+            <RouterProvider router={router} />;
+        </Layout>
+    );
 }
 
 export default App;
+
+const Layout = ({ children }: { children: React.ReactNode }) => {
+    return (
+        <div className="min-h-screen flex flex-col">
+            <Header />
+            {children}
+            <Footer />
+        </div>
+    );
+};

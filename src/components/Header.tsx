@@ -32,7 +32,7 @@ export default function Header() {
             </div>
             <a href="#" className="text-gray-700 hover:text-blue-600 transition">Contact Us</a>
             <button className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition">
-              Login
+              Enroll Now
             </button>
           </nav>
 
@@ -52,7 +52,7 @@ export default function Header() {
             <a href="#" className="block text-gray-700 hover:text-blue-600 transition">Services</a>
             <a href="#" className="block text-gray-700 hover:text-blue-600 transition">Contact Us</a>
             <button className="w-full bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition">
-              Login
+              Enroll Now
             </button>
           </nav>
         )}
