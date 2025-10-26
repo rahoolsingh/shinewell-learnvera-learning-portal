@@ -122,10 +122,10 @@ const TestimonialCard = ({ testimonial }) => {
                 {/* Top Quote */}
                 <div>
                     <Quote
-                        className="w-12 h-12 text-white/50"
+                        className="lg:w-12 lg:h-12 text-white/50"
                         fill="currentColor"
                     />
-                    <blockquote className="mt-4 text-xl md:text-2xl font-medium text-white shadow-black/20 [text-shadow:0_1px_3px_rgb(0,0,0,0.4)]">
+                    <blockquote className="mt-4 text-xs md:text-2xl font-medium text-white shadow-black/20 [text-shadow:0_1px_3px_rgb(0,0,0,0.4)]">
                         "{testimonial.testimonial}"
                     </blockquote>
                 </div>
@@ -137,7 +137,7 @@ const TestimonialCard = ({ testimonial }) => {
                             {testimonial.name}
                         </p>
                         <p
-                            className={`text-sm font-medium ${testimonial.textColor}`}
+                            className={`text-xs lg:text-sm font-medium ${testimonial.textColor}`}
                         >
                             {testimonial.designation}
                         </p>
@@ -146,13 +146,13 @@ const TestimonialCard = ({ testimonial }) => {
                     {/* Custom Play Button */}
                     <button
                         onClick={handlePlay}
-                        className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white
+                        className="lg:w-16 lg:h-16 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white
               flex items-center justify-center flex-shrink-0
               transform transition-all duration-300 ease-out group-hover:scale-110 group-hover:bg-white/30"
                         aria-label={`Play video: ${testimonial.testimonial}`}
                     >
                         <Play
-                            className="w-8 h-8"
+                            className="lg:w-8 lg:h-8 w-4 h-4"
                             fill="currentColor"
                             style={{ marginLeft: "4px" }}
                         />

@@ -19,10 +19,10 @@ function Home() {
             <Features />
             <Opportunities />
             <Courses />
-            <Testimonials />
             <RecordedCourses />
+            <Testimonials />
             <FounderMessage />
-            <CallToAction />
+            {/* <CallToAction /> */}
             <LearningEnvironment />
             <Contact />
         </>

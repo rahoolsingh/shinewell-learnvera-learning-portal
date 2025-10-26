@@ -24,22 +24,22 @@ export default function LearningEnvironment() {
 
     return (
         <section className="py-24 bg-white font-sans px-4 selection:bg-indigo-100">
-            <div className=" mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-16">
+            <div className="container mx-auto">
+                {/* <div className="text-center mb-16">
                     <h2 className="text-5xl md:text-7xl font-extrabold tracking-tight text-gray-900">
                         Where Learning{" "}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-700">
                             Happens.
                         </span>
                     </h2>
-                </div>
-                <section className="relative flex w-full items-center justify-center bg-white py-14">
+                </div> */}
+
+                {/* <section className="relative flex w-full items-center justify-center bg-white py-14">
                     <div
                         className={
                             "absolute inset-0 [background-size:40px_40px] [background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]"
                         }
                     />
-                    {/* Radial gradient for the container to give a faded look */}
                     <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
 
                     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -89,7 +89,7 @@ export default function LearningEnvironment() {
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> */}
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <img

@@ -1,17 +1,15 @@
 import hero1 from "../assets/hero-1.png";
-import background1 from "../assets/background-1.png";
+import background1 from "../assets/background-1.gif";
 
 export default function Hero() {
     return (
         <div className=" bg-gray-950 text-white">
-            <main
-                className="relative h-dvh overflow-hidden"
-                style={{
-                    backgroundImage: `url(${background1})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                }}
-            >
+            <main className="relative overflow-hidden pt-24">
+                <img
+                    src={background1}
+                    alt="Background Animation"
+                    className="absolute inset-0 w-full h-full object-cover pointer-events-none blur-xl scale-125 object-right"
+                />
                 <div className="absolute inset-0 bg-black opacity-60"></div>
 
                 <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
@@ -91,13 +89,37 @@ export default function Hero() {
 
                         <div className="flex flex-col sm:flex-row gap-4 mb-1">
                             <span>
-                                <button className="px-8 py-3 text-lg font-semibold rounded-lg shadow-xl transition duration-300 bg-cyan-600 hover:bg-cyan-500 text-white transform hover:scale-[1.02] active:scale-[0.98]">
-                                    Explore Programs
+                                <button
+                                    className="relative px-12 py-4 text-2xl font-extrabold rounded-xl overflow-hidden
+                         bg-gradient-to-r from-teal-400 to-cyan-500 text-white
+                         shadow-lg transform skew-x-[-10deg]
+                         transition-all duration-300 ease-out
+                         hover:skew-x-[0deg] hover:scale-105 active:scale-98
+                         before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent
+                         before:transform before:translate-x-[-100%] before:skew-x-[-20deg] before:transition-transform before:duration-700 before:ease-out
+                         hover:before:translate-x-[100%]"
+                                >
+                                    <span className="relative z-10 transform skew-x-[10deg] drop-shadow-md">
+                                        Explore Courses
+                                    </span>
                                 </button>
                             </span>
                             <span>
-                                <button className="px-8 py-3 text-lg font-semibold rounded-lg transition duration-300 border border-white/30 text-white hover:bg-white/10">
-                                    Get Free Consultation
+                                <button
+                                    className="relative px-12 py-4 text-xl font-bold rounded-lg overflow-hidden
+                         bg-gradient-to-r from-green-500 to-lime-500 text-white
+                         shadow-lg
+                         transition-all duration-300 ease-out
+                         hover:scale-105 active:scale-98
+                         after:content-[''] after:absolute after:inset-0 after:bg-white after:opacity-0 after:transition-opacity after:duration-300
+                         hover:after:opacity-10
+                         before:content-[''] before:absolute before:w-full before:h-full before:bg-gradient-to-b from-transparent to-white/30
+                         before:bottom-[-100%] before:left-0 before:transition-all before:duration-500 before:ease-out before:rounded-lg
+                         hover:before:bottom-0"
+                                >
+                                    <span className="relative z-10 drop-shadow-md">
+                                        Get a Free Consultation
+                                    </span>
                                 </button>
                                 <p>
                                     <span className="text-sm text-gray-400">
