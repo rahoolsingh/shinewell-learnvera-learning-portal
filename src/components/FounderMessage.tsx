@@ -1,24 +1,12 @@
-import React, { useState } from "react";
-import { Play } from "lucide-react";
 import Marquee from "react-fast-marquee";
 
 export default function FounderVideoMessage() {
-    const [isPlaying, setIsPlaying] = useState(false);
-
-    // Use the same video ID and thumbnail from your testimonial
-    const videoId = "u0noTxTXdb0";
     const embedUrl = `https://www.youtube.com/embed/u0noTxTXdb0`;
-
-    const handlePlay = () => {
-        setIsPlaying(true);
-    };
 
     return (
         <section className="py-24 bg-gray-950 text-gray-100 font-sans px-4 selection:bg-blue-200">
             <div className="container mx-auto max-w-7xl">
-                {/* Bento Grid: Text Module + Video Module */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {/* --- Left Column: Text & Stats (Inspired by Image) --- */}
                     <div
                         className={`relative flex flex-col justify-between w-full md:col-span-1`}
                     >
@@ -64,35 +52,31 @@ export default function FounderVideoMessage() {
                             </p>
                         </div>
 
-                        {/* Stats Boxes (Inspired by Image) */}
-                        <div className="grid gap-4">
-                            <div className="">
+                        <div className="grid gap-8">
+                            <div className="border-2 border-dashed -rotate-3 p-3 rounded-lg bg-teal-400/70 flex gap-4 w-64 items-center justify-center">
                                 <p className="text-3xl font-extrabold text-white">
                                     16M+
                                 </p>
-                                <p className="text-xs text-blue-100">
+                                <p className="text-xs text-white font-bold">
                                     Seconds of Confusion Eliminated
                                 </p>
                             </div>
-                            <div className="">
+                            <div className="border-2 border-dashed rotate-3 p-3 rounded-lg bg-cyan-500/70 flex gap-4 w-60 items-center justify-center">
                                 <p className="text-3xl font-extrabold text-white">
                                     8K+
                                 </p>
-                                <p className="text-xs text-blue-100">
+                                <p className="text-xs text-white font-bold">
                                     Real Campaigns Run by Our Students
                                 </p>
                             </div>
                         </div>
                     </div>
 
-                    {/* --- Right Column: Video Player (From your code) --- */}
                     <div className="md:col-span-2">
-                        {/* Label above media (Inspired by Image) */}
                         <p className="text-sm font-semibold uppercase text-blue-400 mb-2 ml-4">
                             FOUNDER AWARDED FOR EXCELLENCE IN ED-TECH
                         </p>
 
-                        {/* Framed Video Player */}
                         <div
                             className={`group relative overflow-hidden rounded-3xl shadow-xl
                                 border-4 border-white
@@ -113,12 +97,12 @@ export default function FounderVideoMessage() {
                                 speed={50}
                                 gradient={false}
                             >
-                                "Skill up with us and lead the digital
-                                future!" &nbsp; • &nbsp; "Empowering learners
-                                for the digital age!" &nbsp; • &nbsp;
-                                "Transforming education through technology!"
-                                &nbsp; • &nbsp; "Join us in shaping tomorrow's
-                                digital leaders!" &nbsp; • &nbsp;
+                                "Skill up with us and lead the digital future!"
+                                &nbsp; • &nbsp; "Empowering learners for the
+                                digital age!" &nbsp; • &nbsp; "Transforming
+                                education through technology!" &nbsp; • &nbsp;
+                                "Join us in shaping tomorrow's digital leaders!"
+                                &nbsp; • &nbsp;
                             </Marquee>
                         </div>
                     </div>

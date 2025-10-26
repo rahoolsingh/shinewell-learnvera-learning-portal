@@ -1,13 +1,21 @@
-import { Menu, X, ArrowRight, Phone } from "lucide-react"; // Added Phone icon
+import { Menu, X, Phone } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useScroll } from "./hooks/useScroll";
 
-const CtaButton = () => (
-    <motion.button
-        // whileHover={{ scale: 1.05 }}
+const NAV_LINKS = [
+    { label: "Home", href: "/" },
+    { label: "About Us", href: "/aboutus" },
+    { label: "Courses", href: "/#courses" },
+    { label: "Contact Us", href: "/contactus" },
+];
+
+const CtaCallButton = () => (
+    <motion.a
+        aria-label="Get a free consultation by phone"
         whileTap={{ scale: 0.97 }}
-        className="relative p-1 text-sm font-semibold rounded-full
+        whileHover={{ scale: 1.03 }}
+        className="relative px-4 py-2.5 text-sm font-semibold rounded-full
       bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 text-white
       shadow-md shadow-purple-900/30
       transition-all duration-300 ease-out overflow-hidden group"
@@ -22,41 +30,25 @@ const CtaButton = () => (
                 ease: "easeInOut",
             }}
         />
-        <span className="relative z-10 flex items-center space-x-2">
-            <CallButton />
-            <span className="pr-4">Get Free Consultation</span>
-        </span>
-    </motion.button>
-);
 
-// --- New Call Button Component ---
-const CallButton = () => (
-    <motion.a
-        href="tel:+123456789" // Example phone number
-        whileTap={{ scale: 0.95 }}
-        whileHover={{ scale: 1.1 }}
-        className="relative p-3 rounded-full
-        bg-white/10 hover:bg-white/20 text-white
-        transition-all duration-300 ease-out group"
-        aria-label="Call us"
-    >
-        <motion.div
-            // "Ring" animation
-            animate={{
-                rotate: [0, -15, 10, -10, 5, 0],
-            }}
-            transition={{
-                repeat: Infinity,
-                duration: 1.2,
-                ease: "easeInOut",
-                repeatDelay: 0.8, // Add a pause between "rings"
-            }}
-        >
-            <Phone className="w-4 h-4" />
-        </motion.div>
+        <span className="relative z-10 flex items-center justify-center space-x-2">
+            <motion.div
+                animate={{
+                    rotate: [0, -15, 10, -10, 5, 0],
+                }}
+                transition={{
+                    repeat: Infinity,
+                    duration: 1.2,
+                    ease: "easeInOut",
+                    repeatDelay: 0.8,
+                }}
+            >
+                <Phone className="w-4 h-4" />
+            </motion.div>
+            <span>Get Free Consultation</span>
+        </span>
     </motion.a>
 );
-// ---------------------------------
 
 export default function Header() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -103,7 +95,6 @@ export default function Header() {
             bg-black/90 backdrop-blur-2xl shadow-[0_4px_20px_rgba(0,0,0,0.2)]
             border border-white/20 rounded-full relative overflow-hidden"
                 >
-                    {/* Logo */}
                     <motion.a
                         href="/"
                         className="flex items-center space-x-1 font-bold text-2xl"
@@ -119,40 +110,26 @@ export default function Header() {
                         <span className="text-gray-200">M</span>
                     </motion.a>
 
-                    {/* Desktop Navigation */}
                     <nav className="hidden lg:flex items-center space-x-10 text-gray-200 font-medium">
-                        {["Home", "About Us", "Courses", "Contact"].map(
-                            (label, i) => (
-                                <motion.a
-                                    key={label}
-                                    href={
-                                        label === "Home"
-                                            ? "/"
-                                            : label === "Courses"
-                                            ? "/#courses"
-                                            : `/${label
-                                                  .toLowerCase()
-                                                  .replace(" ", "")}`
-                                    }
-                                    whileHover={{ y: -2, color: "#7dd3fc" }}
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 300,
-                                    }}
-                                >
-                                    {label}
-                                </motion.a>
-                            )
-                        )}
+                        {NAV_LINKS.map((link) => (
+                            <motion.a
+                                key={link.label}
+                                href={link.href}
+                                whileHover={{ y: -2, color: "#7dd3fc" }}
+                                transition={{
+                                    type: "spring",
+                                    stiffness: 300,
+                                }}
+                            >
+                                {link.label}
+                            </motion.a>
+                        ))}
                     </nav>
 
-                    {/* CTA + Mobile Toggle */}
                     <div className="flex items-center space-x-4">
-                        {/* --- Updated Desktop Buttons --- */}
                         <div className="hidden lg:flex items-center space-x-3">
-                            <CtaButton />
+                            <CtaCallButton />
                         </div>
-                        {/* ------------------------------- */}
                         <button
                             className="lg:hidden p-2 text-gray-100"
                             onClick={() => setIsMobileMenuOpen(true)}
@@ -164,7 +141,6 @@ export default function Header() {
                 </motion.div>
             </motion.header>
 
-            {/* --- Mobile Menu (Full-Screen Overlay) --- */}
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div
@@ -196,38 +172,28 @@ export default function Header() {
                             initial="hidden"
                             animate="visible"
                         >
-                            {["Home", "About Us", "Courses", "Contact Us"].map(
-                                (label, i) => (
-                                    <motion.a
-                                        key={label}
-                                        custom={i}
-                                        variants={linkVariants}
-                                        href={
-                                            label === "Home"
-                                                ? "/"
-                                                : label.includes("Course")
-                                                ? "/#courses"
-                                                : `/${label
-                                                      .toLowerCase()
-                                                      .replace(" ", "")}`
-                                        }
-                                        className="text-3xl font-semibold text-gray-200 hover:text-blue-400 transition"
-                                    >
-                                        {label}
-                                    </motion.a>
-                                )
-                            )}
+                            {NAV_LINKS.map((link, i) => (
+                                <motion.a
+                                    key={link.label}
+                                    custom={i}
+                                    variants={linkVariants}
+                                    href={link.href}
+                                    className="text-3xl font-semibold text-gray-200 hover:text-blue-400 transition"
+                                    // 5. Added onClick to close menu
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                    {link.label}
+                                </motion.a>
+                            ))}
 
                             <div className="flex-1" />
-                            {/* --- Updated Mobile Buttons --- */}
                             <motion.div
                                 variants={linkVariants}
-                                custom={5}
+                                custom={NAV_LINKS.length}
                                 className="flex items-center space-x-4"
                             >
-                                <CtaButton />
+                                <CtaCallButton />
                             </motion.div>
-                            {/* ------------------------------ */}
                         </motion.nav>
                     </motion.div>
                 )}

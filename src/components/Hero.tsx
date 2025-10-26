@@ -1,4 +1,4 @@
-import hero1 from "../assets/hero-1.png";
+import hero1 from "../assets/hero-3.png";
 import background1 from "../assets/background-1.gif";
 
 export default function Hero() {
@@ -133,7 +133,7 @@ export default function Hero() {
                     <img
                         src={hero1}
                         alt="Digital Marketing & AI Concepts"
-                        className="relative z-20 min-h-67 w-full object-cover max-w-7xl mx-auto"
+                        className="relative z-20 min-h-67 w-full object-cover container mx-auto grayscale brightness-75 contrast-150"
                     />
                 </div>
             </main>

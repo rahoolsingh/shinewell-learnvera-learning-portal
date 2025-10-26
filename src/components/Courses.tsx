@@ -1,8 +1,5 @@
-import React from "react";
 import { Star, CheckCircle2 } from "lucide-react";
 
-// --- Data for the courses ---
-// This is separated so you can easily update it later
 const courseData = [
     {
         id: 1,
@@ -30,7 +27,7 @@ const courseData = [
         image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         category: "Professional",
         duration: "2 Month",
-        rating: 5,
+        rating: 4,
         tags: ["Intermediate", "Performance Focus", "Real Campaigns"],
         description:
             "Plan, launch, and optimize ROI-focused Meta & Google Ads with data-driven reporting.",
@@ -82,8 +79,6 @@ const courseData = [
     },
 ];
 
-// --- Color Palettes ---
-// This object provides the dynamic Tailwind classes safely
 const colorPalettes = {
     purple: {
         border: "border-purple-200",
@@ -94,7 +89,7 @@ const colorPalettes = {
         tagText: "text-purple-600",
         check: "text-purple-600",
         buttonFrom: "from-purple-500",
-        buttonTo: "to-purple-600",
+        buttonTo: "to-purple-800",
         shadow: "shadow-purple-200/50",
     },
     green: {
@@ -106,7 +101,7 @@ const colorPalettes = {
         tagText: "text-green-600",
         check: "text-green-600",
         buttonFrom: "from-green-500",
-        buttonTo: "to-green-600",
+        buttonTo: "to-green-800",
         shadow: "shadow-green-200/50",
     },
     blue: {
@@ -118,7 +113,7 @@ const colorPalettes = {
         tagText: "text-blue-600",
         check: "text-blue-600",
         buttonFrom: "from-blue-500",
-        buttonTo: "to-blue-600",
+        buttonTo: "to-blue-800",
         shadow: "shadow-blue-200/50",
     },
     orange: {
@@ -130,12 +125,11 @@ const colorPalettes = {
         tagText: "text-orange-600",
         check: "text-orange-600",
         buttonFrom: "from-orange-500",
-        buttonTo: "to-orange-600",
+        buttonTo: "to-orange-800",
         shadow: "shadow-orange-200/50",
     },
 };
 
-// --- Reusable Star Rating Component ---
 const StarRating = ({ rating, className = "" }) => {
     return (
         <div className={`flex items-center gap-0.5 ${className}`}>
@@ -152,7 +146,6 @@ const StarRating = ({ rating, className = "" }) => {
     );
 };
 
-// --- Reusable Course Card Component ---
 const CourseCard = ({ course }) => {
     const palette = colorPalettes[course.theme];
 
@@ -160,7 +153,6 @@ const CourseCard = ({ course }) => {
         <div
             className={`flex flex-col bg-white rounded-2xl shadow-lg border-2 ${palette.border} hover:border-dashed overflow-hidden transition-all duration-300`}
         >
-            {/* Image and Badge */}
             <div className="relative p-2">
                 <img
                     src={course.image}
@@ -169,7 +161,6 @@ const CourseCard = ({ course }) => {
                 />
             </div>
 
-            {/* Content Area */}
             <div className="p-6 flex flex-col flex-grow">
                 <div className="flex justify-between items-center mb-2">
                     <h2 className="text-xl font-bold text-gray-900">
@@ -184,9 +175,8 @@ const CourseCard = ({ course }) => {
 
                 <p className="flex items-center gap-2 text-xs mb-4 text-gray-700  ">
                     <StarRating rating={course.rating} />
-                    {course.reviewCount || "0"} Reviews
                 </p>
-                {/* Tags */}
+
                 <div className="flex flex-wrap gap-2">
                     {course.tags.map((tag) => (
                         <span
@@ -204,7 +194,6 @@ const CourseCard = ({ course }) => {
                     {course.description}
                 </p>
 
-                {/* Deliverables */}
                 <div className="space-y-2 mb-6">
                     {course.deliverables.map((item) => (
                         <div key={item} className="flex items-start gap-2">
@@ -218,15 +207,24 @@ const CourseCard = ({ course }) => {
                     ))}
                 </div>
 
-                {/* Button and Availability (pushed to bottom) */}
-                <div className="mt-auto">
-                    <button
-                        className={`w-full py-3 px-6 rounded-lg text-white font-semibold text-lg 
-              bg-gradient-to-r ${palette.buttonFrom} ${palette.buttonTo} 
-              shadow-md ${palette.shadow} transition-all duration-300 hover:shadow-lg hover:opacity-90`}
-                    >
-                        Enquire Now
-                    </button>
+                <div className="mt-auto relative">
+                    <div className="relative group w-full">
+                        <div className="absolute -inset-[2px] bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 rounded-xl blur-sm opacity-70 group-hover:opacity-100 animate-borderFlow"></div>
+
+                        <button
+                            className={`relative px-8 py-2 text-xl font-extrabold rounded-xl overflow-hidden w-full
+    text-white transform skew-x-[-10deg] transition-all duration-300 ease-out 
+    hover:skew-x-[0deg] hover:scale-105 active:scale-98
+    before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent
+    before:transform before:translate-x-[-100%] before:skew-x-[-20deg]
+    before:transition-transform before:duration-700 before:ease-out
+    hover:before:translate-x-[100%]
+    bg-gradient-to-r from-teal-500 via-purple-500 to-cyan-500 animate-gradientFlow`}
+                        >
+                            Enroll Now
+                        </button>
+                    </div>
+
                     <p className="text-center text-xs text-gray-400 mt-4">
                         {course.availability}
                     </p>
@@ -236,17 +234,46 @@ const CourseCard = ({ course }) => {
     );
 };
 
-// --- Main Exported Component ---
 export default function CompleteDigitalMarketingCourses() {
     return (
         <section className="py-16 md:py-24 bg-gray-50" id="courses">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-12">
+                <p className="inline-flex items-center space-x-2 whitespace-nowrap">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className=" w-6 h-6 text-red-500 animate-pulse"
+                    >
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            className="opacity-25"
+                        />
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="6"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            className="opacity-75"
+                        />
+                        <circle cx="12" cy="12" r="2" fill="currentColor" />
+                    </svg>
+                    <span className="text-sm font-medium text-red-600">
+                        LIVE CLASSES
+                    </span>
+                </p>
+                <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-12 ">
                     Complete Digital Marketing{" "}
-                    <span className="text-blue-600">Courses</span>
+                    <span className="text-blue-600 relative">Courses</span>
                 </h1>
 
-                {/* Responsive Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {courseData.map((course) => (
                         <CourseCard key={course.id} course={course} />
