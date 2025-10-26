@@ -54,52 +54,13 @@ export default function LearningEnvironment() {
                         border border-gray-100 aspect-video
                         transition-all duration-500 ease-out`}
                             >
-                                {isPlaying ? (
-                                    // The Iframe Player
-                                    <iframe
-                                        src={embedUrl}
-                                        className="absolute inset-0 w-full h-full z-10"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                        title="Office Tour"
-                                    ></iframe>
-                                ) : (
-                                    // The Thumbnail and Overlay
-                                    <>
-                                        <img
-                                            src={videoThumbnail}
-                                            alt="Office Tour Thumbnail"
-                                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                            onError={(e) => {
-                                                e.target.onerror = null;
-                                                e.target.src =
-                                                    "https://placehold.co/1280x720/D1D5DB/1F2937?text=Video+Tour";
-                                            }}
-                                        />
-                                        <div className="absolute inset-0 bg-black/30"></div>
-
-                                        <div className="relative z-20 flex flex-col justify-between h-full p-8 text-white">
-                                            <span className="inline-block bg-yellow-400 text-gray-900 px-3 py-1 rounded-lg text-xs font-bold uppercase self-start">
-                                                Virtual Tour
-                                            </span>
-                                            <button
-                                                onClick={handlePlay}
-                                                className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white
-                               flex items-center justify-center flex-shrink-0 self-center
-                               transform transition-all duration-300 ease-out group-hover:scale-110 group-hover:bg-white/30"
-                                                aria-label="Play Office Tour"
-                                            >
-                                                <Play
-                                                    className="w-10 h-10"
-                                                    fill="currentColor"
-                                                    style={{
-                                                        marginLeft: "5px",
-                                                    }}
-                                                />
-                                            </button>
-                                        </div>
-                                    </>
-                                )}
+                                <iframe
+                                    src={embedUrl}
+                                    className="absolute inset-0 w-full h-full z-10"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                    title="Office Tour"
+                                ></iframe>
                             </div>
                         </div>
                         <div className="max-w-3xl mx-auto text-center mb-10">
