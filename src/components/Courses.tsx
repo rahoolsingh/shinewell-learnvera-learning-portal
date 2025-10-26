@@ -240,7 +240,7 @@ const CourseCard = ({ course }) => {
 export default function CompleteDigitalMarketingCourses() {
     return (
         <section className="py-16 md:py-24 bg-gray-50">
-            <div className=" mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-12">
                     Complete Digital Marketing{" "}
                     <span className="text-blue-600">Courses</span>
