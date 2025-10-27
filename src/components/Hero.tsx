@@ -88,7 +88,7 @@ export default function Hero() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 mb-1">
-                            <span>
+                            <a href="/#courses">
                                 <button
                                     className="relative px-12 py-4 text-2xl font-extrabold rounded-xl overflow-hidden
                          bg-gradient-to-r from-teal-400 to-cyan-500 text-white
@@ -103,7 +103,7 @@ export default function Hero() {
                                         Explore Courses
                                     </span>
                                 </button>
-                            </span>
+                            </a>
                             <span>
                                 <button
                                     className="relative px-12 py-4 text-xl font-bold rounded-lg overflow-hidden

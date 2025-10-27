@@ -1,83 +1,5 @@
 import { Star, CheckCircle2 } from "lucide-react";
-
-const courseData = [
-    {
-        id: 1,
-        theme: "purple",
-        badge: "LaunchPad",
-        image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        category: "Foundation",
-        duration: "1 Month",
-        rating: 5,
-        tags: ["Beginner", "Live Cohort", "Hands-on Projects"],
-        description:
-            "Build a solid base in websites, SEO, ads, and analytics—perfect for beginners and career switchers.",
-        deliverables: [
-            "Set up WordPress, GA4, and Search Console",
-            "Publish SEO-ready pages and 2 blog posts",
-            "Draft Google & Meta ad campaigns with creatives",
-            "Track key events and build a simple report",
-        ],
-        availability: "ONLINE & OFFLINE BOTH AVAILABLE",
-    },
-    {
-        id: 2,
-        theme: "green",
-        badge: "Growth Pro",
-        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        category: "Professional",
-        duration: "2 Month",
-        rating: 4,
-        tags: ["Intermediate", "Performance Focus", "Real Campaigns"],
-        description:
-            "Plan, launch, and optimize ROI-focused Meta & Google Ads with data-driven reporting.",
-        deliverables: [
-            "Full-funnel Meta Ads: cold, retargeting, lookalikes",
-            "Google Search YouTube: keywords, bids, extensions",
-            "GA4 + GTM conversions and Looker dashboards",
-            "Scaling, A/B testing, and policy compliance",
-        ],
-        availability: "ONLINE & OFFLINE BOTH AVAILABLE",
-    },
-    {
-        id: 3,
-        theme: "blue",
-        badge: "Omni Master",
-        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        category: "Mastery",
-        duration: "3 Month",
-        rating: 5,
-        tags: ["Advanced", "CRO", "Content Engine"],
-        description:
-            "Design high-converting funnels, ship content engines, and run email/WhatsApp lifecycle.",
-        deliverables: [
-            "Landing page UX and A/B testing for higher CVR",
-            "AI-assisted content: pillar + repurposed assets",
-            "Shopify setup with analytics and attribution",
-            "Email & WhatsApp automations for nurture/retention",
-        ],
-        availability: "ONLINE & OFFLINE BOTH AVAILABLE",
-    },
-    {
-        id: 4,
-        theme: "orange",
-        badge: "Complete",
-        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        category: "Specialization",
-        duration: "4 Month",
-        rating: 5,
-        tags: ["Expert", "GTM/GA4", "Automation"],
-        description:
-            "Master GTM/GA4 tracking, build automations, and package services like an agency.",
-        deliverables: [
-            "GTM data layer events and advanced GA4 reporting",
-            "Zapier/Integromat flows: lead routing, scoring, SLAs",
-            "Launch a digital product funnel end-to-end",
-            "Pricing, proposals, and SOPs to scale services",
-        ],
-        availability: "ONLINE & OFFLINE BOTH AVAILABLE",
-    },
-];
+import courseData from "../data/courses.js";
 
 const colorPalettes = {
     purple: {
@@ -210,9 +132,15 @@ const CourseCard = ({ course }) => {
                 <div className="mt-auto relative">
                     <div className="relative group w-full">
                         <div className="absolute -inset-[2px] bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 rounded-xl blur-sm opacity-70 group-hover:opacity-100 animate-borderFlow"></div>
-
-                        <button
-                            className={`relative px-8 py-2 text-xl font-extrabold rounded-xl overflow-hidden w-full
+                        <a
+                            href={`course-details/${course.id}?cat=${course.category
+                                .toLowerCase()
+                                .replace(/\s+/g, "-")}`}
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <button
+                                className={`relative px-8 py-2 text-xl font-extrabold rounded-xl overflow-hidden w-full
     text-white transform skew-x-[-10deg] transition-all duration-300 ease-out 
     hover:skew-x-[0deg] hover:scale-105 active:scale-98
     before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent
@@ -220,9 +148,10 @@ const CourseCard = ({ course }) => {
     before:transition-transform before:duration-700 before:ease-out
     hover:before:translate-x-[100%]
     bg-gradient-to-r from-teal-500 via-purple-500 to-cyan-500 animate-gradientFlow`}
-                        >
-                            Enroll Now
-                        </button>
+                            >
+                                Enroll Now
+                            </button>
+                        </a>
                     </div>
 
                     <p className="text-center text-xs text-gray-400 mt-4">

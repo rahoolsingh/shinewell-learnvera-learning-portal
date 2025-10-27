@@ -5,9 +5,9 @@ import { useScroll } from "./hooks/useScroll";
 
 const NAV_LINKS = [
     { label: "Home", href: "/" },
-    { label: "About Us", href: "/aboutus" },
+    { label: "About Us", href: "/about" },
     { label: "Courses", href: "/#courses" },
-    { label: "Contact Us", href: "/contactus" },
+    { label: "Contact Us", href: "/contact" },
 ];
 
 const CtaCallButton = () => (
