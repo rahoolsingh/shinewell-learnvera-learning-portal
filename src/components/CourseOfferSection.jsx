@@ -5,7 +5,7 @@ import { Gift, Users, Target, Check, Sparkles, Clock } from "lucide-react";
 // --- New "Enroll" Button (Mobile Responsive) ---
 const CtaEnrollButton = () => (
     <motion.a
-        href="/#enroll"
+        href="/#consultation"
         aria-label="Enroll in the course now"
         whileTap={{ scale: 0.98 }}
         whileHover={{ scale: 1.02, y: -2 }}
