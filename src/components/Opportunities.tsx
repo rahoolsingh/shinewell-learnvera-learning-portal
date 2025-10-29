@@ -22,16 +22,22 @@ export default function Opportunities() {
     return (
         <section className="py-16 bg-white">
             <div className="   mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-12">
+                <div className="text-center mb-12 max-w-7xl mx-auto">
                     <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
                         THE OPPORTUNITIES
                     </h2>
                     <p className="text-xl text-gray-600">
-                        Everyone wants their children to succeed
+                        Empowering Individuals Through Digital Education
                     </p>
-                    <p className="text-lg text-gray-600">
-                        Its Essential For Everyone to Depend on Digital
-                        Education
+                    <p className="text-xs text-gray-600">
+                        LearnVera is dedicated to transforming lives by providing
+                        accessible and high-quality digital education. Through our
+                        comprehensive courses and expert-led training programs, we
+                        equip individuals with the skills and knowledge needed to
+                        thrive in the digital age. Our mission is to bridge the gap
+                        between traditional education and the evolving demands of the
+                        modern workforce, enabling our learners to unlock new career
+                        opportunities and achieve their professional goals.
                     </p>
                 </div>
 

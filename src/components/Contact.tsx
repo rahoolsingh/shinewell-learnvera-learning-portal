@@ -11,7 +11,10 @@ export default function Contact() {
             />
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <h2 className="text-3xl lg:text-4xl font-bold text-white text-center mb-12">
-                    More Curious?
+                    More Curious?{" "}
+                    <span className="text-yellow-400">
+                        Get Free Consultation
+                    </span>
                 </h2>
 
                 <div className="bg-white rounded-3xl overflow-hidden shadow-2xl">
@@ -54,7 +57,7 @@ export default function Contact() {
                                             Email Us
                                         </div>
                                         <div className="text-gray-600">
-                                            info@learnmize.com
+                                            info@learnvera.com
                                         </div>
                                     </div>
                                 </div>

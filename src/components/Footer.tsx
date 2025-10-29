@@ -48,9 +48,9 @@ export default function Footer() {
 
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center">
               <span className="text-xl font-bold text-blue-500">LEARN</span>
-              <span className="text-xl font-bold text-white">MIZE</span>
+              <span className="text-xl font-bold text-white">VERA</span>
             </div>
 
             <div className="flex space-x-6">

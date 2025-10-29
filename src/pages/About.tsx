@@ -368,7 +368,7 @@ export default function AboutUsPage() {
                         {/* --- Re-used Animated Button --- */}
                         <div className="relative group w-full max-w-xs mx-auto">
                             <div className="absolute -inset-[2px] bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 rounded-xl blur-sm opacity-70 group-hover:opacity-100 animate-borderFlow"></div>
-                            <a href="/#courses">
+                            <a href="/contact">
                                 <button
                                     className={`relative px-8 py-3 text-xl font-extrabold rounded-xl overflow-hidden w-full
     text-white transform skew-x-[-10deg] transition-all duration-300 ease-out 
@@ -379,7 +379,7 @@ export default function AboutUsPage() {
     hover:before:translate-x-[100%]
     bg-gradient-to-r from-teal-500 via-purple-500 to-cyan-500 animate-gradientFlow`}
                                 >
-                                    Explore All Courses
+                                    Get Free Consultation
                                 </button>
                             </a>
                         </div>
