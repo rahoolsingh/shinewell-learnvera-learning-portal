@@ -45,15 +45,15 @@ export default function Hero() {
                 <div className="relative z-10 flex h-full flex-col justify-between items-center pt-10">
                     <div className="mx-auto flex max-w-7xl flex-col items-center gap-10 justify-center px-4 text-center sm:px-6 lg:px-8 h-full">
                         <div className="flex w-fit items-center gap-4 rounded-full border border-cyan-500/50 bg-gray-800/70 backdrop-blur-sm px-4 py-2 shadow-lg transition duration-300 hover:border-cyan-400">
-                            <span className="text-sm font-medium text-cyan-400 uppercase tracking-widest">
-                                The Future of Learning is Here
+                            <span className="text-xs md:text-sm font-medium text-cyan-400 uppercase tracking-widest">
+                                THE FUTURE BELONGS TO THE SKILLED
                             </span>
                         </div>
 
                         <h1 className="relative text-5xl leading-[1.1] font-extrabold max-md:text-3xl md:max-w-4xl md:text-balance lg:text-7xl">
                             <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-cyan-400">
-                                Master Digital Growth, Accelerated by AI
-                                Innovation
+                                Upgrade Your Skills, Master AI before It Masters
+                                You
                             </span>
 
                             <svg
@@ -80,11 +80,12 @@ export default function Hero() {
                             </svg>
                         </h1>
 
-                        <p className="text-2xl max-w-4xl text-gray-300 font-medium">
-                            Join our cutting-edge programs that blend digital
-                            marketing expertise with AI-driven strategies.
-                            Elevate your skills and lead the future of marketing
-                            today.
+                        <p className="text-sm md:text-lg lg:text-2xl max-w-4xl text-gray-300 font-medium">
+                            At LearnVera, we merge highly skilled human
+                            expertise with AI to help you master the most
+                            in-demand digital skills. From performance marketing
+                            to AI-powered growth strategies. Learn smarter. Grow
+                            faster. Lead the future.
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 mb-1">
@@ -99,7 +100,7 @@ export default function Hero() {
                          before:transform before:translate-x-[-100%] before:skew-x-[-20deg] before:transition-transform before:duration-700 before:ease-out
                          hover:before:translate-x-[100%]"
                                 >
-                                    <span className="relative z-10 transform skew-x-[10deg] drop-shadow-md">
+                                    <span className="relative z-10 transform skew-x-[10deg] drop-shadow-md text-lg xl:text-xl">
                                         Explore Courses
                                     </span>
                                 </button>
@@ -117,13 +118,13 @@ export default function Hero() {
                          before:bottom-[-100%] before:left-0 before:transition-all before:duration-500 before:ease-out before:rounded-lg
                          hover:before:bottom-0"
                                 >
-                                    <span className="relative z-10 drop-shadow-md">
-                                        Get a Free Consultation
+                                    <span className="relative z-10 drop-shadow-md text-sm xl:text-xl">
+                                        Book a Free Career Consultation
                                     </span>
                                 </button>
                                 <p>
-                                    <span className="text-sm text-gray-400">
-                                        (Industry Experts Available)
+                                    <span className="text-xs md:text-sm text-gray-400">
+                                        (Guided by Certified Mentors & AI-Driven Tools)
                                     </span>
                                 </p>
                             </span>

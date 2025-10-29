@@ -23,10 +23,12 @@ export default function ResponsiveInfoBlock() {
                             className="w-full h-auto object-cover md:h-80 lg:h-96"
                         />
                         <div className="p-5 bg-teal-200 flex-grow">
-                            <p className="text-black text-lg font-bold leading-relaxed">
-                                Hands-on training in Google & Meta Ads, GA4,
-                                ChatGPT, and Social Media – Taught with Live
-                                Client Briefs.
+                            <p className="text-black text-xs md:text-sm font-medium leading-relaxed">
+                                Hands-on Learning with Real Client Campaigns &
+                                AI Tools Get trained on Google & Meta Ads,
+                                ChatGPT, Gemini, GA4, GSC, Automation, and
+                                Social Media Strategy — all through live
+                                projects, case studies, and real brands.
                             </p>
                         </div>
                     </div>
@@ -62,20 +64,17 @@ export default function ResponsiveInfoBlock() {
                                             alt="Student avatar"
                                             className="w-10 h-10 rounded-full border-2 border-white bg-gray-500 object-cover"
                                         />
-                                        <img
-                                            src={studentAvatar5}
-                                            alt="Student avatar"
-                                            className="w-10 h-10 rounded-full border-2 border-white bg-gray-500 object-cover"
-                                        />
-                                        <span className="flex items-center justify-center w-10 h-10 rounded-full bg-cyan-700 text-sm font-bold text-white border-2 border-white shrink-0">
+                                        <span className="flex items-center justify-center w-10 h-10 rounded-full bg-cyan-700 text-xs font-bold text-white border-2 border-white shrink-0">
                                             22K+
                                         </span>
                                     </div>
-                                    <p className="text-center text-xl sm:text-2xl font-bold text-white mt-3">
-                                        <span className="font-extrabold text-white">
-                                            100,000+ Students
+                                    <p className="text-center text-xs sm:text-sm text-white mt-3">
+                                        <span className="font-bold text-base text-white">
+                                            1,000+ Learners Mentored
                                         </span>{" "}
-                                        <br /> Trained Across Digital & AI
+                                        <br /> Upskilling students, marketers,
+                                        and entrepreneurs across Digital, AI &
+                                        Automation
                                     </p>
                                 </div>
                             </div>
@@ -83,9 +82,10 @@ export default function ResponsiveInfoBlock() {
 
                         {/* Bottom Right: Quote Card - Retains contrasting gradient for professionalism. No shadow/hover. */}
                         <div className="col-span-1 flex flex-col bg-gradient-to-tl from-purple-600 to-indigo-500 p-6 rounded-lg justify-center">
-                            <p className="text-lg sm:text-2xl font-serif italic text-indigo-100 leading-relaxed mb-3">
-                                "Believe in your potential, commit to learning,
-                                and success will follow."
+                            <p className="text-sm sm:text-xl font-serif italic text-indigo-100 leading-relaxed mb-3">
+                                "At LearnVera, we don’t just teach skills — we
+                                build confidence, clarity, and creators of the
+                                most in-demand digital world."
                             </p>
                             <p className="text-md font-semibold text-white">
                                 Deepesh Raj
@@ -103,8 +103,13 @@ export default function ResponsiveInfoBlock() {
                         />
                         <div className="p-5 bg-yellow-200 flex-grow">
                             <p className="text-black text-lg font-bold leading-relaxed">
-                                Live, Mentor-Led Sessions with Practical
-                                Demos and rigorous Campaign Reviews.
+                                Live Mentor-Led Sessions. Real Feedback. Real
+                                Growth.
+                            </p>
+                            <p className="text-black text-xs md:text-sm font-medium leading-relaxed mt-1">
+                                Experience interactive classes, campaign
+                                reviews, and one-on-one guidance, where we ditch
+                                the theory and go all practical.
                             </p>
                         </div>
                     </div>

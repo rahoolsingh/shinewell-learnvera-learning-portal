@@ -27,7 +27,7 @@ const colorPalettes = {
 
 const StarRating = ({ rating }) => (
     <div className="flex items-center gap-1">
-        {[...Array(5)].map((_, i) => (
+        {[...Array(5)]?.map((_, i) => (
             <Star
                 key={i}
                 className={`w-4 h-4 ${
@@ -93,46 +93,55 @@ export default function CourseDetailsPage() {
                     {/* --- Left Content --- */}
                     <div className="lg:col-span-2">
                         <div className="mb-8">
-                            <span
-                                className={`inline-block px-3 py-1 text-sm font-semibold rounded-full bg-gray-200 text-gray-700 mb-3`}
-                            >
-                                {course?.category}
-                            </span>
-                            <h1 className="text-4xl font-extrabold text-gray-900 mb-4 leading-tight">
+                            {course?.category && (
+                                <span
+                                    className={`inline-block px-3 py-1 text-sm font-semibold rounded-full bg-gray-200 text-gray-700 mb-3`}
+                                >
+                                    {course?.category}
+                                </span>
+                            )}
+                            <h1 className="text-4xl font-extrabold text-gray-900 leading-tight">
                                 {course?.headline}
                             </h1>
+                            <p className="text-lg text-gray-600 mt-4 mb-6">
+                                {course?.subheadline}
+                            </p>
                             <p className="text-lg text-gray-700 mb-6">
                                 {course?.description}
                             </p>
-                            <div className="flex items-center gap-4">
-                                <StarRating rating={course?.rating} />
-                                <span className="text-sm text-gray-600">
-                                    {course?.rating}.0 Rating
-                                </span>
-                            </div>
+                            {course?.rating && (
+                                <div className="flex items-center gap-4">
+                                    <StarRating rating={course?.rating} />
+                                    <span className="text-sm text-gray-600">
+                                        {course?.rating}.0 Rating
+                                    </span>
+                                </div>
+                            )}
                         </div>
 
                         {/* Instructor */}
-                        <div className="flex items-center gap-4 p-5 rounded-xl border bg-white mb-10 shadow-sm">
-                            <img
-                                src={course?.instructor?.image}
-                                alt={course?.instructor?.name}
-                                className="w-16 h-16 rounded-full object-cover"
-                            />
-                            <div>
-                                <h3 className="font-semibold text-gray-900">
-                                    {course?.instructor?.name}
-                                </h3>
-                                <p className="text-sm text-gray-600">
-                                    {course?.instructor?.title}
-                                </p>
+                        {course?.instructor && (
+                            <div className="flex items-center gap-4 p-5 rounded-xl border bg-white mb-10 shadow-sm">
+                                <img
+                                    src={course?.instructor?.image}
+                                    alt={course?.instructor?.name}
+                                    className="w-16 h-16 rounded-full object-cover"
+                                />
+                                <div>
+                                    <h3 className="font-semibold text-gray-900">
+                                        {course?.instructor?.name}
+                                    </h3>
+                                    <p className="text-sm text-gray-600">
+                                        {course?.instructor?.title}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
+                        )}
 
-                        {/* Sections */}
-                        <DetailSection title="What You'll Learn">
+                        {/* Sections - What You'll Learn */}
+                        <section title="What You'll Learn" className="mb-12">
                             <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
-                                {course?.deliverables.map((item) => (
+                                {course?.deliverables?.map((item) => (
                                     <li
                                         key={item}
                                         className="flex items-start gap-2"
@@ -146,65 +155,71 @@ export default function CourseDetailsPage() {
                                     </li>
                                 ))}
                             </ul>
-                        </DetailSection>
+                        </section>
 
-                        <DetailSection
-                            title="Course Curriculum"
-                            icon={<BookOpen className="w-6 h-6" />}
-                        >
-                            <div className="space-y-4">
-                                {course?.curriculum.map((module) => (
-                                    <div
-                                        key={module.module}
-                                        className="border rounded-lg overflow-hidden bg-white"
-                                    >
-                                        <div className="bg-gray-100 p-4 font-bold text-gray-800">
-                                            Module {module.module}:{" "}
-                                            {module.title}
+                        {course?.curriculum && (
+                            <section
+                                title="Course Curriculum"
+                                icon={<BookOpen className="w-6 h-6" />}
+                            >
+                                <div className="space-y-4">
+                                    {course?.curriculum?.map((module) => (
+                                        <div
+                                            key={module.module}
+                                            className="border rounded-lg overflow-hidden bg-white"
+                                        >
+                                            <div className="bg-gray-100 p-4 font-bold text-gray-800">
+                                                Module {module.module}:{" "}
+                                                {module.title}
+                                            </div>
+                                            <ul className="p-4 space-y-2">
+                                                {module.topics?.map((topic) => (
+                                                    <li
+                                                        key={topic}
+                                                        className="flex items-center gap-2 text-sm text-gray-700"
+                                                    >
+                                                        <span
+                                                            className={`w-1.5 h-1.5 rounded-full ${palette.text} bg-current`}
+                                                        ></span>
+                                                        {topic}
+                                                    </li>
+                                                ))}
+                                            </ul>
                                         </div>
-                                        <ul className="p-4 space-y-2">
-                                            {module.topics.map((topic) => (
-                                                <li
-                                                    key={topic}
-                                                    className="flex items-center gap-2 text-sm text-gray-700"
-                                                >
-                                                    <span
-                                                        className={`w-1.5 h-1.5 rounded-full ${palette.text} bg-current`}
-                                                    ></span>
-                                                    {topic}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                ))}
-                            </div>
-                        </DetailSection>
+                                    ))}
+                                </div>
+                            </section>
+                        )}
 
-                        <DetailSection title="Prerequisites">
-                            <ul className="list-disc list-inside space-y-2 text-sm text-gray-700">
-                                {course?.prerequisites.map((req) => (
-                                    <li key={req}>{req}</li>
-                                ))}
-                            </ul>
-                        </DetailSection>
+                        {course?.prerequisites && (
+                            <section title="Prerequisites">
+                                <ul className="list-disc list-inside space-y-2 text-sm text-gray-700">
+                                    {course?.prerequisites?.map((req) => (
+                                        <li key={req}>{req}</li>
+                                    ))}
+                                </ul>
+                            </section>
+                        )}
 
-                        <DetailSection title="Frequently Asked Questions">
-                            <div className="space-y-4">
-                                {course?.faq.map((faq) => (
-                                    <details
-                                        key={faq.question}
-                                        className="border rounded-lg p-4 bg-white"
-                                    >
-                                        <summary className="font-semibold text-gray-900 cursor-pointer">
-                                            {faq.question}
-                                        </summary>
-                                        <p className="mt-2 text-sm text-gray-700">
-                                            {faq.answer}
-                                        </p>
-                                    </details>
-                                ))}
-                            </div>
-                        </DetailSection>
+                        {course?.faq && (
+                            <section title="Frequently Asked Questions">
+                                <div className="space-y-4">
+                                    {course?.faq?.map((faq) => (
+                                        <details
+                                            key={faq.question}
+                                            className="border rounded-lg p-4 bg-white"
+                                        >
+                                            <summary className="font-semibold text-gray-900 cursor-pointer">
+                                                {faq.question}
+                                            </summary>
+                                            <p className="mt-2 text-sm text-gray-700">
+                                                {faq.answer}
+                                            </p>
+                                        </details>
+                                    ))}
+                                </div>
+                            </section>
+                        )}
                     </div>
 
                     {/* --- Right Sticky Card --- */}
@@ -218,24 +233,24 @@ export default function CourseDetailsPage() {
                                 className="w-full aspect-video object-cover"
                             />
                             <div className="p-6">
-                                <div className="flex justify-between items-center mb-4">
+                                <div className="flex justify-between items-center mb-1">
                                     <h2 className="text-xl font-bold text-gray-900">
-                                        {course?.category}
+                                        {course?.headline}
                                     </h2>
-                                    <span className="px-3 py-1 text-xs font-bold rounded-full bg-gray-100 text-gray-700">
-                                        {course?.duration}
-                                    </span>
-                                </div>
-                                <div className="flex flex-wrap gap-2 mb-6">
-                                    {course?.tags.map((tag) => (
-                                        <span
-                                            key={tag}
-                                            className={`px-3 py-1 text-xs font-medium rounded-md bg-gray-50 text-gray-700`}
-                                        >
-                                            {tag}
+                                    {course?.duration && (
+                                        <span className="px-3 py-1 text-xs font-bold rounded-full bg-gray-100 text-gray-700">
+                                            {course?.duration}
                                         </span>
-                                    ))}
+                                    )}
                                 </div>
+
+                                <p className="text-gray-700 mb-3 text-sm">
+                                    {course?.subheadline}
+                                </p>
+
+                                <p className="text-gray-700 mb-6 text-xs">
+                                    {course?.description}
+                                </p>
                                 <EnrollButton
                                     palette={palette}
                                     text="Enroll Now"
@@ -259,8 +274,9 @@ export default function CourseDetailsPage() {
                         <h3 className="text-lg font-semibold text-gray-900">
                             {course.headline}
                         </h3>
+
                         <p className="text-sm text-gray-600">
-                            {course.duration} • Rated {course.rating}/5
+                            {course.subheadline}
                         </p>
                     </div>
                     <div className="w-full sm:w-auto">

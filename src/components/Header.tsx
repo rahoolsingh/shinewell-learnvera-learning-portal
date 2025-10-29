@@ -1,21 +1,15 @@
 import { Menu, X, Phone } from "lucide-react";
-import { useState, useEffect } from "react"; // --- ADDED useEffect ---
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router";
-// Note: The useScroll hook is not provided, so I'm assuming it exists in "./hooks/useScroll"
-// import { useScroll } from "./hooks/useScroll";
-// --- REMOVED: import { useNavigate } from "react-router"; ---
-// This hook was causing an error because it was used outside a <Router> component.
-// We will use standard hash links instead.
+// import { Link } from "react-router-dom"; // Changed from 'react-router'
+// --- Using <a> tags instead of <Link> for consistency with the rest of the file ---
 
 // A mock useScroll hook to make the component runnable for demonstration
-// You should keep your original import of "./hooks/useScroll"
 const useScroll = () => {
-    // Mock implementation
     const [scrollY, setScrollY] = useState(window.scrollY);
     const [direction, setDirection] = useState("up");
 
-    useState(() => {
+    useEffect(() => {
         let lastScrollY = window.scrollY;
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
@@ -33,12 +27,12 @@ const useScroll = () => {
 
 const CtaCallButton = () => (
     <motion.a
-        // --- CHANGED: Added a 'tel:' href to make the button interactive ---
-        href="tel:+1-800-555-1234" // Placeholder phone number
+        href="/#consultation"
         aria-label="Get a free consultation by phone"
         whileTap={{ scale: 0.97 }}
         whileHover={{ scale: 1.03 }}
-        className="relative px-4 py-2.5 text-sm font-semibold rounded-full
+        // --- UPDATED: Simplified responsive classes ---
+        className="relative px-4 sm:px-5 py-2.5 text-sm font-semibold rounded-full
       bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 text-white
       shadow-md shadow-purple-900/30
       transition-all duration-300 ease-out overflow-hidden group"
@@ -68,21 +62,15 @@ const CtaCallButton = () => (
             >
                 <Phone className="w-4 h-4" />
             </motion.div>
+            {/* This text will now be visible on all screen sizes */}
             <span>Get Free Consultation</span>
         </span>
     </motion.a>
 );
 
-// --- REMOVED: Notes about react-router and scroll logic ---
-// The implementation has been simplified to use standard hash links,
-// so the complex state-passing logic is no longer needed.
-
-// --- CHANGED: NAV_LINKS definition moved outside the component ---
-// It no longer depends on component state or functions, so it can be a constant.
 const NAV_LINKS = [
     { label: "Home", href: "/" },
     { label: "About Us", href: "/about" },
-    // --- CHANGED: "Courses" link now uses a standard hash link ---
     { label: "Courses", href: "/#courses" },
     { label: "Contact Us", href: "/contact" },
 ];
@@ -90,33 +78,22 @@ const NAV_LINKS = [
 export default function Header() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const { scrollY, direction } = useScroll();
-    // --- REMOVED: const navigate = useNavigate(); ---
-    
-    // --- REMOVED: const handleNavigateToSection = () => { ... }; ---
 
-    // --- REMOVED: NAV_LINKS definition was moved outside ---
-
-    // --- ADDED: Effect to handle hash-link scrolling on page load ---
     useEffect(() => {
-        // Check if there's a hash in the URL when the component mounts
         const hash = window.location.hash;
         if (hash) {
-            // Try to find the element by ID
-            const id = hash.substring(1); // Remove the '#'
-            // Use querySelector for a more robust check in case id is not found
+            const id = hash.substring(1);
             const element = document.getElementById(id); 
             
             if (element) {
-                // We use a small timeout to give the rest of the page time to render
-                // This is especially important for SPAs where content might appear after the initial paint
                 const timer = setTimeout(() => {
                     element.scrollIntoView({ behavior: 'smooth' });
-                }, 100); // 100ms delay, can be adjusted
+                }, 100); 
                 
-                return () => clearTimeout(timer); // Cleanup timer on component unmount
+                return () => clearTimeout(timer);
             }
         }
-    }, []); // Empty dependency array, so it only runs once when the Header mounts
+    }, []);
 
     const isVisible = scrollY < 100 || direction === "up";
 
@@ -144,9 +121,6 @@ export default function Header() {
         }),
     };
 
-    // --- REMOVED: const handleMobileLinkClick = (link) => { ... }; ---
-    // The logic is simplified and placed directly in the mobile menu's onClick.
-
     return (
         <>
             <motion.header
@@ -156,15 +130,17 @@ export default function Header() {
                 animate={isVisible ? "visible" : "hidden"}
                 transition={{ type: "spring", stiffness: 120, damping: 20 }}
             >
+                {/* --- RESPONSIVE PILL: width, padding --- */}
                 <motion.div
                     whileHover={{ scale: 1.01 }}
-                    className="flex items-center justify-between w-full max-w-5xl px-8 py-3
+                    className="flex items-center justify-between w-full max-w-md lg:max-w-5xl px-4 lg:px-8 py-2.5 lg:py-3
             bg-black/90 backdrop-blur-2xl shadow-[0_4px_20px_rgba(0,0,0,0.2)]
             border border-white/20 rounded-full relative overflow-hidden"
                 >
+                    {/* --- RESPONSIVE LOGO: text size --- */}
                     <motion.a
                         href="/"
-                        className="flex items-center  font-bold text-2xl"
+                        className="flex items-center font-bold text-xl lg:text-2xl"
                         whileHover={{ scale: 1.05 }}
                     >
                         <motion.span
@@ -177,18 +153,16 @@ export default function Header() {
                         </motion.span>
                     </motion.a>
 
-                    {/* --- CHANGED: Simplified desktop nav logic --- */}
                     <nav className="hidden lg:flex items-center space-x-10 text-gray-200 font-medium">
                         {NAV_LINKS.map((link) => (
                             <motion.a
                                 key={link.label}
-                                href={link.href} // Always use href
+                                href={link.href}
                                 whileHover={{ y: -2, color: "#7dd3fc" }}
                                 transition={{
                                     type: "spring",
                                     stiffness: 300,
                                 }}
-                                // --- REMOVED: Conditional className and onClick ---
                             >
                                 {link.label}
                             </motion.a>
@@ -220,13 +194,14 @@ export default function Header() {
                         exit="exit"
                     >
                         <div className="flex justify-between items-center p-6 border-b border-gray-800">
-                            <Link
-                                to="/"
+                            {/* --- CONSISTENCY: Changed <Link> to <a> --- */}
+                            <a
+                                href="/"
                                 className="flex items-center space-x-1 font-bold text-2xl"
                             >
                                 <span className="text-blue-500">LEARN</span>
                                 <span className="text-gray-100">VERA</span>
-                            </Link>
+                            </a>
                             <button
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 aria-label="Close mobile menu"
@@ -241,15 +216,15 @@ export default function Header() {
                             initial="hidden"
                             animate="visible"
                         >
-                            {/* --- CHANGED: Simplified mobile nav logic --- */}
                             {NAV_LINKS.map((link, i) => (
                                 <motion.a
                                     key={link.label}
                                     custom={i}
                                     variants={linkVariants}
-                                    href={link.href} // Always use href
-                                    className="text-3xl font-semibold text-gray-200 hover:text-blue-400 transition"
-                                    onClick={() => setIsMobileMenuOpen(false)} // Just close menu on click
+                                    href={link.href}
+                                    // --- RESPONSIVE TEXT: smaller on mobile ---
+                                    className="text-2xl sm:text-3xl font-semibold text-gray-200 hover:text-blue-400 transition"
+                                    onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     {link.label}
                                 </motion.a>
@@ -259,7 +234,8 @@ export default function Header() {
                             <motion.div
                                 variants={linkVariants}
                                 custom={NAV_LINKS.length}
-                                className="flex items-center space-x-4"
+                                // --- RESPONSIVE: CtaCallButton will now scale based on its own classes ---
+                                className="flex"
                             >
                                 <CtaCallButton />
                             </motion.div>
@@ -270,4 +246,3 @@ export default function Header() {
         </>
     );
 }
-

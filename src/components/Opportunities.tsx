@@ -27,9 +27,9 @@ export default function Opportunities() {
                         THE OPPORTUNITIES
                     </h2>
                     <p className="text-xl text-gray-600">
-                        Empowering Individuals Through Digital Education
+                        In a world run by AI and innovation, digital skills aren’t optional — they’re the only way to a secured future. 
                     </p>
-                    <p className="text-xs text-gray-600">
+                    {/* <p className="text-xs text-gray-600">
                         LearnVera is dedicated to transforming lives by providing
                         accessible and high-quality digital education. Through our
                         comprehensive courses and expert-led training programs, we
@@ -38,7 +38,7 @@ export default function Opportunities() {
                         between traditional education and the evolving demands of the
                         modern workforce, enabling our learners to unlock new career
                         opportunities and achieve their professional goals.
-                    </p>
+                    </p> */}
                 </div>
 
                 <div className="mb-8">

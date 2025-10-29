@@ -10,6 +10,7 @@ import FounderMessage from "../components/FounderMessage";
 import CallToAction from "../components/CallToAction";
 import LearningEnvironment from "../components/LearningEnvironment";
 import Contact from "../components/Contact";
+import CourseOfferSection from "../components/CourseOfferSection";
 
 function Home() {
     return (
@@ -19,6 +20,7 @@ function Home() {
             <Features />
             <Opportunities />
             <Courses />
+            <CourseOfferSection />
             <RecordedCourses />
             <Testimonials />
             <FounderMessage />

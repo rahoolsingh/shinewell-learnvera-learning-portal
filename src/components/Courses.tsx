@@ -84,31 +84,43 @@ const CourseCard = ({ course }) => {
             </div>
 
             <div className="p-6 flex flex-col flex-grow">
-                <div className="flex justify-between items-center mb-2">
+                <div className="flex justify-between items-center">
                     <h2 className="text-xl font-bold text-gray-900">
-                        {course.category}
+                        {course.headline}
                     </h2>
-                    <span
-                        className={`px-3 py-1 text-xs font-bold rounded-full ${palette.durationBg} ${palette.durationText}`}
-                    >
-                        {course.duration}
-                    </span>
+                    {course?.duration && (
+                        <span
+                            className={`px-3 py-1 text-xs font-bold h-fit whitespace-nowrap rounded-full ${palette.durationBg} ${palette.durationText}`}
+                        >
+                            {course.duration}
+                        </span>
+                    )}
                 </div>
 
-                <p className="flex items-center gap-2 text-xs mb-4 text-gray-700  ">
-                    <StarRating rating={course.rating} />
+                <p>
+                    <span className="text-xs lg:text-sm text-gray-500">
+                        {course.subheadline}
+                    </span>
                 </p>
 
-                <div className="flex flex-wrap gap-2">
-                    {course.tags.map((tag) => (
-                        <span
-                            key={tag}
-                            className={`px-3 py-1 text-xs font-medium rounded-md ${palette.tagBg} ${palette.tagText}`}
-                        >
-                            {tag}
-                        </span>
-                    ))}
-                </div>
+                {course?.rating && (
+                    <p className="flex items-center gap-2 text-xs mb-4 text-gray-700  ">
+                        <StarRating rating={course.rating} />
+                    </p>
+                )}
+
+                {course?.tags && (
+                    <div className="flex flex-wrap gap-2">
+                        {course.tags.map((tag) => (
+                            <span
+                                key={tag}
+                                className={`px-3 py-1 text-xs font-medium rounded-md ${palette.tagBg} ${palette.tagText}`}
+                            >
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+                )}
 
                 <hr className="my-4 border-gray-200" />
 
@@ -116,25 +128,50 @@ const CourseCard = ({ course }) => {
                     {course.description}
                 </p>
 
-                <div className="space-y-2 mb-6">
-                    {course.deliverables.map((item) => (
-                        <div key={item} className="flex items-start gap-2">
-                            <CheckCircle2
-                                className={`w-4 h-4 ${palette.check} flex-shrink-0 mt-0.5`}
-                            />
-                            <span className="text-xs text-gray-700">
-                                {item}
-                            </span>
-                        </div>
-                    ))}
-                </div>
+                {course?.deliverables && (
+                    <div className="space-y-2 mb-6">
+                        <h3 className="text-sm font-semibold text-gray-800">
+                            What You'll Learn
+                        </h3>
+                        {course.deliverables.map((item) => (
+                            <div key={item} className="flex items-start gap-2">
+                                <CheckCircle2
+                                    className={`w-4 h-4 ${palette.check} flex-shrink-0 mt-0.5`}
+                                />
+                                <span className="text-xs text-gray-700">
+                                    {item}
+                                </span>
+                            </div>
+                        ))}
+                    </div>
+                )}
+
+                {course?.outcomes && (
+                    <div className="space-y-2 mb-6">
+                        <h3 className="text-sm font-semibold text-gray-800">
+                            Course Outcomes
+                        </h3>
+                        {course?.outcomes?.map((item) => (
+                            <div key={item} className="flex items-start gap-2">
+                                <CheckCircle2
+                                    className={`w-4 h-4 ${palette.check} flex-shrink-0 mt-0.5`}
+                                />
+                                <span className="text-xs text-gray-700">
+                                    {item}
+                                </span>
+                            </div>
+                        ))}
+                    </div>
+                )}
 
                 <div className="mt-auto relative">
                     <div className="relative group w-full">
                         <div className="absolute -inset-[2px] bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 rounded-xl blur-sm opacity-70 group-hover:opacity-100 animate-borderFlow"></div>
                         <a
-                            href={`course-details/${course.id}?cat=${course.category
-                                .toLowerCase()
+                            href={`course-details/${
+                                course.id
+                            }?q=${course?.headline
+                                ?.toLowerCase()
                                 .replace(/\s+/g, "-")}`}
                             target="_blank"
                             rel="noreferrer"
@@ -198,7 +235,10 @@ export default function CompleteDigitalMarketingCourses() {
                         LIVE CLASSES
                     </span>
                 </p>
-                <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-12 " id="courses">
+                <h1
+                    className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-12 "
+                    id="courses"
+                >
                     Complete Digital Marketing{" "}
                     <span className="text-blue-600 relative">Courses</span>
                 </h1>

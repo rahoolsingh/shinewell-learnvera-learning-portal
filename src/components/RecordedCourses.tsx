@@ -1,140 +1,9 @@
 import { useState } from "react";
-import { Code, Palette, Megaphone, Briefcase, Clock } from "lucide-react";
+import data from "../data/recordedcourses.js";
 
-const allCoursesData = {
-    Marketing: {
-        theme: "blue",
-        icon: Megaphone,
-        courses: [
-            {
-                id: "m1",
-                title: "Social Media Marketing",
-                description:
-                    "Build a brand and run ad campaigns on Meta & TikTok.",
-                thumbnail:
-                    "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=2874&auto=format&fit=crop&ixlib-rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                duration: "8 Hours",
-                level: "Intermediate",
-            },
-            {
-                id: "m2",
-                title: "SEO & Content Marketing",
-                description: "Rank on Google and build authority with content.",
-                thumbnail:
-                    "https://images.unsplash.com/photo-1554629947-334ff61d85dc?q=80&w=2836&auto=format&fit=crop&ixlib-rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                duration: "12 Hours",
-                level: "Advanced",
-            },
-            {
-                id: "m3",
-                title: "Email Marketing Mastery",
-                description: "Build and automate email funnels that convert.",
-                thumbnail:
-                    "https://images.unsplash.com/photo-1586953208448-315c26b4e116?q=80&w=2835&auto=format&fit=crop&ixlib-rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                duration: "6 Hours",
-                level: "Intermediate",
-            },
-            {
-                id: "m4",
-                title: "Analytics & Reporting",
-                description:
-                    "Master GA4, GTM, and Looker Studio to make data-driven decisions.",
-                thumbnail:
-                    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2940&auto=format&fit=crop&ixlib-rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                duration: "10 Hours",
-                level: "Advanced",
-            },
-        ],
-    },
-    "Tech & IT": {
-        theme: "green",
-        icon: Code,
-        courses: [
-            {
-                id: "t1",
-                title: "Full Stack Web Development",
-                description:
-                    "Master the MERN stack (MongoDB, Express, React, Node.js).",
-                thumbnail:
-                    "https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2940&auto=format&fit=crop&ixlib-rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                duration: "45 Hours",
-                level: "Advanced",
-            },
-            {
-                id: "t2",
-                title: "Python for Data Science",
-                description:
-                    "Learn Python, Pandas, Matplotlib, and Scikit-learn.",
-                thumbnail:
-                    "https://images.unsplash.com/photo-155006387-f26b7b02c38b?q=80&w=2835&auto=format&fit=crop&ixlib-rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                duration: "30 Hours",
-                level: "Intermediate",
-            },
-            {
-                id: "t3",
-                title: "AWS Cloud Foundations",
-                description:
-                    "Prepare for the AWS Certified Cloud Practitioner exam.",
-                thumbnail:
-                    "https://images.unsplash.com/photo-1590903254243-85e6a053c8b7?q=80&w=2874&auto=format&fit=crop&ixlib-rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                duration: "15 Hours",
-                level: "Beginner",
-            },
-        ],
-    },
-    Creative: {
-        theme: "purple",
-        icon: Palette,
-        courses: [
-            {
-                id: "c1",
-                title: "UI/UX Design Process",
-                description:
-                    "Go from user research to high-fidelity prototypes in Figma.",
-                thumbnail:
-                    "https://images.unsplash.com/photo-1581291518857-4e2750a72c78?q=80&w=2940&auto=format&fit=crop&ixlib-rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                duration: "22 Hours",
-                level: "Intermediate",
-            },
-            {
-                id: "c2",
-                title: "Adobe Photoshop Masterclass",
-                description:
-                    "Master photo manipulation, compositing, and graphic design.",
-                thumbnail:
-                    "https://images.unsplash.com/photo-1629814449830-1f01c775a743?q=80&w=2940&auto=format&fit=crop&ixlib-rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                duration: "18 Hours",
-                level: "Beginner",
-            },
-        ],
-    },
-    Business: {
-        theme: "orange",
-        icon: Briefcase,
-        courses: [
-            {
-                id: "b1",
-                title: "Startup & Entrepreneurship",
-                description:
-                    "Learn to build and scale a business from the ground up.",
-                thumbnail:
-                    "https://images.unsplash.com/photo-1556761175-577380e36b8a?q=80&w=2835&auto=format&fit=crop&ixlib-rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                duration: "20 Hours",
-                level: "Intermediate",
-            },
-            {
-                id: "b2",
-                title: "Financial Accounting 101",
-                description:
-                    "Understand balance sheets, income statements, and more.",
-                thumbnail:
-                    "https://images.unsplash.com/photo-1633162239924-d192196c14c5?q=80&w=2873&auto=format&fit=crop&ixlib-rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                duration: "10 Hours",
-                level: "Beginner",
-            },
-        ],
-    },
-};
+const allCoursesData = {...data};
+
+
 
 const colorPalettes = {
     blue: {
@@ -188,19 +57,26 @@ const CourseCard = ({ course, palette }) => {
                     {course.description}
                 </p>
 
-                <div className="flex items-center justify-between text-sm text-gray-500 mb-6">
-                    <span className="flex items-center">
-                        <Clock className="w-4 h-4 mr-1.5" />
-                        {course.duration}
-                    </span>
-                    <span
-                        className={`font-medium px-3 py-1 rounded-full ${
-                            palette.text
-                        } bg-opacity-10 ${palette.bg.replace("bg-", "bg-")}`}
-                    >
-                        {course.level}
-                    </span>
-                </div>
+                {course?.deliverables && (
+                    <div className="text-sm text-gray-700 mb-4">
+                        <p className="text-xs font-bold">What You'll Get:</p>
+                        <p className="mt-1 text-xs">
+                            {course?.deliverables.length === 1 ? (
+                                <p>{course?.deliverables[0]}</p>
+                            ) : (
+                                <div>
+                                    <ul className="list-disc list-inside">
+                                        {course?.deliverables?.map(
+                                            (item, index) => (
+                                                <li key={index}>{item}</li>
+                                            )
+                                        )}
+                                    </ul>
+                                </div>
+                            )}
+                        </p>
+                    </div>
+                )}
 
                 <button
                     className={`w-full py-3 px-6 rounded-lg font-semibold text-white transition-all duration-300
@@ -236,11 +112,12 @@ export default function RecordedCourses() {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center mb-12">
                     <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 mb-4">
-                        Recorded Courses Built For Outcomes
+                        Master Skills with Results-Focused Recorded Courses
                     </h2>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                        Select a category to explore our full library of
-                        on-demand courses, built by industry experts.
+                    <p className="text-lg text-gray-600 max-w-6xl mx-auto">
+                        Access step-by-step recorded lessons, real projects, and
+                        expert guidance designed to help you learn at your own
+                        pace
                     </p>
                 </div>
 
