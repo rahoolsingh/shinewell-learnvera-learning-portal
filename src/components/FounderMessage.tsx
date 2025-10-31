@@ -40,7 +40,7 @@ export default function FounderVideoMessage() {
                                 </svg>
                             </h3>
 
-                            <p className="text-xs text-gray-300 mb-3 font-bold">
+                            <p className="text-xs text-cyan-300 mb-3 font-bold">
                                 Founder & CEO, Shinewell Digital Solutions Pvt.
                                 Ltd.
                                 <br />
@@ -49,41 +49,36 @@ export default function FounderVideoMessage() {
                                 experience.
                             </p>
 
-                            <p className="text-gray-300 leading-relaxed text-xs">
+                            <p className="text-gray-300 text-sm">
                                 When I started my career in digital marketing
-                                and tech., I realized something most people
-                                don’t talk about —there’s a huge gap between
-                                what we’re taught and what actually works in the
-                                real world.
+                                and tech., I realized that there’s a huge gap
+                                between what we’re taught and what actually
+                                works in the real world.
                                 <br />
-                                Over the years, I’ve worked with hundreds of
-                                brands, spent crores on ads, and trained
-                                thousands of learners. And every single time, I
-                                saw brilliant minds lose opportunities, not
-                                because they lacked potential, but because they
-                                lacked the right guidance and practical
+                                <br />
+                                I’ve worked with hundreds of brands, spent
+                                crores on ads, and trained 1000+ learners. And
+                                every single time, I saw brilliant minds lose
+                                opportunities, not because they lacked
+                                potential, but because they lacked the right
                                 exposure.
                                 <br />
-                                That’s why we built LearnVera — to change the
-                                way India learns.
                                 <br />
-                                Here, we don’t believe in outdated degrees or
-                                useless theories. We believe in skills that
-                                earn, learning that’s practical, and growth
-                                that’s real.
+                                That’s why we built LearnVera. Here, we don’t
+                                believe in outdated degrees or useless theories.
+                                We believe in skills that earn, learning that’s
+                                practical, and growth that’s real. My mission is
+                                to bridge the skill gap so that learners can
+                                earn with confidence, and companies can find
+                                talent that’s ready to work from day one.
                                 <br />
-                                My mission is simple — to bridge the skill gap
-                                so that learners can earn with confidence, and
-                                companies can finally find talent that’s ready
-                                to work from day one.
                                 <br />
                                 If you’re ready to invest in yourself, LearnVera
                                 will give you everything you need, mentorship,
                                 real-world insights, and the power to monetize
-                                your skills for a standing firm in this highly
-                                uncertain era, where Lay Offs are an everyday
-                                thing. Let’s build a future where learning leads
-                                to earning — together.
+                                your skills in this highly uncertain era, where
+                                Lay Offs are an everyday thing. Let's build a
+                                future where learning truly pays off.
                             </p>
                         </div>
 
