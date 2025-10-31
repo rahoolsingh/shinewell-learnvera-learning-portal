@@ -48,7 +48,9 @@ const AnimatedStat = ({ icon: Icon, label, end }) => {
                 {isInView ? <CountUp end={end} duration={2.5} /> : "0"}
                 {label.includes("%") ? "%" : "+"}
             </span>
-            <span className="text-xs sm:text-sm text-gray-300 mt-1">{label.replace("%", "")}</span>
+            <span className="text-xs sm:text-sm text-gray-300 mt-1">
+                {label.replace("%", "")}
+            </span>
         </div>
     );
 };
@@ -199,6 +201,7 @@ export default function AboutUsPage() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, amount: 0.3 }}
                             transition={{ duration: 0.7, ease: "easeOut" }}
+                            className="lg:order-2"
                         >
                             <div className="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
                                 <span className="p-2 md:p-3 bg-purple-100 rounded-full">
@@ -449,33 +452,34 @@ export default function AboutUsPage() {
                             <div className="space-y-3 md:space-y-4 text-sm sm:text-base md:text-lg text-gray-700">
                                 <p>
                                     It all began at Shinewell Digital Solutions
-                                    — Bangalore's leading digital marketing
+                                    — Bangalore’s leading digital marketing
                                     agency where we faced a challenge most
                                     businesses do: finding people who were not
                                     just certified, but truly skilled. Time and
                                     again, we met candidates who had strong
                                     theoretical knowledge but struggled to apply
-                                    it in real projects. That's when we realized
-                                    the problem wasn't talent — it was th
+                                    it in real projects.
                                 </p>
                                 <p>
-                                    e lack of practical exposure. So, we created
-                                    the solution we wished existed — a platform
-                                    where learners don't just study marketing,
-                                    they do marketing. From managing live
-                                    campaigns to handling clients and building
-                                    strategies, every learner at LearnVera gains
-                                    real, practical experience that delivers
-                                    results. What started as an in-house
-                                    training initiative at Shinewell is{" "}
+                                    That’s when we realized the problem wasn’t
+                                    talent — it was the lack of practical
+                                    exposure. So, we created the solution we
+                                    wished existed — a platform where learners
+                                    don’t just study marketing, they do
+                                    marketing. From managing live campaigns to
+                                    handling clients and building strategies,
+                                    every learner at LearnVera gains real,
+                                    practical experience that delivers results.
                                 </p>
                                 <p>
-                                    now shaping global careers every day. And
-                                    the best part? We don't leave you hanging
-                                    after the course ends — LearnVera provides
-                                    in-house internships and placement
-                                    opportunities, ensuring your learning
-                                    journey builds you a successful career.
+                                    What started as an in-house training
+                                    initiative at Shinewell is now shaping
+                                    global careers every day. And the best part?
+                                    We don’t leave you hanging after the course
+                                    ends — LearnVera provides in-house
+                                    internships and placement opportunities,
+                                    ensuring your learning journey builds you a
+                                    successful career.
                                 </p>
                             </div>
                         </motion.div>
