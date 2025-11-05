@@ -16,7 +16,7 @@ function Home() {
     return (
         <>
             <Hero />
-            <StatsBar />
+            {/* <StatsBar /> */}
             <Features />
             <Opportunities />
             <Courses />

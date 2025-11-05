@@ -1,10 +1,9 @@
 import { Menu, X, Phone } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-// import { Link } from "react-router-dom"; // Changed from 'react-router'
-// --- Using <a> tags instead of <Link> for consistency with the rest of the file ---
+import logo from "../assets/images/logo.png";
 
-// A mock useScroll hook to make the component runnable for demonstration
+// --- Mock useScroll Hook (as provided) ---
 const useScroll = () => {
     const [scrollY, setScrollY] = useState(window.scrollY);
     const [direction, setDirection] = useState("up");
@@ -23,7 +22,7 @@ const useScroll = () => {
 
     return { scrollY, direction };
 };
-// End of mock hook
+// --- End of mock hook ---
 
 const CtaCallButton = () => (
     <motion.a
@@ -31,7 +30,6 @@ const CtaCallButton = () => (
         aria-label="Get a free consultation by phone"
         whileTap={{ scale: 0.97 }}
         whileHover={{ scale: 1.03 }}
-        // --- UPDATED: Simplified responsive classes ---
         className="relative px-4 sm:px-5 py-2.5 text-sm font-semibold rounded-full
       bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 text-white
       shadow-md shadow-purple-900/30
@@ -47,7 +45,6 @@ const CtaCallButton = () => (
                 ease: "easeInOut",
             }}
         />
-
         <span className="relative z-10 flex items-center justify-center space-x-2">
             <motion.div
                 animate={{
@@ -62,7 +59,6 @@ const CtaCallButton = () => (
             >
                 <Phone className="w-4 h-4" />
             </motion.div>
-            {/* This text will now be visible on all screen sizes */}
             <span>Get Free Consultation</span>
         </span>
     </motion.a>
@@ -83,13 +79,13 @@ export default function Header() {
         const hash = window.location.hash;
         if (hash) {
             const id = hash.substring(1);
-            const element = document.getElementById(id); 
-            
+            const element = document.getElementById(id);
+
             if (element) {
                 const timer = setTimeout(() => {
-                    element.scrollIntoView({ behavior: 'smooth' });
-                }, 100); 
-                
+                    element.scrollIntoView({ behavior: "smooth" });
+                }, 100);
+
                 return () => clearTimeout(timer);
             }
         }
@@ -130,35 +126,30 @@ export default function Header() {
                 animate={isVisible ? "visible" : "hidden"}
                 transition={{ type: "spring", stiffness: 120, damping: 20 }}
             >
-                {/* --- RESPONSIVE PILL: width, padding --- */}
+                {/* --- Desktop Header Pill (Already light-themed and good) --- */}
                 <motion.div
                     whileHover={{ scale: 1.01 }}
                     className="flex items-center justify-between w-full max-w-md lg:max-w-5xl px-4 lg:px-8 py-2.5 lg:py-3
-            bg-black/90 backdrop-blur-2xl shadow-[0_4px_20px_rgba(0,0,0,0.2)]
+            bg-white/90 backdrop-blur-2xl shadow-[0_4px_20px_rgba(0,0,0,0.2)]
             border border-white/20 rounded-full relative overflow-hidden"
                 >
-                    {/* --- RESPONSIVE LOGO: text size --- */}
                     <motion.a
                         href="/"
                         className="flex items-center font-bold text-xl lg:text-2xl"
-                        whileHover={{ scale: 1.05 }}
                     >
-                        <motion.span
-                            className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400 uppercase"
-                            animate={{ opacity: [1, 0.6, 1] }}
-                            transition={{ repeat: Infinity, duration: 3 }}
-                        >
-                            LEARN
-                            <span className="text-gray-200">VERA</span>
-                        </motion.span>
+                        <img
+                            src={logo}
+                            alt="LearnVera Logo"
+                            className="h-6 lg:h-8" // Adjusted size for a sleeker look
+                        />
                     </motion.a>
 
-                    <nav className="hidden lg:flex items-center space-x-10 text-gray-200 font-medium">
+                    <nav className="hidden lg:flex items-center space-x-10 text-gray-800 font-medium">
                         {NAV_LINKS.map((link) => (
                             <motion.a
                                 key={link.label}
                                 href={link.href}
-                                whileHover={{ y: -2, color: "#7dd3fc" }}
+                                whileHover={{ y: -2, color: "#2563eb" }} // Darker blue
                                 transition={{
                                     type: "spring",
                                     stiffness: 300,
@@ -174,7 +165,7 @@ export default function Header() {
                             <CtaCallButton />
                         </div>
                         <button
-                            className="lg:hidden p-2 text-gray-100"
+                            className="lg:hidden p-2 text-gray-800 hover:text-blue-600 rounded-md focus:outline-none"
                             onClick={() => setIsMobileMenuOpen(true)}
                             aria-label="Open mobile menu"
                         >
@@ -184,33 +175,35 @@ export default function Header() {
                 </motion.div>
             </motion.header>
 
+            {/* --- Mobile Menu (Now Light-Themed) --- */}
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div
-                        className="fixed inset-0 z-[100] bg-gradient-to-br from-gray-950 via-gray-900 to-black flex flex-col"
+                        // --- 1. CHANGED: Swapped dark gradient for clean white ---
+                        className="fixed inset-0 z-[100] bg-white flex flex-col"
                         variants={mobileMenuVariants}
                         initial="hidden"
                         animate="visible"
                         exit="exit"
                     >
-                        <div className="flex justify-between items-center p-6 border-b border-gray-800">
-                            {/* --- CONSISTENCY: Changed <Link> to <a> --- */}
+                        {/* --- 2. Mobile Header: Now consistent with logo and light theme --- */}
+                        <div className="flex justify-between items-center p-6 border-b border-gray-200">
                             <a
                                 href="/"
                                 className="flex items-center space-x-1 font-bold text-2xl"
                             >
-                                <span className="text-blue-500">LEARN</span>
-                                <span className="text-gray-100">VERA</span>
+                                <img src={logo} alt="LearnVera Logo" className="h-8" />
                             </a>
                             <button
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 aria-label="Close mobile menu"
-                                className="text-gray-200"
+                                className="text-gray-800" // --- CHANGED: text-gray-200 to text-gray-800 ---
                             >
                                 <X className="w-6 h-6" />
                             </button>
                         </div>
 
+                        {/* --- 3. Mobile Navigation: Text now dark for readability --- */}
                         <motion.nav
                             className="flex flex-col flex-1 p-10 space-y-8"
                             initial="hidden"
@@ -222,8 +215,8 @@ export default function Header() {
                                     custom={i}
                                     variants={linkVariants}
                                     href={link.href}
-                                    // --- RESPONSIVE TEXT: smaller on mobile ---
-                                    className="text-2xl sm:text-3xl font-semibold text-gray-200 hover:text-blue-400 transition"
+                                    // --- CHANGED: text-gray-200 to text-gray-800 ---
+                                    className="text-2xl sm:text-3xl font-semibold text-gray-800 hover:text-blue-600 transition"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     {link.label}
@@ -234,7 +227,6 @@ export default function Header() {
                             <motion.div
                                 variants={linkVariants}
                                 custom={NAV_LINKS.length}
-                                // --- RESPONSIVE: CtaCallButton will now scale based on its own classes ---
                                 className="flex"
                             >
                                 <CtaCallButton />

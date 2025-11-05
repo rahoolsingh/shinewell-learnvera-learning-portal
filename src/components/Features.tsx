@@ -1,13 +1,11 @@
-import React from "react";
-
-// Assuming you have these image assets in your project
-// import trainingSessionImage from "../assets/hero-1.png"; // Placeholder for the left large image
-import mentorSessionImage from "../assets/hero-1.png"; // Placeholder for the right image
 import studentAvatar1 from "../assets/hero-1.png"; // Placeholder for student avatars
 import studentAvatar2 from "../assets/hero-1.png";
 import studentAvatar3 from "../assets/hero-1.png";
 import studentAvatar4 from "../assets/hero-1.png";
-import studentAvatar5 from "../assets/hero-1.png";
+import Asset1 from "../assets/images/asset-3.jpeg";
+import Asset2 from "../assets/images/asset-4.jpeg";
+import Asset3 from "../assets/images/asset-1.jpeg";
+
 
 export default function ResponsiveInfoBlock() {
     return (
@@ -17,8 +15,8 @@ export default function ResponsiveInfoBlock() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div className="md:col-span-2 lg:col-span-1 flex flex-col bg-white rounded-lg overflow-hidden border border-gray-200">
                         <img
-                            // src={trainingSessionImage}
-                            src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1470"
+                            src={Asset1}
+                            // src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1470"
                             alt="Students in a training session"
                             className="w-full h-auto object-cover md:h-80 lg:h-96"
                         />
@@ -36,8 +34,8 @@ export default function ResponsiveInfoBlock() {
                     <div className="grid grid-cols-1 gap-6 md:col-span-2 lg:col-span-1">
                         <div className="md:col-span-2 lg:col-span-1 flex bg-white rounded-lg overflow-hidden border border-gray-200">
                             <img
-                                // src={trainingSessionImage}
-                                src="https://plus.unsplash.com/premium_photo-1661281337214-c5f344300d92?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1471"
+                                src={Asset2}
+                                // src="https://plus.unsplash.com/premium_photo-1661281337214-c5f344300d92?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1471"
                                 alt="Students in a training session"
                                 className="object-cover aspect-square h-48 md:h-auto w-48"
                             />
@@ -96,8 +94,8 @@ export default function ResponsiveInfoBlock() {
 
                     <div className="md:col-span-2 lg:col-span-1 flex flex-col bg-white rounded-lg overflow-hidden border border-gray-200">
                         <img
-                            // src={mentorSessionImage}
-                            src="https://images.unsplash.com/photo-1576267423048-15c0040fec78?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1470"
+                            src={Asset3}
+                            // src="https://images.unsplash.com/photo-1576267423048-15c0040fec78?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1470"
                             alt="Mentor leading a session with students"
                             className="w-full h-auto object-cover md:h-80 lg:h-96"
                         />
