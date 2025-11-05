@@ -1,4 +1,10 @@
-import { Star, CheckCircle2, BookOpen } from "lucide-react";
+import {
+    Star,
+    CheckCircle2,
+    BookOpen,
+    ListChecks,
+    HelpCircle,
+} from "lucide-react";
 import { useParams } from "react-router";
 import courseData from "../data/courses.js";
 
@@ -42,6 +48,7 @@ const StarRating = ({ rating }) => (
 const DetailSection = ({ title, icon, children }) => (
     <div className="mb-12">
         <div className="flex items-center gap-3 mb-5">
+            {/* Added a text-gray-500 wrapper for the icon */}
             {icon && <div className="text-gray-500">{icon}</div>}
             <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
         </div>
@@ -75,7 +82,7 @@ const EnrollButton = ({
 );
 
 export default function CourseDetailsPage() {
-    const id = useParams().id;
+    const { id } = useParams(); // Destructured id
     const course = courseData.find((c) => c.id === Number(id));
     if (!course)
         return (
@@ -138,8 +145,12 @@ export default function CourseDetailsPage() {
                             </div>
                         )}
 
+                        {/* --- FIXED SECTIONS --- */}
                         {/* Sections - What You'll Learn */}
-                        <section title="What You'll Learn" className="mb-12">
+                        <DetailSection
+                            title="What You'll Learn"
+                            icon={<CheckCircle2 className="w-6 h-6" />}
+                        >
                             <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
                                 {course?.deliverables?.map((item) => (
                                     <li
@@ -155,10 +166,17 @@ export default function CourseDetailsPage() {
                                     </li>
                                 ))}
                             </ul>
-                        </section>
+                        </DetailSection>
+
+                        <DetailSection
+                            title="Course Outcome"
+                            icon={<Star className="w-6 h-6" />}
+                        >
+                            <p>{course?.outcomes}</p>
+                        </DetailSection>
 
                         {course?.curriculum && (
-                            <section
+                            <DetailSection
                                 title="Course Curriculum"
                                 icon={<BookOpen className="w-6 h-6" />}
                             >
@@ -188,26 +206,39 @@ export default function CourseDetailsPage() {
                                         </div>
                                     ))}
                                 </div>
-                            </section>
+                            </DetailSection>
                         )}
 
                         {course?.prerequisites && (
-                            <section title="Prerequisites">
+                            <DetailSection
+                                title="Prerequisites"
+                                icon={<ListChecks className="w-6 h-6" />}
+                            >
                                 <ul className="list-disc list-inside space-y-2 text-sm text-gray-700">
                                     {course?.prerequisites?.map((req) => (
                                         <li key={req}>{req}</li>
                                     ))}
                                 </ul>
-                            </section>
+                            </DetailSection>
                         )}
+                        {/* --- END OF FIXED SECTIONS --- */}
+
+                        <hr className="my-3" />
 
                         {course?.faq && (
-                            <section title="Frequently Asked Questions">
+                            <DetailSection
+                                title="Frequently Asked Questions"
+                                icon={<HelpCircle className="w-6 h-6" />}
+                            >
+                                <p className="text-gray-700 -mt-2">
+                                    Have questions about the course? Check out
+                                    these FAQs:
+                                </p>
                                 <div className="space-y-4">
                                     {course?.faq?.map((faq) => (
                                         <details
                                             key={faq.question}
-                                            className="border rounded-lg p-4 bg-white"
+                                            className="border rounded-lg p-4 bg-white shadow-sm"
                                         >
                                             <summary className="font-semibold text-gray-900 cursor-pointer">
                                                 {faq.question}
@@ -218,7 +249,7 @@ export default function CourseDetailsPage() {
                                         </details>
                                     ))}
                                 </div>
-                            </section>
+                            </DetailSection>
                         )}
                     </div>
 
