@@ -8,6 +8,9 @@ import CourseDetails from "./pages/CourseDetails";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import whatsAppIcon from "./assets/whatsapp.webp";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsAndConditions from "./pages/TermsAndConditions";
+import RefundPolicy from "./pages/RefundPolicy";
 
 const router = createBrowserRouter([
     {
@@ -26,6 +29,19 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
     },
+    {
+        path: "/privacy-policy",
+        element: <PrivacyPolicy />,
+    },
+    {
+        path: "/terms-and-conditions",
+        element: <TermsAndConditions />,
+    },
+    {
+        path: "refund-policy",
+        element: <RefundPolicy />,
+    },
+
     {
         path: "*",
         element: <Home />,
@@ -48,7 +64,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             <Header />
             {children}
 
-            <a className="" href="https://wa.me/+919262386604" target="_blank" rel="noopener noreferrer">
+            <a
+                className=""
+                href="https://wa.me/+919262386604"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
                 <img
                     src={whatsAppIcon}
                     alt="WhatsApp"

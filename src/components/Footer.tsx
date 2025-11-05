@@ -66,7 +66,7 @@ export default function Footer() {
                         <ul className="space-y-3">
                             <li>
                                 <a
-                                    href="#"
+                                    href="terms-and-conditions"
                                     className="hover:text-white transition-colors duration-200"
                                 >
                                     Terms & Conditions
@@ -74,7 +74,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <a
-                                    href="#"
+                                    href="privacy-policy"
                                     className="hover:text-white transition-colors duration-200"
                                 >
                                     Privacy Policy
@@ -82,18 +82,10 @@ export default function Footer() {
                             </li>
                             <li>
                                 <a
-                                    href="#"
+                                    href="refund-policy"
                                     className="hover:text-white transition-colors duration-200"
                                 >
-                                    Return & Refund Policy
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="#"
-                                    className="hover:text-white transition-colors duration-200"
-                                >
-                                    Cookie Policy
+                                    Refund Policy
                                 </a>
                             </li>
                         </ul>
