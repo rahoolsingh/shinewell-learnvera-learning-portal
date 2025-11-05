@@ -1,15 +1,20 @@
-import { Mail, Phone, MapPin } from "lucide-react";
+import React from "react";
+import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 // Reusable component for the contact info items
+// Updated with a new color scheme
 const InfoItem = ({ icon, title, children }) => {
     return (
         <div className="flex items-start gap-4">
-            <div className="flex-shrink-0 rounded-full bg-blue-100 p-3">
-                {icon}
+            <div className="flex-shrink-0 rounded-full bg-indigo-100 p-3">
+                {/* Clone the icon to apply new classes */}
+                {React.cloneElement(icon, {
+                    className: "w-5 h-5 text-indigo-600",
+                })}
             </div>
             <div>
                 <h3 className="text-lg font-bold text-gray-900">{title}</h3>
-                <div className="text-sm text-gray-600">{children}</div>
+                <div className="text-gray-700">{children}</div>
             </div>
         </div>
     );
@@ -17,37 +22,45 @@ const InfoItem = ({ icon, title, children }) => {
 
 export default function ContactUsPage() {
     return (
-        <section className="py-16 md:py-24 bg-gray-50" id="contact">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                {/* --- Header --- */}
-                <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
-                    <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
-                        Get In Touch
+        // Use a light, neutral background with relative positioning for the gradient
+        <section
+            className="relative py-16 md:py-32 bg-gray-50 overflow-hidden"
+            id="contact"
+        >
+            {/* --- Decorative Background Gradient --- */}
+            <div
+                className="absolute top-0 left-1/4 w-full h-full transform -translate-x-1/2 -translate-y-1/2"
+                aria-hidden="true"
+            >
+                <div className="aspect-square w-[80rem] bg-gradient-to-r from-purple-200 via-indigo-200 to-transparent opacity-30 rounded-full blur-3xl" />
+            </div>
+
+            <div className="relative z-10 container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                {/* --- Header (More creative copy) --- */}
+                <div className="max-w-7xl mx-auto text-center mb-12 md:mb-16">
+                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
+                        Let's Connect
                     </h1>
-                    <p className="text-lg text-gray-600">
-                        We're here to help and answer any question you might
-                        have. We look forward to hearing from you!
+                    <p className="text-lg md:text-xl text-gray-600">
+                        Have a question, a project, or just want to say hello?
+                        We'd love to hear from you.
                     </p>
                 </div>
 
                 {/* --- Main Content Grid --- */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
                     {/* --- Column 1: Contact Form --- */}
-                    <div className="bg-white rounded-2xl shadow-lg p-8 md:p-10">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                    <div className="bg-white/70 backdrop-blur-md rounded-2xl shadow-xl p-8 md:p-10 border border-gray-100 h-fit">
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
                             Send us a Message
                         </h2>
-                        <form
-                            action="#"
-                            method="POST"
-                            className="space-y-6"
-                        >
+                        <form action="#" method="POST" className="space-y-6">
                             {/* Name Fields */}
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 <div>
                                     <label
                                         htmlFor="first-name"
-                                        className="block text-sm font-medium text-gray-700 mb-1"
+                                        className="block text-sm font-medium text-gray-700 mb-2"
                                     >
                                         First Name
                                     </label>
@@ -56,13 +69,14 @@ export default function ContactUsPage() {
                                         name="first-name"
                                         id="first-name"
                                         required
-                                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                        className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white/50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow"
+                                        placeholder="Veer"
                                     />
                                 </div>
                                 <div>
                                     <label
                                         htmlFor="last-name"
-                                        className="block text-sm font-medium text-gray-700 mb-1"
+                                        className="block text-sm font-medium text-gray-700 mb-2"
                                     >
                                         Last Name
                                     </label>
@@ -71,7 +85,8 @@ export default function ContactUsPage() {
                                         name="last-name"
                                         id="last-name"
                                         required
-                                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                        className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white/50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow"
+                                        placeholder="Prahaariya"
                                     />
                                 </div>
                             </div>
@@ -80,7 +95,7 @@ export default function ContactUsPage() {
                             <div>
                                 <label
                                     htmlFor="email"
-                                    className="block text-sm font-medium text-gray-700 mb-1"
+                                    className="block text-sm font-medium text-gray-700 mb-2"
                                 >
                                     Email
                                 </label>
@@ -89,26 +104,44 @@ export default function ContactUsPage() {
                                     name="email"
                                     id="email"
                                     required
-                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white/50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow"
+                                    placeholder="you@example.com"
                                 />
                             </div>
 
-                            {/* Phone Field (Optional) */}
+                            {/* Phone Field */}
                             <div>
                                 <label
                                     htmlFor="phone"
-                                    className="block text-sm font-medium text-gray-700 mb-1"
+                                    className="block text-sm font-medium text-gray-700 mb-2"
                                 >
                                     Phone{" "}
-                                    <span className="text-gray-400">
-                                        (Optional)
-                                    </span>
                                 </label>
                                 <input
                                     type="tel"
                                     name="phone"
+                                    required
                                     id="phone"
-                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white/50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow"
+                                    placeholder="+91 XXXXX XXXXX"
+                                />
+                            </div>
+
+                            {/* City Field */}
+                            <div>
+                                <label
+                                    htmlFor="city"
+                                    className="block text-sm font-medium text-gray-700 mb-2"
+                                >
+                                    City
+                                </label>
+                                <input
+                                    type="text"
+                                    name="city"
+                                    id="city"
+                                    required
+                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white/50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow"
+                                    placeholder="Bengaluru"
                                 />
                             </div>
 
@@ -116,98 +149,87 @@ export default function ContactUsPage() {
                             <div>
                                 <label
                                     htmlFor="message"
-                                    className="block text-sm font-medium text-gray-700 mb-1"
+                                    className="block text-sm font-medium text-gray-700 mb-2"
                                 >
                                     Message
                                 </label>
                                 <textarea
                                     name="message"
                                     id="message"
-                                    rows="4"
+                                    rows="5"
                                     required
-                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white/50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow"
+                                    placeholder="How can we help you?"
                                 ></textarea>
                             </div>
 
-                            {/* Submit Button (Styled like your Enroll Button) */}
+                            {/* --- Creative Submit Button --- */}
                             <div className="pt-2">
-                                <div className="relative group w-full">
-                                    <div className="absolute -inset-[2px] bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 rounded-xl blur-sm opacity-70 group-hover:opacity-100 animate-borderFlow"></div>
-                                    <button
-                                        type="submit"
-                                        className={`relative px-8 py-2 text-xl font-extrabold rounded-xl overflow-hidden w-full
-    text-white transform skew-x-[-10deg] transition-all duration-300 ease-out 
-    hover:skew-x-[0deg] hover:scale-105 active:scale-98
-    before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent
-    before:transform before:translate-x-[-100%] before:skew-x-[-20deg]
-    before:transition-transform before:duration-700 before:ease-out
-    hover:before:translate-x-[100%]
-    bg-gradient-to-r from-teal-500 via-purple-500 to-cyan-500 animate-gradientFlow`}
-                                    >
-                                        Send Message
-                                    </button>
-                                </div>
+                                <button
+                                    type="submit"
+                                    className="w-full px-6 py-3 text-lg font-semibold rounded-lg
+                                               text-white bg-gradient-to-r from-indigo-600 to-purple-600
+                                               hover:from-indigo-700 hover:to-purple-700
+                                               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
+                                               transition-all duration-300 ease-in-out
+                                               shadow-lg hover:shadow-xl"
+                                >
+                                    Send Message
+                                </button>
                             </div>
                         </form>
                     </div>
 
                     {/* --- Column 2: Contact Info & Map --- */}
                     <div className="space-y-8">
-                        <div className="bg-white rounded-2xl shadow-lg p-8">
-                            <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                        {/* Contact Info Card */}
+                        <div className="bg-white/70 backdrop-blur-md rounded-2xl shadow-xl p-8 md:p-10 border border-gray-100">
+                            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
                                 Contact Information
                             </h2>
                             <div className="space-y-6">
-                                <InfoItem
-                                    title="Email Us"
-                                    icon={
-                                        <Mail className="w-5 h-5 text-blue-600" />
-                                    }
-                                >
+                                <InfoItem title="Email Us" icon={<Mail />}>
                                     <a
-                                        href="mailto:hello@digitalcourse.com"
-                                        className="hover:text-blue-600 transition-colors"
+                                        href="mailto:learnveraindia@gmail.com"
+                                        className="hover:text-indigo-600 transition-colors duration-200"
                                     >
-                                        hello@digitalcourse.com
+                                        learnveraindia@gmail.com
                                     </a>
                                 </InfoItem>
-                                <InfoItem
-                                    title="Call Us"
-                                    icon={
-                                        <Phone className="w-5 h-5 text-blue-600" />
-                                    }
-                                >
+                                <InfoItem title="Call Us" icon={<Phone />}>
                                     <a
-                                        href="tel:+911234567890"
-                                        className="hover:text-blue-600 transition-colors"
+                                        href="tel:+919262386604"
+                                        className="hover:text-indigo-600 transition-colors duration-200"
                                     >
-                                        +91 123 456 7890
+                                        +91 926 238 6604
                                     </a>
                                 </InfoItem>
-                                <InfoItem
-                                    title="Visit Us"
-                                    icon={
-                                        <MapPin className="w-5 h-5 text-blue-600" />
-                                    }
-                                >
+                                <InfoItem title="Visit Us" icon={<MapPin />}>
                                     <p>
-                                        123 Marketing Ave, Suite 400
-                                        <br />
-                                        Noida, Uttar Pradesh 201301, India
+                                        Ground floor, Novel Tech Park, Hosur Rd,
+                                        Kudlu Gate, Bengaluru, Karnataka -
+                                        560068
                                     </p>
+                                </InfoItem>
+                                <InfoItem
+                                    title="Working Hours"
+                                    icon={<Clock />}
+                                >
+                                    <p>Mon - Sat : 9 AM - 9 PM </p>
                                 </InfoItem>
                             </div>
                         </div>
 
-                        {/* Map */}
-                        <div className="rounded-2xl overflow-hidden shadow-lg border-2 border-gray-200">
+                        {/* Map Card */}
+                        <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-200">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112136.6980159781!2d77.30602494951167!3d28.56271922485521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5a43173357b%3A0x37ff13a10565b1c!2sNoida%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1678888888888!5m2!1sen!2sin"
-                                width="101%" // 101% to hide the white edge sometimes
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.2526496216847!2d77.63891067595954!3d12.891469116628187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae14b0129745ff%3A0xf9d4a7aab0502205!2sNovel%20Tech%20Park!5e0!3m2!1sen!2sin!4v1762344496429!5m2!1sen!2sin"
+                                width="100%"
                                 height="350"
                                 style={{ border: 0 }}
                                 loading="lazy"
                                 referrerPolicy="no-referrer-when-downgrade"
+                                title="Office Location Map"
                             ></iframe>
                         </div>
                     </div>

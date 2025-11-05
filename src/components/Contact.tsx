@@ -10,7 +10,10 @@ export default function Contact() {
                 className="absolute inset-0 w-full h-full object-cover opacity-60 object-bottom"
             />
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <h2 className="text-3xl lg:text-4xl font-bold text-white text-center mb-12" id="consultation">
+                <h2
+                    className="text-3xl lg:text-4xl font-bold text-white text-center mb-12"
+                    id="consultation"
+                >
                     More Curious?{" "}
                     <span className="text-yellow-400">
                         Get Free Consultation
@@ -32,8 +35,9 @@ export default function Contact() {
                                             Visit Us
                                         </div>
                                         <div className="text-gray-600">
-                                            123 Education Street, Tech City, IN
-                                            123456
+                                            Ground floor, Novel Tech Park, Hosur
+                                            Rd, Kudlu Gate, Bengaluru, Karnataka
+                                            - 560068
                                         </div>
                                     </div>
                                 </div>
@@ -45,7 +49,7 @@ export default function Contact() {
                                             Call Us
                                         </div>
                                         <div className="text-gray-600">
-                                            +91 98765 43210
+                                            +91 926 238 6604
                                         </div>
                                     </div>
                                 </div>
@@ -57,7 +61,7 @@ export default function Contact() {
                                             Email Us
                                         </div>
                                         <div className="text-gray-600">
-                                            info@learnvera.com
+                                            learnveraindia@gmail.com
                                         </div>
                                     </div>
                                 </div>
@@ -69,7 +73,7 @@ export default function Contact() {
                                             Working Hours
                                         </div>
                                         <div className="text-gray-600">
-                                            Mon-Sat: 9:00 AM - 6:00 PM
+                                            Mon -Sat : 9 AM - 9 PM{" "}
                                         </div>
                                     </div>
                                 </div>
