@@ -1,59 +1,40 @@
 import { Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
 
+import logo from "../assets/images/logo-square.png";
+
 export default function Footer() {
     return (
-        <footer className="bg-gray-900 text-gray-300">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <footer className="bg-gray-900 text-gray-400 font-inter">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                {/* --- Top Section: Columns --- */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                    {/* Column 1: Brand & Tagline */}
                     <div>
-                        <h3 className="text-white text-lg font-bold mb-4">
-                            Programs
-                        </h3>
-                        <ul className="space-y-2">
-                            <li>
-                                <a
-                                    href="#"
-                                    className="hover:text-white transition"
-                                >
-                                    Digital Marketing
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="#"
-                                    className="hover:text-white transition"
-                                >
-                                    Web Development
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="#"
-                                    className="hover:text-white transition"
-                                >
-                                    Data Science
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="#"
-                                    className="hover:text-white transition"
-                                >
-                                    UI/UX Design
-                                </a>
-                            </li>
-                        </ul>
+                        <img
+                            src={logo}
+                            alt="LearnVera Logo"
+                            className="h-32 grayscale brightness-200 contrast-0 invert"
+                        />
                     </div>
 
+                    {/* Column 2: Navigation Links */}
                     <div>
-                        <h3 className="text-white text-lg font-bold mb-4">
-                            Company
+                        <h3 className="text-sm font-semibold text-white tracking-wider uppercase mb-4">
+                            Navigation
                         </h3>
-                        <ul className="space-y-2">
+                        <ul className="space-y-3">
                             <li>
                                 <a
                                     href="#"
-                                    className="hover:text-white transition"
+                                    className="hover:text-white transition-colors duration-200"
+                                >
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#"
+                                    className="hover:text-white transition-colors duration-200"
                                 >
                                     About Us
                                 </a>
@@ -61,79 +42,32 @@ export default function Footer() {
                             <li>
                                 <a
                                     href="#"
-                                    className="hover:text-white transition"
+                                    className="hover:text-white transition-colors duration-200"
                                 >
-                                    Our Team
+                                    Courses
                                 </a>
                             </li>
                             <li>
                                 <a
                                     href="#"
-                                    className="hover:text-white transition"
+                                    className="hover:text-white transition-colors duration-200"
                                 >
-                                    Careers
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="#"
-                                    className="hover:text-white transition"
-                                >
-                                    Blog
+                                    Contact Us
                                 </a>
                             </li>
                         </ul>
                     </div>
 
+                    {/* Column 3: Policies Links */}
                     <div>
-                        <h3 className="text-white text-lg font-bold mb-4">
-                            For Teams
-                        </h3>
-                        <ul className="space-y-2">
-                            <li>
-                                <a
-                                    href="#"
-                                    className="hover:text-white transition"
-                                >
-                                    Corporate Training
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="#"
-                                    className="hover:text-white transition"
-                                >
-                                    Enterprise Solutions
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="#"
-                                    className="hover:text-white transition"
-                                >
-                                    Partner With Us
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="#"
-                                    className="hover:text-white transition"
-                                >
-                                    Become an Instructor
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h3 className="text-white text-lg font-bold mb-4">
+                        <h3 className="text-sm font-semibold text-white tracking-wider uppercase mb-4">
                             Policies
                         </h3>
-                        <ul className="space-y-2">
+                        <ul className="space-y-3">
                             <li>
                                 <a
                                     href="#"
-                                    className="hover:text-white transition"
+                                    className="hover:text-white transition-colors duration-200"
                                 >
                                     Terms & Conditions
                                 </a>
@@ -141,7 +75,15 @@ export default function Footer() {
                             <li>
                                 <a
                                     href="#"
-                                    className="hover:text-white transition"
+                                    className="hover:text-white transition-colors duration-200"
+                                >
+                                    Privacy Policy
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#"
+                                    className="hover:text-white transition-colors duration-200"
                                 >
                                     Return & Refund Policy
                                 </a>
@@ -149,49 +91,60 @@ export default function Footer() {
                             <li>
                                 <a
                                     href="#"
-                                    className="hover:text-white transition"
+                                    className="hover:text-white transition-colors duration-200"
                                 >
-                                    Privacy Policy
+                                    Cookie Policy
                                 </a>
                             </li>
-                            
                         </ul>
                     </div>
                 </div>
 
-                <div className="border-t border-gray-800 pt-8">
-                    <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                        <div className="flex items-center">
-                            <span className="text-xl font-bold text-blue-500">
-                                LEARN
-                            </span>
-                            <span className="text-xl font-bold text-white">
-                                VERA
-                            </span>
-                        </div>
+                {/* --- Bottom Section: Copyright & Socials --- */}
+                <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    {/* Copyright Text */}
+                    <div className="text-sm">
+                        © {new Date().getFullYear()} LearnVera, Inc. All rights
+                        reserved.
+                    </div>
 
-                        <div className="flex space-x-6">
-                            <a href="#" className="hover:text-white transition">
-                                <Facebook className="w-5 h-5" />
-                            </a>
-                            <a href="#" className="hover:text-white transition">
-                                <Twitter className="w-5 h-5" />
-                            </a>
-                            <a href="#" className="hover:text-white transition">
-                                <Instagram className="w-5 h-5" />
-                            </a>
-                            <a href="#" className="hover:text-white transition">
-                                <Linkedin className="w-5 h-5" />
-                            </a>
-                            <a href="#" className="hover:text-white transition">
-                                <Youtube className="w-5 h-5" />
-                            </a>
-                        </div>
-
-                        <div className="text-sm">
-                            © {new Date().getFullYear()} LearnVera. All rights
-                            reserved.
-                        </div>
+                    {/* Social Media Icons */}
+                    <div className="flex space-x-5">
+                        <a
+                            href="#"
+                            className="hover:text-white transition-colors duration-200"
+                            aria-label="Facebook"
+                        >
+                            <Facebook className="w-5 h-5" />
+                        </a>
+                        <a
+                            href="#"
+                            className="hover:text-white transition-colors duration-200"
+                            aria-label="Twitter"
+                        >
+                            <Twitter className="w-5 h-5" />
+                        </a>
+                        <a
+                            href="#"
+                            className="hover:text-white transition-colors duration-200"
+                            aria-label="Instagram"
+                        >
+                            <Instagram className="w-5 h-5" />
+                        </a>
+                        <a
+                            href="#"
+                            className="hover:text-white transition-colors duration-200"
+                            aria-label="LinkedIn"
+                        >
+                            <Linkedin className="w-5 h-5" />
+                        </a>
+                        <a
+                            href="#"
+                            className="hover:text-white transition-colors duration-200"
+                            aria-label="YouTube"
+                        >
+                            <Youtube className="w-5 h-5" />
+                        </a>
                     </div>
                 </div>
             </div>
