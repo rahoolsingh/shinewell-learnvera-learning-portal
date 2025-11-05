@@ -1,13 +1,12 @@
-import React, { useState } from "react";
-import { Play, MapPin, Wifi, Users } from "lucide-react";
-
+import { useState } from "react";
+import environment2 from "../assets/images/env-2.jpg";
+import environment3 from "../assets/images/env-3.jpg";
+import environment4 from "../assets/images/env-4.jpg";
 // --- Data ---
 const classroomImages = [
-    // This will be the large image in the gallery
-    "https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1632",
-    // These will be the two smaller images
-    "https://images.unsplash.com/photo-1617721926586-4eecce739745?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1470",
-    "https://plus.unsplash.com/premium_photo-1671069848005-7231fc25703f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1073",
+    environment2,
+    environment3,
+    environment4,
 ];
 
 // Placeholder video for the tour

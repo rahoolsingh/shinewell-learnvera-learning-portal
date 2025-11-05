@@ -11,6 +11,7 @@ import {
     Quote,
     Linkedin,
     ChevronDown,
+    User,
 } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import CountUp from "react-countup";
@@ -88,21 +89,18 @@ const testimonialsData = [
         title: "Fresher (Digital Marketing Graduate)",
         quote: "I had zero experience before joining LearnVera. Within weeks, I was handling live ad campaigns and even got my first internship before finishing the course. It felt like working in a real agency from day one!",
         rating: 4.5,
-        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
         name: "Priya Nair",
         title: "Small Business Owner",
         quote: "I used to depend on agencies for marketing. After LearnVera's program, I run my own campaigns, track results, and cut costs by 60%. It's the best investment I've made for my business.",
         rating: 5,
-        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
         name: "Rohan Gupta",
         title: "Career Switcher (Sales to Marketing)",
         quote: "I was nervous about switching careers, but LearnVera made it smooth. And, Deepesh is a gem, his real-world knowledge changed everything for me.",
         rating: 4.5,
-        image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
 ];
 
@@ -128,7 +126,6 @@ export default function AboutUsPage() {
                         replacing theoretical knowledge with hands-on, AI-backed
                         skills that lead to real career and business growth.
                     </p>
-                    
                 </div>
             </section>
 
@@ -331,7 +328,7 @@ export default function AboutUsPage() {
                 </div>
             </section>
 
-            <FounderProfile/>
+            <FounderProfile />
 
             {/* --- 6. Our Story (Responsive) --- */}
             <section className="py-12 md:py-16 lg:py-20 bg-gray-50">
@@ -423,11 +420,20 @@ export default function AboutUsPage() {
                                     "{item.quote}"
                                 </p>
                                 <div className="flex items-center gap-3 md:gap-4">
-                                    <img
-                                        src={item.image}
-                                        alt={item.name}
-                                        className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full object-cover"
-                                    />
+                                    {item.image && (
+                                        <img
+                                            src={item?.image}
+                                            alt={item.name}
+                                            className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full object-cover"
+                                        />
+                                    )}
+
+                                    {!item?.image && (
+                                        <div className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-gray-300 flex items-center justify-center">
+                                            <User className="w-6 h-6 text-white" />
+                                        </div>
+                                    )}
+
                                     <div className="flex-1 min-w-0">
                                         <h4 className="text-sm sm:text-base font-bold text-gray-900 truncate">
                                             {item.name}
