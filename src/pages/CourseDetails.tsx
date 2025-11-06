@@ -7,7 +7,8 @@ import {
 } from "lucide-react";
 import { useParams } from "react-router";
 import courseData from "../data/courses.js";
-// Removed framer-motion import
+
+// ... (colorPalettes, calculateDiscountPercentage, StarRating, DetailSection, EnrollButton components are unchanged) ...
 
 const colorPalettes = {
     purple: {
@@ -30,6 +31,20 @@ const colorPalettes = {
         buttonTo: "to-orange-700",
         text: "text-orange-600",
     },
+};
+
+const calculateDiscountPercentage = (mrpStr, discountedStr) => {
+    if (!mrpStr || !discountedStr) return null;
+    const parsePrice = (price) => {
+        return parseFloat(price.replace(/[^0-9.]/g, ""));
+    };
+    const mrp = parsePrice(mrpStr);
+    const discounted = parsePrice(discountedStr);
+    if (isNaN(mrp) || isNaN(discounted) || mrp <= 0 || mrp <= discounted) {
+        return null;
+    }
+    const discount = ((mrp - discounted) / mrp) * 100;
+    return `${Math.round(discount)}%`;
 };
 
 const StarRating = ({ rating }) => (
@@ -63,7 +78,7 @@ const EnrollButton = ({
 }) => (
     <a href={enrollmentUrl} target="_blank" rel="noopener noreferrer">
         <button
-            className={`relative px-8 py-3 w-full rounded-xl text-lg font-bold text-white 
+            className={`relative px-8 py-3 w-full rounded text-lg font-bold text-white 
         bg-gradient-to-r ${palette.buttonFrom} ${palette.buttonTo}
         transition-all duration-300 ease-out hover:scale-[1.03] hover:shadow-lg active:scale-[0.98]
         
@@ -91,6 +106,13 @@ export default function CourseDetailsPage() {
         );
 
     const palette = colorPalettes[course?.theme] || colorPalettes.blue;
+
+    // --- NEW ---
+    // Calculate the discount percentage
+    const discountPercent = calculateDiscountPercentage(
+        course.mrp,
+        course.discountedPrice
+    );
 
     return (
         <section className="py-16 md:py-32 bg-gray-50 relative">
@@ -281,7 +303,13 @@ export default function CourseDetailsPage() {
 
                                 {/* === NEW INTEGRATED UI === */}
                                 <div className="mb-5 text-center">
-                                    <p className="text-sm font-bold text-red-600 mb-2">
+                                    <p className="text-sm font-bold text-red-600 mb-2 flex items-center justify-center gap-2">
+                                        {/* --- NEW --- */}
+                                        {discountPercent && (
+                                            <span className="text-lg font-bold text-green-600">
+                                                ({discountPercent} OFF)
+                                            </span>
+                                        )}
                                         Anniversary Week Special Offer!
                                     </p>
                                     <div className="flex items-baseline gap-2 justify-center">
@@ -297,11 +325,30 @@ export default function CourseDetailsPage() {
                                 </div>
 
                                 {/* === RE-USING EXISTING BUTTON COMPONENT === */}
-                                <EnrollButton
-                                    palette={palette}
-                                    text={`Enroll Now @ ${course.discountedPrice}`}
-                                    enrollmentUrl={course.enrollmentUrl}
-                                />
+
+                                <a
+                                    href={course.enrollmentUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <button
+                                        className={`relative px-8 py-3 w-full rounded-xl text-lg font-bold text-white 
+        bg-gradient-to-r ${palette.buttonFrom} ${palette.buttonTo}
+        transition-all duration-300 ease-out hover:scale-[1.03] hover:shadow-lg active:scale-[0.98]
+        
+        overflow-hidden 
+        
+        before:content-[''] before:absolute before:inset-0 before:-translate-x-full 
+        before:animate-[shine_2.5s_infinite] 
+        before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent
+        before:skew-x-[-25deg]
+        `}
+                                    >
+                                        <span className="relative z-10">
+                                            Enroll Now & Save {discountPercent}
+                                        </span>
+                                    </button>
+                                </a>
                                 <p className="text-center text-xs text-gray-400 mt-4">
                                     {course?.availability}
                                 </p>
@@ -338,6 +385,12 @@ export default function CourseDetailsPage() {
                                     {/* Strikethrough line */}
                                     <span className="absolute inset-0 top-1/2 border-t-2 border-red-500 transform -rotate-12"></span>
                                 </span>
+                                {/* --- NEW --- */}
+                                {discountPercent && (
+                                    <span className="text-base font-bold text-green-600">
+                                        ({discountPercent} OFF)
+                                    </span>
+                                )}
                             </div>
                             <p className="text-xs text-red-600 text-center">
                                 Anniversary Week Special Offer!

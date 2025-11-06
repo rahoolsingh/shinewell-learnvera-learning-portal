@@ -6,7 +6,8 @@ import {
     Flame,
     Sparkles,
 } from "lucide-react";
-import { useState } from "react";
+// --- MODIFIED: Added useEffect ---
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import courseData from "../data/courses.js";
 
@@ -100,6 +101,49 @@ const iconMap = {
     sparkles: Sparkles,
 };
 
+// --- *** NEW: useMediaQuery Hook *** ---
+// This hook checks if the screen matches a CSS media query.
+// It's client-safe and avoids hydration mismatches.
+const useMediaQuery = (query) => {
+    const [matches, setMatches] = useState(() => {
+        if (typeof window !== "undefined") {
+            return window.matchMedia(query).matches;
+        }
+        return false;
+    });
+
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+
+        const media = window.matchMedia(query);
+        if (media.matches !== matches) {
+            setMatches(media.matches);
+        }
+
+        const listener = () => setMatches(media.matches);
+        media.addEventListener("change", listener);
+
+        return () => media.removeEventListener("change", listener);
+    }, [matches, query]);
+
+    return matches;
+};
+
+// --- DISCOUNT CALCULATOR (Unchanged) ---
+const calculateDiscountPercentage = (mrpStr, discountedStr) => {
+    if (!mrpStr || !discountedStr) return null;
+    const parsePrice = (price) => {
+        return parseFloat(price.replace(/[^0-9.]/g, ""));
+    };
+    const mrp = parsePrice(mrpStr);
+    const discounted = parsePrice(discountedStr);
+    if (isNaN(mrp) || isNaN(discounted) || mrp <= 0 || mrp <= discounted) {
+        return null;
+    }
+    const discount = ((mrp - discounted) / mrp) * 100;
+    return `${Math.round(discount)}%`;
+};
+
 // --- STAR RATING (Unchanged) ---
 const StarRating = ({ rating }) => (
     <div className="flex items-center gap-0.5">
@@ -119,9 +163,6 @@ const StarRating = ({ rating }) => (
 const CollapsibleContent = ({ course, palette }) => (
     <>
         <hr className="my-4 border-gray-200" />
-        <p className="text-sm text-gray-600 mb-5 leading-relaxed">
-            {course.description}
-        </p>
 
         {course?.deliverables && (
             <div className="space-y-2 mb-6">
@@ -158,18 +199,52 @@ const CollapsibleContent = ({ course, palette }) => (
 );
 
 // --- *** MODIFIED: CourseCard Component *** ---
-const CourseCard = ({ course }) => {
+const CourseCard = ({
+    course,
+    isDesktop,
+    isGlobalExpanded,
+    onToggleGlobalExpand,
+}) => {
     const palette = colorPalettes[course.theme] || colorPalettes.blue;
-    const [isExpanded, setIsExpanded] = useState(false);
+    // Local state for individual expansion on mobile
+    const [isLocalExpanded, setIsLocalExpanded] = useState(false);
+
+    // --- *** NEW: Determine expansion state *** ---
+    // Use global state on desktop, local state on mobile
+    const isExpanded = isDesktop ? isGlobalExpanded : isLocalExpanded;
+
     const contentId = `course-details-${course.id}`;
     const badge = course.badge;
     const badgeColor = badgeColors[badge?.color] || badgeColors.pink;
     const BadgeIcon = badge ? iconMap[badge.icon] || TrendingUp : null;
 
+    const discountPercent = calculateDiscountPercentage(
+        course.mrp,
+        course.discountedPrice
+    );
+
+    // --- *** NEW: Toggle handler *** ---
+    // Toggles global state on desktop, local state on mobile
+    const toggleExpand = () => {
+        if (isDesktop) {
+            onToggleGlobalExpand();
+        } else {
+            setIsLocalExpanded(!isLocalExpanded);
+        }
+    };
+
     return (
         <div
-            className={`flex flex-col bg-white rounded-2xl shadow-lg border-2 ${palette.border} hover:border-dashed overflow-hidden transition-all duration-300 relative`}
+            className={`flex flex-col bg-white rounded-2xl shadow-lg border-2 ${palette.border} hover:border-dashed transition-all duration-300 relative`}
         >
+            {/* DISCOUNT BADGE (Unchanged) */}
+            {discountPercent && (
+                <div className="absolute -top-6 -right-6 bg-yellow-300 text-gray-900 p-4 rounded-full shadow-lg rotate-12 z-20 text-xs font-extrabold aspect-square flex flex-col items-center justify-center scale-75">
+                    <span className="text-xl align-top">{discountPercent}</span>
+                    <span className="">OFF!</span>
+                </div>
+            )}
+
             {/* BADGE (Unchanged) */}
             {badge && (
                 <div
@@ -202,15 +277,31 @@ const CourseCard = ({ course }) => {
                 )}
             </div>
 
-            {/* CONTENT (Unchanged) */}
+            {/* CONTENT (Unchanged structure, but button logic is modified) */}
             <div className="p-6 flex flex-col flex-grow">
-                <h2 className="text-xl font-bold text-gray-900">
+                <h2
+                    className={`text-xl font-bold text-gray-900 ${
+                        isExpanded ? "" : "line-clamp-2"
+                    }`}
+                >
                     {course.headline}
                 </h2>
 
                 <div className="pt-2">
-                    <p className="text-xs lg:text-sm text-gray-500">
+                    <p
+                        className={`text-xs lg:text-sm text-gray-500 ${
+                            isExpanded ? "" : "line-clamp-1"
+                        }`}
+                    >
                         {course.subheadline}
+                    </p>
+
+                    <p
+                        className={`text-sm text-gray-600 mt-5 leading-relaxed ${
+                            isExpanded ? "" : "line-clamp-2"
+                        }`}
+                    >
+                        {course.description}
                     </p>
 
                     {course?.rating && (
@@ -233,8 +324,13 @@ const CourseCard = ({ course }) => {
                     )}
                 </div>
 
-                {/* --- MOBILE COLLAPSE (Unchanged) --- */}
-                <div className="lg:hidden text-center relative">
+                {/* --- *** MODIFIED: COLLAPSE BUTTON *** --- */}
+                {/* Added mt-auto to push this block to the bottom for alignment */}
+                <div
+                    className={`text-center relative ${
+                        isExpanded ? "pb-0" : "mt-auto pb-8"
+                    } pt-4`}
+                >
                     <AnimatePresence>
                         {!isExpanded && (
                             <motion.div
@@ -248,7 +344,7 @@ const CourseCard = ({ course }) => {
                     </AnimatePresence>
 
                     <button
-                        onClick={() => setIsExpanded(!isExpanded)}
+                        onClick={toggleExpand} // Use new toggle handler
                         className={`inline-flex items-center gap-1.5 text-xs font-medium ${
                             palette.tagText
                         } ${
@@ -256,7 +352,7 @@ const CourseCard = ({ course }) => {
                                 ? "shadow-md bg-white -mt-3"
                                 : "shadow-none mt-2"
                         } relative px-4 py-1.5 rounded-full transition-all duration-300`}
-                        aria-expanded={isExpanded}
+                        aria-expanded={isExpanded} // Uses the correct derived state
                         aria-controls={contentId}
                     >
                         <span>{isExpanded ? "Show Less" : "Learn More"}</span>
@@ -268,9 +364,9 @@ const CourseCard = ({ course }) => {
                     </button>
                 </div>
 
-                {/* COLLAPSIBLE CONTENT (MOBILE) (Unchanged) */}
+                {/* --- *** MODIFIED: COLLAPSIBLE CONTENT *** --- */}
                 <AnimatePresence>
-                    {isExpanded && (
+                    {isExpanded && ( // Uses the correct derived state
                         <motion.div
                             id={contentId}
                             key="collapsible-content"
@@ -278,7 +374,7 @@ const CourseCard = ({ course }) => {
                             animate={{ height: "auto", opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: 0.3, ease: "easeInOut" }}
-                            className="overflow-hidden lg:hidden"
+                            className="overflow-hidden"
                         >
                             <CollapsibleContent
                                 course={course}
@@ -288,14 +384,14 @@ const CourseCard = ({ course }) => {
                     )}
                 </AnimatePresence>
 
-                {/* STATIC CONTENT (DESKTOP) (Unchanged) */}
-                <div className="hidden lg:block">
-                    <CollapsibleContent course={course} palette={palette} />
-                </div>
-
                 {/* --- *** MODIFIED: FOOTER/OFFER SECTION *** --- */}
-                <div className="mt-auto relativ border -m-2 px-4 py-2 rounded-2xl bg-gray-50">
-                    {/* Offer Banner  */}
+                {/* Removed mt-auto, added fixed margin */}
+                <div
+                    className={`relative border -m-2 px-4 py-2 rounded-2xl pt-3 bg-gray-50 ${
+                        isExpanded && "mt-auto"
+                    }`}
+                >
+                    {/* Offer Banner (Unchanged) */}
                     <motion.p
                         className="text-center text-sm font-bold text-red-600 mb-3"
                         initial={{ opacity: 0, y: -10 }}
@@ -305,10 +401,8 @@ const CourseCard = ({ course }) => {
                         Anniversary Week Special Offer!
                     </motion.p>
 
-                    {/* New Price Display Component */}
-
+                    {/* New Price Display Component (Unchanged) */}
                     <div className="flex justify-center items-center mb-5">
-                        {/* Prices */}
                         <div className="flex items-baseline gap-2 justify-center">
                             <span className="text-3xl font-extrabold text-gray-900">
                                 {course.discountedPrice}
@@ -322,7 +416,6 @@ const CourseCard = ({ course }) => {
 
                     {/* Enroll Button (Unchanged) */}
                     <div className="relative group w-full">
-                        {/* offer banner flash */}
                         <motion.p
                             className="inline-block bg-red-500 text-white text-xs px-2 py-0.5 rounded-full absolute -top-3 left-3 z-10"
                             initial={{ scale: 0.8, opacity: 0 }}
@@ -368,8 +461,12 @@ const CourseCard = ({ course }) => {
     );
 };
 
-// --- MAIN COMPONENT (Unchanged) ---
+// --- *** MODIFIED: MAIN COMPONENT *** ---
 export default function CompleteDigitalMarketingCourses() {
+    // --- NEW: State for screen size and global expansion ---
+    const isDesktop = useMediaQuery("(min-width: 1024px)");
+    const [isGlobalExpanded, setIsGlobalExpanded] = useState(false);
+
     return (
         <section className="py-16 md:py-24 bg-gray-50">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -414,10 +511,19 @@ export default function CompleteDigitalMarketingCourses() {
                     <span className="text-blue-600 relative">Courses</span>
                 </h1>
 
-                {/* Course Grid (Unchanged) */}
+                {/* --- MODIFIED: Course Grid --- */}
+                {/* Now passes down the global state and toggle function */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {courseData.map((course) => (
-                        <CourseCard key={course.id} course={course} />
+                        <CourseCard
+                            key={course.id}
+                            course={course}
+                            isDesktop={isDesktop}
+                            isGlobalExpanded={isGlobalExpanded}
+                            onToggleGlobalExpand={() =>
+                                setIsGlobalExpanded((prev) => !prev)
+                            }
+                        />
                     ))}
                 </div>
             </div>

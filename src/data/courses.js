@@ -10,7 +10,7 @@ const courseData = [
         theme: "purple",
         image: DigitalMarketingThumbnail,
         duration: "45-60 Days",
-        enrollmentUrl: "https://example.com/enroll-foundation",
+        enrollmentUrl: "https://rzp.io/rzp/mPFd8DW",
         headline: "Digital Marketing Foundation",
         subheadline: "(The Perfect Start for Beginners & Career Switchers)",
         description:
@@ -113,7 +113,7 @@ const courseData = [
         theme: "green",
         image: socialMediaMarketingThumbnail,
         duration: "45–60 Days",
-        enrollmentUrl: "https://example.com/enroll-social-media",
+        enrollmentUrl: "https://rzp.io/rzp/mqASYyN2",
         headline: "Social Media, Content & Influencer Growth Mastery",
         subheadline: "(Dominate Organic Marketing & Personal Branding)",
         description:
@@ -217,7 +217,7 @@ const courseData = [
         theme: "blue",
         image: PerformanceMarketingThumbnail,
         duration: "45–60 Days",
-        enrollmentUrl: "https://example.com/enroll-performance-pro",
+        enrollmentUrl: "https://rzp.io/rzp/4AM3LL5",
         headline: "Performance Marketing Pro",
         subheadline: "(Meta & Google Ads Deep Dive)",
         description:
@@ -317,7 +317,7 @@ const courseData = [
         theme: "cyan",
         image: MarketingAutomationThumbnail,
         duration: "45–60 Days",
-        enrollmentUrl: "https://example.com/enroll-automation-freelance",
+        enrollmentUrl: "https://rzp.io/rzp/6APrwe9",
         headline:
             "Marketing Automation, AI Tools & Freelancing Success Blueprint",
         subheadline: "(Scale Faster, Work Smarter, Earn More)",

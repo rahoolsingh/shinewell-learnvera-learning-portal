@@ -95,7 +95,7 @@ export default function CourseOfferSection() {
                             <div className="relative bg-white shadow-2xl rounded-2xl p-6 lg:p-8 border border-gray-100">
                                 {/* Discount Badge */}
                                 <div className="absolute -top-4 -right-4 bg-yellow-400 text-gray-900 font-bold px-4 py-2 rounded-full shadow-lg rotate-12">
-                                    91% OFF!
+                                    90% OFF!
                                 </div>
 
                                 <span className="inline-flex items-center text-md font-semibold text-blue-600 mb-3">
