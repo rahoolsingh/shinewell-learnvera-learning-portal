@@ -87,6 +87,8 @@ const courseData = [
                 ],
             },
         ],
+        mrp: "₹30,000",
+        discountedPrice: "₹2,499",
         faq: [
             {
                 question: "Who is this course for?",
@@ -193,6 +195,8 @@ const courseData = [
                 ],
             },
         ],
+        mrp: "₹30,000",
+        discountedPrice: "₹2,499",
         faq: [
             {
                 question: "What makes this course different from others?",
@@ -291,6 +295,8 @@ const courseData = [
                 ],
             },
         ],
+        mrp: "₹30,000",
+        discountedPrice: "₹2,499",
         faq: [
             {
                 question: "Who is this course for?",
@@ -393,6 +399,8 @@ const courseData = [
                 ],
             },
         ],
+        mrp: "₹30,000",
+        discountedPrice: "₹2,499",
         faq: [
             {
                 question: "Who is this course for?",
@@ -494,7 +502,9 @@ const courseData = [
 //                 ],
 //             },
 //         ],
-//         faq: [
+// mrp: "₹30,000",
+// discountedPrice: "₹2,499",
+// faq: [
 //             {
 //                 question: "Is this course really for complete beginners?",
 //                 answer: "Yes! We start from the absolute basics. As long as you know how to use a computer and browse the internet, you'll be able to follow along.",

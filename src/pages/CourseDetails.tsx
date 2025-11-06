@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { useParams } from "react-router";
 import courseData from "../data/courses.js";
+// Removed framer-motion import
 
 const colorPalettes = {
     purple: {
@@ -48,7 +49,6 @@ const StarRating = ({ rating }) => (
 const DetailSection = ({ title, icon, children }) => (
     <div className="mb-12">
         <div className="flex items-center gap-3 mb-5">
-            {/* Added a text-gray-500 wrapper for the icon */}
             {icon && <div className="text-gray-500">{icon}</div>}
             <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
         </div>
@@ -75,14 +75,13 @@ const EnrollButton = ({
         before:skew-x-[-25deg]
         `}
         >
-            {/* Wrap text in a span to keep it above the 'before' pseudo-element */}
             <span className="relative z-10">{text}</span>
         </button>
     </a>
 );
 
 export default function CourseDetailsPage() {
-    const { id } = useParams(); // Destructured id
+    const { id } = useParams();
     const course = courseData.find((c) => c.id === Number(id));
     if (!course)
         return (
@@ -99,6 +98,7 @@ export default function CourseDetailsPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                     {/* --- Left Content --- */}
                     <div className="lg:col-span-2">
+                        {/* ... (Left content remains unchanged) ... */}
                         <div className="mb-8">
                             {course?.category && (
                                 <span
@@ -126,7 +126,6 @@ export default function CourseDetailsPage() {
                             )}
                         </div>
 
-                        {/* Instructor */}
                         {course?.instructor && (
                             <div className="flex items-center gap-4 p-5 rounded-xl border bg-white mb-10 shadow-sm">
                                 <img
@@ -145,8 +144,6 @@ export default function CourseDetailsPage() {
                             </div>
                         )}
 
-                        {/* --- FIXED SECTIONS --- */}
-                        {/* Sections - What You'll Learn */}
                         <DetailSection
                             title="What You'll Learn"
                             icon={<CheckCircle2 className="w-6 h-6" />}
@@ -221,7 +218,6 @@ export default function CourseDetailsPage() {
                                 </ul>
                             </DetailSection>
                         )}
-                        {/* --- END OF FIXED SECTIONS --- */}
 
                         <hr className="my-3" />
 
@@ -282,14 +278,34 @@ export default function CourseDetailsPage() {
                                 <p className="text-gray-700 mb-6 text-xs">
                                     {course?.description}
                                 </p>
+
+                                {/* === NEW INTEGRATED UI === */}
+                                <div className="mb-5 text-center">
+                                    <p className="text-sm font-bold text-red-600 mb-2">
+                                        Anniversary Week Special Offer!
+                                    </p>
+                                    <div className="flex items-baseline gap-2 justify-center">
+                                        <span className="text-3xl font-extrabold text-gray-900">
+                                            {course.discountedPrice}
+                                        </span>
+                                        <span className="text-lg font-bold text-gray-500 relative px-2">
+                                            {course.mrp}
+                                            {/* Strikethrough line */}
+                                            <span className="absolute inset-0 top-1/2 border-t-2 border-red-500 transform -rotate-12"></span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                {/* === RE-USING EXISTING BUTTON COMPONENT === */}
                                 <EnrollButton
                                     palette={palette}
-                                    text="Enroll Now"
+                                    text={`Enroll Now @ ${course.discountedPrice}`}
                                     enrollmentUrl={course.enrollmentUrl}
                                 />
                                 <p className="text-center text-xs text-gray-400 mt-4">
                                     {course?.availability}
                                 </p>
+                                {/* === END OF UPDATED SECTION === */}
                             </div>
                         </div>
                     </div>
@@ -310,10 +326,26 @@ export default function CourseDetailsPage() {
                             {course.subheadline}
                         </p>
                     </div>
-                    <div className="w-full sm:w-auto">
+                    
+                    <div className="w-full sm:w-auto flex flex-col sm:flex-row items-center gap-4">
+                        <div>
+                        <div className="flex items-baseline gap-2 justify-center mb-1">
+                            <span className="text-2xl font-extrabold text-gray-900">
+                                {course.discountedPrice}
+                            </span>
+                            <span className="text-lg font-bold text-gray-500 relative px-2">
+                                {course.mrp}
+                                {/* Strikethrough line */}
+                                <span className="absolute inset-0 top-1/2 border-t-2 border-red-500 transform -rotate-12"></span>
+                            </span>
+                        </div>
+                        <p className="text-xs text-red-600 text-center">
+                            Anniversary Week Special Offer!
+                        </p>
+                    </div>
                         <EnrollButton
                             palette={palette}
-                            text="Enroll Now & Save 20%"
+                            text="Get This Course"
                             enrollmentUrl={course.enrollmentUrl}
                         />
                     </div>

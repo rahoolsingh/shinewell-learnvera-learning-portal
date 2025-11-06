@@ -105,7 +105,7 @@ export default function Hero() {
                                     </span>
                                 </button>
                             </a>
-                            <span>
+                            <a href="/#consultation">
                                 <button
                                     className="relative px-12 py-4 text-xl font-bold rounded-lg overflow-hidden
                          bg-gradient-to-r from-green-500 to-lime-500 text-white
@@ -124,10 +124,11 @@ export default function Hero() {
                                 </button>
                                 <p>
                                     <span className="text-xs md:text-sm text-gray-400">
-                                        (Guided by Certified Mentors & AI-Driven Tools)
+                                        (Guided by Certified Mentors & AI-Driven
+                                        Tools)
                                     </span>
                                 </p>
-                            </span>
+                            </a>
                         </div>
                     </div>
 
