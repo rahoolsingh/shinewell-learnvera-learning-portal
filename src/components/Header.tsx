@@ -120,7 +120,7 @@ export default function Header() {
     return (
         <>
             <motion.header
-                className="fixed top-4 left-0 right-0 z-50 flex justify-center"
+                className="fixed top-4 left-0 right-0 z-50 flex justify-center px-3"
                 variants={headerVariants}
                 initial="visible"
                 animate={isVisible ? "visible" : "hidden"}
@@ -140,7 +140,7 @@ export default function Header() {
                         <img
                             src={logo}
                             alt="LearnVera Logo"
-                            className="h-6 lg:h-8" // Adjusted size for a sleeker look
+                            className="h-8 lg:h-12" // Adjusted size for a sleeker look
                         />
                     </motion.a>
 

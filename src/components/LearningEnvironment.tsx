@@ -1,6 +1,6 @@
 import { useState } from "react";
-import environment2 from "../assets/images/env-2.jpg";
-import environment3 from "../assets/images/env-3.jpg";
+import environment2 from "../assets/images/env-6.jpg";
+import environment3 from "../assets/images/env-2.jpg";
 import environment4 from "../assets/images/env-4.jpg";
 // --- Data ---
 const classroomImages = [

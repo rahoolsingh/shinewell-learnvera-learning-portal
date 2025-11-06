@@ -70,7 +70,7 @@ export default function RefundPolicy() {
                             access, live session participation, and offline
                             class registration begin immediately upon purchase.
                         </p>
-                        <p className="font-semibold text-red-600">
+                        <p>
                             Important: All course purchases—including online
                             courses, live sessions, and offline classes—are
                             final. No refunds will be provided under any
