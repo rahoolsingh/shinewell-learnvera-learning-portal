@@ -48,6 +48,15 @@ const colorPalettes = {
         tagText: "text-orange-600",
         check: "text-orange-600",
     },
+    cyan: {
+        border: "border-cyan-200",
+        badgeBg: "bg-cyan-600",
+        durationBg: "bg-cyan-100",
+        durationText: "text-cyan-700",
+        tagBg: "bg-cyan-50",
+        tagText: "text-cyan-600",
+        check: "text-cyan-600",
+    },
 };
 
 // --- BADGE COLOR MAP (Unchanged) ---

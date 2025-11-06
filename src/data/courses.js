@@ -88,7 +88,7 @@ const courseData = [
             },
         ],
         mrp: "₹30,000",
-        discountedPrice: "₹2,499",
+        discountedPrice: "₹2,999",
         faq: [
             {
                 question: "Who is this course for?",
@@ -110,110 +110,6 @@ const courseData = [
     },
     {
         id: 2,
-        theme: "blue",
-        image: PerformanceMarketingThumbnail,
-        duration: "45–60 Days",
-        enrollmentUrl: "https://example.com/enroll-performance-pro",
-        headline: "Performance Marketing Pro",
-        subheadline: "(Meta & Google Ads Deep Dive)",
-        description:
-            "Get trained by a performance marketer who has successfully driven measurable growth for 200+ brands using data, strategies and multi-platform ad systems.",
-        deliverables: [
-            "Learn to set up and manage Meta (Facebook, Instagram & WhatsApp) campaigns that consistently deliver ROI.",
-            "Master Google Ads across Search, Display, Video & Shopping with real-world implementation.",
-            "Build high-converting sales funnels and retargeting systems that generate consistent revenue.",
-            "Understand audience segmentation, budgeting, and A/B testing to improve ad performance.",
-            "Learn conversion tracking, pixel setup, and analytics for data-backed decisions.",
-            "Includes: ₹10 Lakh+ campaign case studies, ad optimization templates, and real Shinewell project examples.",
-        ],
-        outcomes: [
-            "Launch, manage, and scale profitable ad campaigns confidently - and become a certified performance marketer ready for high-paying jobs, freelancing, or agency roles.",
-        ],
-        instructor: {
-            name: "Deepesh Raj",
-            title: "Founder of Shinewell Digital Solutions, Associate Professor (PhD in Cybersecurity) & Digital Marketing Expert ( 9+ Yrs of Experience)",
-            image: mentorImage,
-        },
-        badge: {
-            label: "Trending",
-            icon: "upchart", // options: upchart, flame, sparkles
-            color: "pink", // options: pink, blue, orange, green, purple
-        },
-        curriculum: [
-            {
-                module: 1,
-                title: "Performance Marketing Fundamentals",
-                topics: [
-                    "Understanding Paid Marketing Channels (Meta & Google)",
-                    "Campaign Structure, Objectives & KPIs",
-                    "Marketing Funnel Strategy for Paid Ads",
-                ],
-            },
-            {
-                module: 2,
-                title: "Meta Ads Mastery",
-                topics: [
-                    "Campaign Setup: Awareness, Traffic & Conversion Objectives",
-                    "Audience Targeting, Budgeting & Creative Strategy",
-                    "Pixel Setup, Events & Retargeting",
-                ],
-            },
-            {
-                module: 3,
-                title: "Google Ads Deep Dive",
-                topics: [
-                    "Search, Display, Video & Shopping Campaigns",
-                    "Ad Copywriting & Creative Best Practices",
-                    "Bid Strategies, Quality Score & Optimization",
-                ],
-            },
-            {
-                module: 4,
-                title: "Funnel Building & Retargeting Systems",
-                topics: [
-                    "Creating High-Converting Landing Pages",
-                    "Multi-Step Funnel Design for Conversions",
-                    "Building Retargeting Audiences Across Platforms",
-                ],
-            },
-            {
-                module: 5,
-                title: "Analytics, Tracking & Optimization",
-                topics: [
-                    "Using Google Analytics & Meta Insights",
-                    "Tracking KPIs & Setting Conversion Goals",
-                    "A/B Testing & Scaling Campaigns",
-                ],
-            },
-            {
-                module: 6,
-                title: "Freelancing & Career Growth",
-                topics: [
-                    "Managing Clients & Building Case Studies",
-                    "Pricing, Pitches & Proposals",
-                    "Access to Internship & Placement Opportunities",
-                ],
-            },
-        ],
-        mrp: "₹30,000",
-        discountedPrice: "₹2,499",
-        faq: [
-            {
-                question: "What makes this course different from others?",
-                answer: "Unlike typical theory-based courses, this program is built entirely on real client campaigns, ₹10+ lakh ad case studies, and frameworks used by top-performing agencies.",
-            },
-            {
-                question: "Will I learn both Meta and Google Ads in depth?",
-                answer: "Yes. You’ll gain complete hands-on knowledge of both platforms with practical exercises and live optimization examples.",
-            },
-            {
-                question: "Do I need to spend money on ads to learn?",
-                answer: "No. You’ll learn using live case studies, campaign breakdowns, and real exercises. However, you’ll also get guidance on running your own test campaigns with minimal budgets.",
-            },
-        ],
-    },
-    {
-        id: 3,
         theme: "green",
         image: socialMediaMarketingThumbnail,
         duration: "45–60 Days",
@@ -296,7 +192,7 @@ const courseData = [
             },
         ],
         mrp: "₹30,000",
-        discountedPrice: "₹2,499",
+        discountedPrice: "₹2,999",
         faq: [
             {
                 question: "Who is this course for?",
@@ -317,8 +213,108 @@ const courseData = [
         ],
     },
     {
+        id: 3,
+        theme: "blue",
+        image: PerformanceMarketingThumbnail,
+        duration: "45–60 Days",
+        enrollmentUrl: "https://example.com/enroll-performance-pro",
+        headline: "Performance Marketing Pro",
+        subheadline: "(Meta & Google Ads Deep Dive)",
+        description:
+            "Get trained by a performance marketer who has successfully driven measurable growth for 200+ brands using data, strategies and multi-platform ad systems.",
+        deliverables: [
+            "Learn to set up and manage Meta (Facebook, Instagram & WhatsApp) campaigns that consistently deliver ROI.",
+            "Master Google Ads across Search, Display, Video & Shopping with real-world implementation.",
+            "Build high-converting sales funnels and retargeting systems that generate consistent revenue.",
+            "Understand audience segmentation, budgeting, and A/B testing to improve ad performance.",
+            "Learn conversion tracking, pixel setup, and analytics for data-backed decisions.",
+            "Includes: ₹10 Lakh+ campaign case studies, ad optimization templates, and real Shinewell project examples.",
+        ],
+        outcomes: [
+            "Launch, manage, and scale profitable ad campaigns confidently - and become a certified performance marketer ready for high-paying jobs, freelancing, or agency roles.",
+        ],
+        instructor: {
+            name: "Deepesh Raj",
+            title: "Founder of Shinewell Digital Solutions, Associate Professor (PhD in Cybersecurity) & Digital Marketing Expert ( 9+ Yrs of Experience)",
+            image: mentorImage,
+        },
+        curriculum: [
+            {
+                module: 1,
+                title: "Performance Marketing Fundamentals",
+                topics: [
+                    "Understanding Paid Marketing Channels (Meta & Google)",
+                    "Campaign Structure, Objectives & KPIs",
+                    "Marketing Funnel Strategy for Paid Ads",
+                ],
+            },
+            {
+                module: 2,
+                title: "Meta Ads Mastery",
+                topics: [
+                    "Campaign Setup: Awareness, Traffic & Conversion Objectives",
+                    "Audience Targeting, Budgeting & Creative Strategy",
+                    "Pixel Setup, Events & Retargeting",
+                ],
+            },
+            {
+                module: 3,
+                title: "Google Ads Deep Dive",
+                topics: [
+                    "Search, Display, Video & Shopping Campaigns",
+                    "Ad Copywriting & Creative Best Practices",
+                    "Bid Strategies, Quality Score & Optimization",
+                ],
+            },
+            {
+                module: 4,
+                title: "Funnel Building & Retargeting Systems",
+                topics: [
+                    "Creating High-Converting Landing Pages",
+                    "Multi-Step Funnel Design for Conversions",
+                    "Building Retargeting Audiences Across Platforms",
+                ],
+            },
+            {
+                module: 5,
+                title: "Analytics, Tracking & Optimization",
+                topics: [
+                    "Using Google Analytics & Meta Insights",
+                    "Tracking KPIs & Setting Conversion Goals",
+                    "A/B Testing & Scaling Campaigns",
+                ],
+            },
+            {
+                module: 6,
+                title: "Freelancing & Career Growth",
+                topics: [
+                    "Managing Clients & Building Case Studies",
+                    "Pricing, Pitches & Proposals",
+                    "Access to Internship & Placement Opportunities",
+                ],
+            },
+        ],
+        mrp: "₹50,000",
+        discountedPrice: "₹3,999",
+        faq: [
+            {
+                question: "What makes this course different from others?",
+                answer: "Unlike typical theory-based courses, this program is built entirely on real client campaigns, ₹10+ lakh ad case studies, and frameworks used by top-performing agencies.",
+            },
+            {
+                question: "Will I learn both Meta and Google Ads in depth?",
+                answer: "Yes. You’ll gain complete hands-on knowledge of both platforms with practical exercises and live optimization examples.",
+            },
+            {
+                question: "Do I need to spend money on ads to learn?",
+                answer: "No. You’ll learn using live case studies, campaign breakdowns, and real exercises. However, you’ll also get guidance on running your own test campaigns with minimal budgets.",
+            },
+        ],
+    },
+
+    {
         id: 4,
-        theme: "orange",
+        theme: "cyan",
         image: MarketingAutomationThumbnail,
         duration: "45–60 Days",
         enrollmentUrl: "https://example.com/enroll-automation-freelance",
@@ -342,6 +338,12 @@ const courseData = [
             name: "Deepesh Raj",
             title: "Founder of Shinewell Digital Solutions, Associate Professor (PhD in Cybersecurity) & Digital Marketing Expert ( 9+ Yrs of Experience)",
             image: mentorImage,
+        },
+
+        badge: {
+            label: "Trending",
+            icon: "upchart", // options: upchart, flame, sparkles
+            color: "pink", // options: pink, blue, orange, green, purple
         },
         curriculum: [
             {
@@ -399,8 +401,8 @@ const courseData = [
                 ],
             },
         ],
-        mrp: "₹30,000",
-        discountedPrice: "₹2,499",
+        mrp: "₹70,000",
+        discountedPrice: "₹4,999",
         faq: [
             {
                 question: "Who is this course for?",
