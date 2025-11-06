@@ -1,13 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 // Reusable component for the contact info items
-// Updated with a new color scheme
 const InfoItem = ({ icon, title, children }) => {
     return (
         <div className="flex items-start gap-4">
             <div className="flex-shrink-0 rounded-full bg-indigo-100 p-3">
-                {/* Clone the icon to apply new classes */}
                 {React.cloneElement(icon, {
                     className: "w-5 h-5 text-indigo-600",
                 })}
@@ -21,22 +19,58 @@ const InfoItem = ({ icon, title, children }) => {
 };
 
 export default function ContactUsPage() {
+    // --- State for form submission ---
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [formResponse, setFormResponse] = useState(null); // { status: 'success' | 'error', message: '...' }
+
+    // --- Handle form submission ---
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setFormResponse(null);
+
+        const formData = new FormData(e.target);
+
+        try {
+            // --- !!! UPDATE THIS URL to point to your PHP script ---
+            const response = await fetch('https://learnvera.com/tools/mail.php', {
+                method: 'POST',
+                body: formData,
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setFormResponse({ status: 'success', message: data.message });
+                e.target.reset(); // Clear the form
+            } else {
+                throw new Error(data.message || 'An unknown error occurred.');
+            }
+        } catch (error) {
+            setFormResponse({
+                status: 'error',
+                message: error.message || 'Network error. Please try again.',
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
-        // Use a light, neutral background with relative positioning for the gradient
         <section
             className="relative py-16 md:py-32 bg-gray-50 overflow-hidden"
             id="contact"
         >
-            {/* --- Decorative Background Gradient --- */}
+            {/* ... (decorative elements are unchanged) ... */}
             <div
                 className="absolute top-0 left-1/4 w-full h-full transform -translate-x-1/2 -translate-y-1/2"
                 aria-hidden="true"
             >
                 <div className="aspect-square w-[80rem] bg-gradient-to-r from-purple-200 via-indigo-200 to-transparent opacity-30 rounded-full blur-3xl" />
             </div>
-
+            
             <div className="relative z-10 container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                {/* --- Header (More creative copy) --- */}
+                {/* ... (header is unchanged) ... */}
                 <div className="max-w-7xl mx-auto text-center mb-12 md:mb-16">
                     <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
                         Let's Connect
@@ -47,14 +81,17 @@ export default function ContactUsPage() {
                     </p>
                 </div>
 
-                {/* --- Main Content Grid --- */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
                     {/* --- Column 1: Contact Form --- */}
                     <div className="bg-white/70 backdrop-blur-md rounded-2xl shadow-xl p-8 md:p-10 border border-gray-100 h-fit">
                         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
                             Send us a Message
                         </h2>
-                        <form action="#" method="POST" className="space-y-6">
+                        {/* --- Updated Form Tag --- */}
+                        <form onSubmit={handleSubmit} method="POST" className="space-y-6">
+                            {/* --- ADDED: Hidden form ID --- */}
+                            <input type="hidden" name="form_id" value="contact_page" />
+
                             {/* Name Fields */}
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 <div>
@@ -163,24 +200,39 @@ export default function ContactUsPage() {
                                 ></textarea>
                             </div>
 
-                            {/* --- Creative Submit Button --- */}
+                            {/* --- Submit Button --- */}
                             <div className="pt-2">
                                 <button
                                     type="submit"
+                                    disabled={isSubmitting}
                                     className="w-full px-6 py-3 text-lg font-semibold rounded-lg
                                                text-white bg-gradient-to-r from-indigo-600 to-purple-600
                                                hover:from-indigo-700 hover:to-purple-700
                                                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
                                                transition-all duration-300 ease-in-out
-                                               shadow-lg hover:shadow-xl"
+                                               shadow-lg hover:shadow-xl
+                                               disabled:opacity-60 disabled:cursor-not-allowed"
                                 >
-                                    Send Message
+                                    {isSubmitting ? 'Sending...' : 'Send Message'}
                                 </button>
                             </div>
+                            
+                            {/* --- Form Response Message --- */}
+                            {formResponse && (
+                                <div
+                                    className={`mt-4 p-3 rounded-lg text-center ${
+                                        formResponse.status === 'success'
+                                            ? 'bg-green-100 text-green-800'
+                                            : 'bg-red-100 text-red-800'
+                                    }`}
+                                >
+                                    {formResponse.message}
+                                </div>
+                            )}
                         </form>
                     </div>
 
-                    {/* --- Column 2: Contact Info & Map --- */}
+                    {/* --- Column 2: Contact Info & Map (Unchanged) --- */}
                     <div className="space-y-8">
                         {/* Contact Info Card */}
                         <div className="bg-white/70 backdrop-blur-md rounded-2xl shadow-xl p-8 md:p-10 border border-gray-100">
