@@ -5,7 +5,7 @@ import { Gift, Users, Target, Check, Sparkles, Clock } from "lucide-react";
 // --- New "Enroll" Button (Mobile Responsive) ---
 const CtaEnrollButton = () => (
     <motion.a
-        href="/#consultation"
+        href="/#courses"
         aria-label="Enroll in the course now"
         whileTap={{ scale: 0.98 }}
         whileHover={{ scale: 1.02, y: -2 }}
@@ -103,20 +103,19 @@ export default function CourseOfferSection() {
                                     Anniversary Week Offer
                                 </span>
 
+                                <p className="text-gray-600 mb-1">
+                                    Starting at just{" "}
+                                </p>
+
                                 {/* Price (Responsive) */}
                                 <p className="text-5xl sm:text-6xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent my-2">
-                                    ₹2,499
-                                </p>
-                                <p className="text-lg sm:text-xl text-gray-500 line-through mb-4">
-                                    Actual Price: ₹30,000
+                                    ₹2,999
                                 </p>
 
                                 {/* Urgency Timer */}
                                 <div className="flex items-center space-x-2 text-red-600 font-medium mb-6">
                                     <Clock className="w-5 h-5" />
-                                    <span>
-                                        Offer ends soon (First 100 Students)
-                                    </span>
+                                    <span>Offer ends soon</span>
                                 </div>
 
                                 <CtaEnrollButton />

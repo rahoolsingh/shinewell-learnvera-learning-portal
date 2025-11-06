@@ -130,7 +130,7 @@ const TestimonialCard = ({ testimonial, index }) => {
 // --- Modified Main Component ---
 export default function VideoTestimonials() {
     return (
-        <section className="py-24 bg-gradient-to-br from-gray-50 to-white text-gray-900 font-sans px-4 selection:bg-indigo-100">
+        <section className="py-24 bg-gradient-to-br from-gray-50 to-white text-gray-900 font-sans px-4">
             <div className="container mx-auto">
                 {/* Editorial Header (Unchanged) */}
                 <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between">

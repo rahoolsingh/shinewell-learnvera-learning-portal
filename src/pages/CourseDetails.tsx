@@ -326,23 +326,23 @@ export default function CourseDetailsPage() {
                             {course.subheadline}
                         </p>
                     </div>
-                    
+
                     <div className="w-full sm:w-auto flex flex-col sm:flex-row items-center gap-4">
                         <div>
-                        <div className="flex items-baseline gap-2 justify-center mb-1">
-                            <span className="text-2xl font-extrabold text-gray-900">
-                                {course.discountedPrice}
-                            </span>
-                            <span className="text-lg font-bold text-gray-500 relative px-2">
-                                {course.mrp}
-                                {/* Strikethrough line */}
-                                <span className="absolute inset-0 top-1/2 border-t-2 border-red-500 transform -rotate-12"></span>
-                            </span>
+                            <div className="flex items-baseline gap-2 justify-center mb-1">
+                                <span className="text-2xl font-extrabold text-gray-900">
+                                    {course.discountedPrice}
+                                </span>
+                                <span className="text-lg font-bold text-gray-500 relative px-2">
+                                    {course.mrp}
+                                    {/* Strikethrough line */}
+                                    <span className="absolute inset-0 top-1/2 border-t-2 border-red-500 transform -rotate-12"></span>
+                                </span>
+                            </div>
+                            <p className="text-xs text-red-600 text-center">
+                                Anniversary Week Special Offer!
+                            </p>
                         </div>
-                        <p className="text-xs text-red-600 text-center">
-                            Anniversary Week Special Offer!
-                        </p>
-                    </div>
                         <EnrollButton
                             palette={palette}
                             text="Get This Course"

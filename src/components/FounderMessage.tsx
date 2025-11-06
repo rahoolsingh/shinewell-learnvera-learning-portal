@@ -4,7 +4,7 @@ export default function FounderVideoMessage() {
     const embedUrl = `https://www.youtube.com/embed/u0noTxTXdb0`;
 
     return (
-        <section className="py-24 bg-gray-950 text-gray-100 font-sans px-4 selection:bg-blue-200">
+        <section className="py-24 bg-gray-950 text-gray-100 font-sans px-4">
             <div className="container mx-auto max-w-7xl">
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
                     <div
