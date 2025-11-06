@@ -22,7 +22,7 @@ const TestimonialCard = ({ testimonial, index }) => {
         "from-amber-500 to-orange-600",
         "from-emerald-500 to-green-600",
     ];
-    
+
     // CHANGED: Pick a gradient based on the card's index, cycling through the array
     const gradientClass = fallbackGradients[index % fallbackGradients.length];
 
@@ -81,13 +81,9 @@ const TestimonialCard = ({ testimonial, index }) => {
                             : "opacity-100"
                     }`}
             >
-                {/* Top Quote */}
+                {/* Bottom Quote */}
                 <div>
-                    <Quote
-                        className="lg:w-12 lg:h-12 text-white/50"
-                        fill="currentColor"
-                    />
-                    <blockquote className="mt-4 text-xs md:text-2xl font-medium text-white shadow-black/20 [text-shadow:0_1px_3px_rgb(0,0,0,0.4)]">
+                    <blockquote className="mb-3 text-xs md:text-2xl font-medium text-white shadow-black/20 [text-shadow:0_1px_3px_rgb(0,0,0,0.4)]">
                         "{testimonial.testimonial}"
                     </blockquote>
                 </div>
@@ -104,6 +100,10 @@ const TestimonialCard = ({ testimonial, index }) => {
                             {testimonial.designation}
                         </p>
                     </div>
+                    <Quote
+                        className="lg:w-12 lg:h-12 text-white/50"
+                        fill="currentColor"
+                    />
 
                     {/* Custom Play Button */}
                     {testimonial.videoUrl && (

@@ -239,9 +239,10 @@ const CourseCard = ({
         >
             {/* DISCOUNT BADGE (Unchanged) */}
             {discountPercent && (
-                <div className="absolute -top-6 -right-6 bg-yellow-300 text-gray-900 p-4 rounded-full shadow-lg rotate-12 z-20 text-xs font-extrabold aspect-square flex flex-col items-center justify-center scale-75">
+                <div className="absolute -top-6 -right-6 bg-gradient-to-bl from-yellow-300 to-yellow-400 text-gray-900 p-4 rounded-full shadow-lg rotate-12 z-20 text-xs font-extrabold aspect-square flex flex-col items-center justify-center scale-75 overflow-hidden">
                     <span className="text-xl align-top">{discountPercent}</span>
                     <span className="">OFF!</span>
+                    <div className="absolute w-32 h-32 bg-white opacity-40 blur-lg animate-shine z-10"></div>
                 </div>
             )}
 

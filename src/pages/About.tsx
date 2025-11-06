@@ -9,14 +9,16 @@ import {
     Lightbulb,
     Heart,
     Quote,
-    Linkedin,
-    ChevronDown,
     User,
 } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import CountUp from "react-countup";
 import { useRef } from "react";
 import FounderProfile from "../components/FounderProfile";
+
+import ourVisionImage from "../assets/images/our-vision.png";
+import ourMissionImage from "../assets/images/our-mission.png";
+import ourJourneyImage from "../assets/images/env-4.jpg";
 
 // --- Reusable StarRating ---
 const StarRating = ({ rating, className = "" }) => {
@@ -165,7 +167,7 @@ export default function AboutUsPage() {
                             </p>
                         </motion.div>
                         <motion.img
-                            src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            src={ourMissionImage}
                             alt="Team discussing mission"
                             className="rounded-xl md:rounded-2xl shadow-lg w-full object-cover aspect-video order-1 lg:order-2"
                             initial={{ opacity: 0, scale: 0.9 }}
@@ -178,7 +180,7 @@ export default function AboutUsPage() {
                     {/* Vision */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
                         <motion.img
-                            src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            src={ourVisionImage}
                             alt="Team planning vision"
                             className="rounded-xl md:rounded-2xl shadow-lg w-full object-cover aspect-video lg:order-1"
                             initial={{ opacity: 0, scale: 0.9 }}
@@ -222,7 +224,7 @@ export default function AboutUsPage() {
             </section>
 
             {/* --- 3. Stats Bar (Responsive) --- */}
-            <section className="bg-gray-800 text-white py-8 md:py-12 lg:py-16">
+            {/* <section className="bg-gray-800 text-white py-8 md:py-12 lg:py-16 hidden">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 text-center">
                         <AnimatedStat
@@ -242,7 +244,7 @@ export default function AboutUsPage() {
                         />
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* --- 4. Our Core Values (Responsive) --- */}
             <section className="py-12 md:py-16 lg:py-20 bg-gray-50">
@@ -343,7 +345,7 @@ export default function AboutUsPage() {
                             transition={{ duration: 0.7, ease: "easeOut" }}
                         >
                             <img
-                                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                src={ourJourneyImage}
                                 alt="Founders in a meeting"
                                 className="rounded-xl md:rounded-2xl shadow-lg w-full object-cover aspect-video"
                             />
