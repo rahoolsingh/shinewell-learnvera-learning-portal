@@ -1,11 +1,10 @@
-import studentAvatar1 from "../assets/hero-1.png"; // Placeholder for student avatars
-import studentAvatar2 from "../assets/hero-1.png";
-import studentAvatar3 from "../assets/hero-1.png";
-import studentAvatar4 from "../assets/hero-1.png";
+import studentAvatar1 from "../assets/ph/1.png"; // Placeholder for student avatars
+import studentAvatar2 from "../assets/ph/2.png";
+import studentAvatar3 from "../assets/ph/3.png";
+import studentAvatar4 from "../assets/ph/4.png";
 import Asset1 from "../assets/images/asset-3.jpeg";
 import Asset2 from "../assets/images/asset-4.jpeg";
 import Asset3 from "../assets/images/asset-1.jpeg";
-
 
 export default function ResponsiveInfoBlock() {
     return (
@@ -63,7 +62,7 @@ export default function ResponsiveInfoBlock() {
                                             className="w-10 h-10 rounded-full border-2 border-white bg-gray-500 object-cover"
                                         />
                                         <span className="flex items-center justify-center w-10 h-10 rounded-full bg-cyan-700 text-xs font-bold text-white border-2 border-white shrink-0">
-                                            22K+
+                                            800+
                                         </span>
                                     </div>
                                     <p className="text-center text-xs sm:text-sm text-white mt-3">

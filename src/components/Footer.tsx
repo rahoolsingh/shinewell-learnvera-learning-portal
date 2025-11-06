@@ -1,6 +1,6 @@
 import { Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
 
-import logo from "../assets/images/logo-square.png";
+import logo from "../assets/images/logo-square-white.png";
 
 export default function Footer() {
     return (
@@ -13,7 +13,7 @@ export default function Footer() {
                         <img
                             src={logo}
                             alt="LearnVera Logo"
-                            className="h-32 grayscale brightness-200 contrast-0 invert"
+                            className="h-40"
                         />
                     </div>
 
@@ -25,7 +25,7 @@ export default function Footer() {
                         <ul className="space-y-3">
                             <li>
                                 <a
-                                    href="#"
+                                    href="/"
                                     className="hover:text-white transition-colors duration-200"
                                 >
                                     Home
@@ -33,7 +33,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <a
-                                    href="#"
+                                    href="/about"
                                     className="hover:text-white transition-colors duration-200"
                                 >
                                     About Us
@@ -41,7 +41,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <a
-                                    href="#"
+                                    href="/#courses"
                                     className="hover:text-white transition-colors duration-200"
                                 >
                                     Courses
@@ -49,7 +49,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <a
-                                    href="#"
+                                    href="/contact"
                                     className="hover:text-white transition-colors duration-200"
                                 >
                                     Contact Us
