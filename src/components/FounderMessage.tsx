@@ -23,7 +23,7 @@ export default function FounderVideoMessage() {
     const videoRef = useRef(null);
     const progressRef = useRef(null);
 
-    const [isPlaying, setIsPlaying] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(true);
     const [isMuted, setIsMuted] = useState(true);
     const [progress, setProgress] = useState(0); // 0-100
     const [duration, setDuration] = useState(0);
