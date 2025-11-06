@@ -140,7 +140,7 @@ export default function Header() {
                         <img
                             src={logo}
                             alt="LearnVera Logo"
-                            className="h-8 lg:h-12" // Adjusted size for a sleeker look
+                            className="h-8 lg:h-14" // Adjusted size for a sleeker look
                         />
                     </motion.a>
 

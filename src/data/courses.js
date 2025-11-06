@@ -87,7 +87,7 @@ const courseData = [
                 ],
             },
         ],
-        mrp: "₹30,000",
+        mrp: "₹29,999",
         discountedPrice: "₹2,999",
         faq: [
             {
@@ -191,7 +191,7 @@ const courseData = [
                 ],
             },
         ],
-        mrp: "₹30,000",
+        mrp: "₹29,999",
         discountedPrice: "₹2,999",
         faq: [
             {
@@ -294,7 +294,7 @@ const courseData = [
                 ],
             },
         ],
-        mrp: "₹50,000",
+        mrp: "₹39,999",
         discountedPrice: "₹3,999",
         faq: [
             {
@@ -401,7 +401,7 @@ const courseData = [
                 ],
             },
         ],
-        mrp: "₹70,000",
+        mrp: "₹49,999",
         discountedPrice: "₹4,999",
         faq: [
             {
