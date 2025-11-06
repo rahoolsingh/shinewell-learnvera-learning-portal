@@ -2,13 +2,29 @@ import { useState } from "react";
 import { Play, Quote, Star, Users } from "lucide-react";
 import testimonials from "../data/testimonials.js";
 
-const TestimonialCard = ({ testimonial }) => {
+// --- Modified TestimonialCard Component ---
+
+// CHANGED: Added 'index' to the props to help pick a fallback color
+const TestimonialCard = ({ testimonial, index }) => {
     const [isPlaying, setIsPlaying] = useState(false);
 
     const videoId =
         testimonial?.videoUrl?.split("/").pop() ||
         testimonial?.videoUrl?.split("v=").pop();
     const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&controls=0`;
+
+    // CHANGED: Define an array of fallback gradients
+    const fallbackGradients = [
+        "from-purple-600 to-indigo-700",
+        "from-teal-500 to-cyan-600",
+        "from-pink-500 to-rose-600",
+        "from-blue-500 to-cyan-500",
+        "from-amber-500 to-orange-600",
+        "from-emerald-500 to-green-600",
+    ];
+    
+    // CHANGED: Pick a gradient based on the card's index, cycling through the array
+    const gradientClass = fallbackGradients[index % fallbackGradients.length];
 
     const handlePlay = () => {
         setIsPlaying(true);
@@ -22,7 +38,6 @@ const TestimonialCard = ({ testimonial }) => {
       `}
         >
             {/* 1. Video Player (Iframe) */}
-            {/* This is hidden by default and appears on play */}
             <iframe
                 src={isPlaying ? embedUrl : ""}
                 className={`absolute inset-0 w-full h-full z-10 transition-opacity duration-700
@@ -34,19 +49,22 @@ const TestimonialCard = ({ testimonial }) => {
                 title={testimonial.name}
             ></iframe>
 
-            {/* 2. Thumbnail Background (Always visible until play) */}
-            <img
-                src={testimonial.thumbnail}
-                alt={`Video thumbnail for ${testimonial.name}`}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = `https://placehold.co/600x400/D1D5DB/1F2937?text=${testimonial.name}`;
-                }}
-            />
+            {/* 2. CHANGED: Thumbnail or Fallback Background */}
+            {testimonial?.thumbnail ? (
+                // If thumbnail exists, show it
+                <img
+                    src={testimonial.thumbnail}
+                    alt={`Video thumbnail for ${testimonial.name}`}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+            ) : (
+                // Otherwise, show the fallback gradient
+                <div
+                    className={`absolute inset-0 w-full h-full bg-gradient-to-br ${gradientClass} transition-transform duration-700 group-hover:scale-105`}
+                ></div>
+            )}
 
             {/* 3. Dark Gradient Overlay (for text readability) */}
-            {/* This fades out with the text when playing */}
             <div
                 className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent transition-opacity duration-700
           ${isPlaying ? "opacity-0" : "opacity-100"}
@@ -109,7 +127,7 @@ const TestimonialCard = ({ testimonial }) => {
     );
 };
 
-// --- Main Component (Unchanged) ---
+// --- Modified Main Component ---
 export default function VideoTestimonials() {
     return (
         <section className="py-24 bg-gradient-to-br from-gray-50 to-white text-gray-900 font-sans px-4 selection:bg-indigo-100">
@@ -123,11 +141,11 @@ export default function VideoTestimonials() {
                                 Inspire Growth
                             </span>
                         </h2>
-                        <p className="text-gray-600 text-lg max-w-xl leading-relaxed">
+                        <span className="text-gray-600 text-lg max-w-xl leading-relaxed">
                             Discover how practical learning with purpose leads
                             to real growth. Because the world has moved beyond
                             degrees.
-                        </p>
+                        </span>
                     </div>
                     <div className="hidden md:flex gap-8 text-gray-500 font-medium">
                         <div className="flex items-center">
@@ -148,10 +166,12 @@ export default function VideoTestimonials() {
 
                 {/* The "Bento" Modular Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {testimonials.map((testimonial) => (
+                    {/* CHANGED: Added 'index' to the map function and passed it to TestimonialCard */}
+                    {testimonials.map((testimonial, index) => (
                         <TestimonialCard
                             key={testimonial.id}
                             testimonial={testimonial}
+                            index={index}
                         />
                     ))}
                 </div>
