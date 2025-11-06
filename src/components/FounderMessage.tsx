@@ -49,7 +49,7 @@ export default function FounderVideoMessage() {
                                 experience.
                             </p>
 
-                            <p className="text-gray-300 text-sm">
+                            <p className="text-gray-300 ">
                                 When I started my career in digital marketing
                                 and tech., I realized that there’s a huge gap
                                 between what we’re taught and what actually
