@@ -4,7 +4,7 @@ import background1 from "../assets/background-1.gif";
 export default function Hero() {
     return (
         <div className=" bg-gray-950 text-white">
-            <main className="relative overflow-hidden pt-24">
+            <main className="relative overflow-hidden pt-32">
                 <img
                     src={background1}
                     alt="Background Animation"
