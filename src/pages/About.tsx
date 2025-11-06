@@ -110,7 +110,7 @@ export default function AboutUsPage() {
     return (
         <div className="bg-white overflow-x-hidden">
             {/* --- 1. Hero Section (Responsive) --- */}
-            <section className="relative bg-gray-900 text-white py-16 md:py-24 lg:py-32 xl:pt-44">
+            <section className="relative bg-gray-900 text-white py-32 lg:py-32 xl:pt-44">
                 <div
                     className="absolute inset-0 bg-cover bg-center opacity-20"
                     style={{

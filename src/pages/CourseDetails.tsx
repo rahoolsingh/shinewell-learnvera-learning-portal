@@ -115,7 +115,7 @@ export default function CourseDetailsPage() {
     );
 
     return (
-        <section className="py-16 md:py-32 bg-gray-50 relative">
+        <section className="py-32 md:py-32 bg-gray-50 relative xl:pt-44">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                     {/* --- Left Content --- */}
