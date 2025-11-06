@@ -70,7 +70,7 @@ export default function ContactUsPage() {
                                         id="first-name"
                                         required
                                         className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white/50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow"
-                                        placeholder="Veer"
+                                        placeholder="First Name"
                                     />
                                 </div>
                                 <div>
@@ -86,7 +86,7 @@ export default function ContactUsPage() {
                                         id="last-name"
                                         required
                                         className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white/50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow"
-                                        placeholder="Prahaariya"
+                                        placeholder="Last Name"
                                     />
                                 </div>
                             </div>
@@ -141,7 +141,7 @@ export default function ContactUsPage() {
                                     id="city"
                                     required
                                     className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white/50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow"
-                                    placeholder="Bengaluru"
+                                    placeholder="Your City"
                                 />
                             </div>
 

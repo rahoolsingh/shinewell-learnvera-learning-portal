@@ -26,7 +26,7 @@ const useScroll = () => {
 
 const CtaCallButton = () => (
     <motion.a
-        href="/#consultation"
+        href="tel:+919262386604"
         aria-label="Get a free consultation by phone"
         whileTap={{ scale: 0.97 }}
         whileHover={{ scale: 1.03 }}
@@ -140,7 +140,7 @@ export default function Header() {
                         <img
                             src={logo}
                             alt="LearnVera Logo"
-                            className="h-8 lg:h-14" // Adjusted size for a sleeker look
+                            className="h-10 lg:h-16" // Adjusted size for a sleeker look
                         />
                     </motion.a>
 

@@ -108,7 +108,7 @@ export default function AboutUsPage() {
     return (
         <div className="bg-white overflow-x-hidden">
             {/* --- 1. Hero Section (Responsive) --- */}
-            <section className="relative bg-gray-900 text-white py-16 md:py-24 lg:py-32 pt-32">
+            <section className="relative bg-gray-900 text-white py-16 md:py-24 lg:py-32 xl:pt-44">
                 <div
                     className="absolute inset-0 bg-cover bg-center opacity-20"
                     style={{
@@ -118,7 +118,9 @@ export default function AboutUsPage() {
                 ></div>
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
                     <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold mb-4 md:mb-6">
-                        Future-Proofing Careers with Practical Skills
+                        Future-Proofing Careers
+                        <br />
+                        with Practical Skills
                     </h1>
                     <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto px-2 sm:px-0">
                         The world doesn't need more degrees, it needs practical
