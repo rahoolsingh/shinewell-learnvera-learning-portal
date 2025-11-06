@@ -35,7 +35,7 @@ export default function Contact() {
                                             Visit Us
                                         </div>
                                         <div className="text-gray-600">
-                                            Learnvera, Ground floor, Novel Tech Park, Hosur
+                                            Learnvera, Novel Tech Park, Hosur
                                             Rd, Kudlu Gate, Bengaluru, Karnataka
                                             - 560068
                                         </div>

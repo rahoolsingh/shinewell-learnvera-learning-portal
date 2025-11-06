@@ -206,9 +206,9 @@ export default function ContactUsPage() {
                                 </InfoItem>
                                 <InfoItem title="Visit Us" icon={<MapPin />}>
                                     <p>
-                                        Learnvera, Ground floor, Novel Tech
-                                        Park, Hosur Rd, Kudlu Gate, Bengaluru,
-                                        Karnataka - 560068
+                                        Learnvera, Novel Tech Park, Hosur Rd,
+                                        Kudlu Gate, Bengaluru, Karnataka -
+                                        560068
                                     </p>
                                 </InfoItem>
                                 <InfoItem
