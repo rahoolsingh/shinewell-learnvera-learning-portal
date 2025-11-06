@@ -1,10 +1,14 @@
 import mentorImage from "../assets/images/asset-2.jpeg";
+import DigitalMarketingThumbnail from "../assets/images/digital-marketing-foundation.png";
+import PerformanceMarketingThumbnail from "../assets/images/performance-marketing.png";
+import socialMediaMarketingThumbnail from "../assets/images/social-media-marketing.png";
+import MarketingAutomationThumbnail from "../assets/images/marketing-automation.png";
 
 const courseData = [
     {
         id: 1,
         theme: "purple",
-        image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2940&auto=format&fit=crop&ixlib-rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        image: DigitalMarketingThumbnail,
         duration: "45-60 Days",
         enrollmentUrl: "https://example.com/enroll-foundation",
         headline: "Digital Marketing Foundation",
@@ -105,7 +109,7 @@ const courseData = [
     {
         id: 2,
         theme: "blue",
-        image: "https://bernardmarr.com/wp-content/uploads/2022/02/What-Is-Social-Media-2.0-Simple-Explanation-And-Examples.jpg",
+        image: PerformanceMarketingThumbnail,
         duration: "45–60 Days",
         enrollmentUrl: "https://example.com/enroll-performance-pro",
         headline: "Performance Marketing Pro",
@@ -207,7 +211,7 @@ const courseData = [
     {
         id: 3,
         theme: "green",
-        image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        image: socialMediaMarketingThumbnail,
         duration: "45–60 Days",
         enrollmentUrl: "https://example.com/enroll-social-media",
         headline: "Social Media, Content & Influencer Growth Mastery",
@@ -309,7 +313,7 @@ const courseData = [
     {
         id: 4,
         theme: "orange",
-        image: "https://www.searchenginejournal.com/wp-content/uploads/2022/08/social-media-tools-630f2f608b225-sej.png",
+        image: MarketingAutomationThumbnail,
         duration: "45–60 Days",
         enrollmentUrl: "https://example.com/enroll-automation-freelance",
         headline:
