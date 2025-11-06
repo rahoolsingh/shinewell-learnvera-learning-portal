@@ -1,7 +1,7 @@
 import Marquee from "react-fast-marquee";
 
 export default function FounderVideoMessage() {
-    const embedUrl = `https://www.youtube.com/embed/u0noTxTXdb0`;
+    const embedUrl = `/founder.mp4`;
 
     return (
         <section className="py-24 bg-gray-950 text-gray-100 font-sans px-4">

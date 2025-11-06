@@ -135,7 +135,7 @@ export default function Hero() {
                     <img
                         src={hero1}
                         alt="Digital Marketing & AI Concepts"
-                        className="relative z-20 min-h-67 w-full object-cover container mx-auto grayscale brightness-75 contrast-150"
+                        className="relative z-20 min-h-67 w-full object-cover max-w-7xl mx-auto"
                     />
                 </div>
             </main>
