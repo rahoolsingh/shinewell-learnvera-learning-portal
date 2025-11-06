@@ -153,7 +153,7 @@ export default function CourseDetailsPage() {
                                 <img
                                     src={course?.instructor?.image}
                                     alt={course?.instructor?.name}
-                                    className="w-16 h-16 rounded-full object-cover"
+                                    className="w-16 h-16 rounded-full object-cover aspect-square"
                                 />
                                 <div>
                                     <h3 className="font-semibold text-gray-900">
