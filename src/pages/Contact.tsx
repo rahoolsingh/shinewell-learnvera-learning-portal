@@ -282,7 +282,7 @@ export default function ContactUsPage() {
 
     return (
         <section
-            className="relative py-16 md:py-32 bg-gray-50 overflow-hidden"
+            className="relative py-16 md:py-32 xl:pt-44 bg-gray-50 overflow-hidden"
             id="contact"
         >
             {/* Decorative gradient background */}
