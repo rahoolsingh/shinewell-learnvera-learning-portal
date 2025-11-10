@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import {
+    Mail,
+    Phone,
+    MapPin,
+    Clock,
+    AlertCircle,
+    CheckCircle2,
+} from "lucide-react";
 
 // Reusable info item
 const InfoItem = ({ icon, title, children }) => (
@@ -18,42 +25,205 @@ export default function ContactUsPage() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [formResponse, setFormResponse] = useState(null);
 
-    // ---- Handle form submission ----
+    // 1. State for form data
+    const [formData, setFormData] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        city: "",
+        message: "",
+    });
+
+    // 2. Track which fields the user has interacted with
+    const [touched, setTouched] = useState({
+        firstName: false,
+        lastName: false,
+        email: false,
+        phone: false,
+        city: false,
+        message: false,
+    });
+
+    // 3. Track active errors
+    const [errors, setErrors] = useState({});
+
+    // --- CONSTANTS & REGEX ---
+    const MIN_NAME_LENGTH = 2;
+    const MIN_MESSAGE_LENGTH = 10;
+    const nameRegex = /^[a-zA-Z\s'-]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^\+?(\d[\d\s-]{7,15})\d$/;
+
+    // Masks to prevent typing invalid characters
+    const nameMask = /^[a-zA-Z\s'-]*$/;
+    const phoneMask = /^[0-9\s+-]*$/;
+
+    // --- VALIDATION LOGIC ---
+    const validate = (data_to_validate, fieldName = null) => {
+        let newErrors = {};
+        const setFieldError = (field, errorMessage) => {
+            newErrors[field] = errorMessage || null;
+        };
+
+        // Helper for name-like fields (First Name, Last Name, City)
+        const validateNameField = (field, label, minLen = MIN_NAME_LENGTH) => {
+            if (!fieldName || fieldName === field) {
+                const val = data_to_validate[field]?.trim();
+                if (!val || val.length < minLen) {
+                    setFieldError(
+                        field,
+                        `${label} must be at least ${minLen} characters.`
+                    );
+                } else if (!nameRegex.test(val)) {
+                    setFieldError(
+                        field,
+                        `${label} contains invalid characters.`
+                    );
+                } else {
+                    setFieldError(field, null);
+                }
+            }
+        };
+
+        validateNameField("firstName", "First Name");
+        validateNameField("lastName", "Last Name");
+        validateNameField("city", "City");
+
+        // EMAIL Validation
+        if (!fieldName || fieldName === "email") {
+            const emailVal = data_to_validate.email?.trim();
+            if (!emailVal || !emailRegex.test(emailVal)) {
+                setFieldError("email", "Please enter a valid email address.");
+            } else {
+                setFieldError("email", null);
+            }
+        }
+
+        // PHONE Validation
+        if (!fieldName || fieldName === "phone") {
+            const rawPhone = data_to_validate.phone?.replace(/[\s-]/g, "");
+            if (!rawPhone || rawPhone.length < 7) {
+                setFieldError("phone", "Phone number is too short.");
+            } else if (!phoneRegex.test(data_to_validate.phone?.trim())) {
+                setFieldError("phone", "Please enter a valid phone number.");
+            } else {
+                setFieldError("phone", null);
+            }
+        }
+
+        // MESSAGE Validation
+        if (!fieldName || fieldName === "message") {
+            const msgVal = data_to_validate.message?.trim();
+            if (!msgVal || msgVal.length < MIN_MESSAGE_LENGTH) {
+                setFieldError(
+                    "message",
+                    `Message must be at least ${MIN_MESSAGE_LENGTH} characters.`
+                );
+            } else {
+                setFieldError("message", null);
+            }
+        }
+
+        return newErrors;
+    };
+
+    // --- HANDLERS ---
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+
+        // Input Masking
+        if (
+            (name === "firstName" || name === "lastName" || name === "city") &&
+            !nameMask.test(value)
+        )
+            return;
+        if (name === "phone" && !phoneMask.test(value)) return;
+
+        const newData = { ...formData, [name]: value };
+        setFormData(newData);
+
+        // Validate immediately
+        const fieldError = validate(newData, name);
+        setErrors((prev) => ({ ...prev, ...fieldError }));
+    };
+
+    const handleBlur = (e) => {
+        const { name } = e.target;
+        setTouched((prev) => ({ ...prev, [name]: true }));
+        setErrors((prev) => ({ ...prev, ...validate(formData, name) }));
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setIsSubmitting(true);
         setFormResponse(null);
 
-        const formData = {
-            "first-name": e.target["first-name"].value.trim(),
-            "last-name": e.target["last-name"].value.trim(),
-            email: e.target.email.value.trim(),
-            phone: e.target.phone.value.trim(),
-            city: e.target.city.value.trim(),
-            message: e.target.message.value.trim(),
+        // Mark all touched
+        setTouched({
+            firstName: true,
+            lastName: true,
+            email: true,
+            phone: true,
+            city: true,
+            message: true,
+        });
+
+        const formErrors = validate(formData);
+        const hasErrors = Object.values(formErrors).some(
+            (error) => error !== null
+        );
+        setErrors(formErrors);
+
+        if (hasErrors) return;
+
+        setIsSubmitting(true);
+
+        // Map state keys back to the expected form field names for the API
+        const apiData = {
+            "first-name": formData.firstName.trim(),
+            "last-name": formData.lastName.trim(),
+            email: formData.email.trim(),
+            phone: formData.phone.trim(),
+            city: formData.city.trim(),
+            message: formData.message.trim(),
+            form_id: "contact_page",
         };
 
         try {
-            const response = await fetch("https://learnvera.com/tools/contact-form.php", {
+            const response = await fetch("/tools/contact-form.php", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(apiData),
             });
 
-            // Try to parse JSON safely
             const text = await response.text();
             let data;
             try {
                 data = JSON.parse(text);
             } catch {
-                throw new Error("Unexpected server response: " + text.slice(0, 100));
+                throw new Error("Unexpected server response.");
             }
 
             if (response.ok && data.success) {
                 setFormResponse({ status: "success", message: data.success });
-                e.target.reset();
+                // Reset form
+                setFormData({
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    phone: "",
+                    city: "",
+                    message: "",
+                });
+                setTouched({
+                    firstName: false,
+                    lastName: false,
+                    email: false,
+                    phone: false,
+                    city: false,
+                    message: false,
+                });
+                setErrors({});
             } else {
                 throw new Error(data.error || "An unknown error occurred.");
             }
@@ -67,8 +237,54 @@ export default function ContactUsPage() {
         }
     };
 
+    // Helper to determine input visual status
+    const getFieldStatus = (fieldName) => {
+        const hasError = !!errors[fieldName];
+        const isTouched = touched[fieldName];
+        const isFilled = formData[fieldName]?.length > 0;
+
+        if (isTouched && hasError) return "error";
+        if (!hasError && isFilled) return "success";
+        return "neutral";
+    };
+
+    const getInputClasses = (status) => {
+        const base =
+            "w-full px-4 py-3 rounded-lg border bg-white/50 focus:outline-none focus:ring-2 transition-colors pr-10";
+        switch (status) {
+            case "error":
+                return `${base} border-red-500 focus:ring-red-500 focus:border-red-500 text-red-900`;
+            case "success":
+                return `${base} border-green-500 focus:ring-green-500 focus:border-green-500 text-green-900`;
+            default:
+                return `${base} border-gray-300 focus:ring-indigo-500 focus:border-indigo-500`;
+        }
+    };
+
+    const renderStatusIcon = (fieldName) => (
+        <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none top-0">
+            {getFieldStatus(fieldName) === "error" && (
+                <AlertCircle className="h-5 w-5 text-red-500" />
+            )}
+            {getFieldStatus(fieldName) === "success" && (
+                <CheckCircle2 className="h-5 w-5 text-green-500" />
+            )}
+        </div>
+    );
+
+    const renderErrorMessage = (fieldName) =>
+        touched[fieldName] &&
+        errors[fieldName] && (
+            <p className="mt-1 text-sm text-red-600 animate-pulse">
+                {errors[fieldName]}
+            </p>
+        );
+
     return (
-        <section className="relative py-16 md:py-32 bg-gray-50 overflow-hidden" id="contact">
+        <section
+            className="relative py-16 md:py-32 bg-gray-50 overflow-hidden"
+            id="contact"
+        >
             {/* Decorative gradient background */}
             <div
                 className="absolute top-0 left-1/4 w-full h-full transform -translate-x-1/2 -translate-y-1/2"
@@ -84,7 +300,8 @@ export default function ContactUsPage() {
                         Let's Connect
                     </h1>
                     <p className="text-lg md:text-xl text-gray-600">
-                        Have a question, a project, or just want to say hello? We'd love to hear from you.
+                        Have a question, a project, or just want to say hello?
+                        We'd love to hear from you.
                     </p>
                 </div>
 
@@ -95,97 +312,150 @@ export default function ContactUsPage() {
                             Send us a Message
                         </h2>
 
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                            <input type="hidden" name="form_id" value="contact_page" />
-
+                        <form
+                            onSubmit={handleSubmit}
+                            className="space-y-6"
+                            noValidate
+                        >
                             {/* First / Last Name */}
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 <div>
-                                    <label htmlFor="first-name" className="block text-sm font-medium text-gray-700 mb-2">
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">
                                         First Name
                                     </label>
-                                    <input
-                                        type="text"
-                                        name="first-name"
-                                        id="first-name"
-                                        required
-                                        className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white/50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                                        placeholder="First Name"
-                                    />
+                                    <div className="relative">
+                                        <input
+                                            type="text"
+                                            name="firstName"
+                                            value={formData.firstName}
+                                            onChange={handleInputChange}
+                                            onBlur={handleBlur}
+                                            className={getInputClasses(
+                                                getFieldStatus("firstName")
+                                            )}
+                                            placeholder="First Name"
+                                        />
+                                        {renderStatusIcon("firstName")}
+                                    </div>
+                                    {renderErrorMessage("firstName")}
                                 </div>
                                 <div>
-                                    <label htmlFor="last-name" className="block text-sm font-medium text-gray-700 mb-2">
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">
                                         Last Name
                                     </label>
-                                    <input
-                                        type="text"
-                                        name="last-name"
-                                        id="last-name"
-                                        required
-                                        className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white/50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                                        placeholder="Last Name"
-                                    />
+                                    <div className="relative">
+                                        <input
+                                            type="text"
+                                            name="lastName"
+                                            value={formData.lastName}
+                                            onChange={handleInputChange}
+                                            onBlur={handleBlur}
+                                            className={getInputClasses(
+                                                getFieldStatus("lastName")
+                                            )}
+                                            placeholder="Last Name"
+                                        />
+                                        {renderStatusIcon("lastName")}
+                                    </div>
+                                    {renderErrorMessage("lastName")}
                                 </div>
                             </div>
 
                             {/* Email */}
                             <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                                <label className="block text-sm font-medium text-gray-700 mb-2">
                                     Email
                                 </label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    id="email"
-                                    required
-                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white/50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                                    placeholder="you@example.com"
-                                />
+                                <div className="relative">
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleInputChange}
+                                        onBlur={handleBlur}
+                                        className={getInputClasses(
+                                            getFieldStatus("email")
+                                        )}
+                                        placeholder="you@example.com"
+                                    />
+                                    {renderStatusIcon("email")}
+                                </div>
+                                {renderErrorMessage("email")}
                             </div>
 
                             {/* Phone */}
                             <div>
-                                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                                <label className="block text-sm font-medium text-gray-700 mb-2">
                                     Phone
                                 </label>
-                                <input
-                                    type="tel"
-                                    name="phone"
-                                    id="phone"
-                                    required
-                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white/50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                                    placeholder="+91 XXXXX XXXXX"
-                                />
+                                <div className="relative">
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        value={formData.phone}
+                                        onChange={handleInputChange}
+                                        onBlur={handleBlur}
+                                        className={getInputClasses(
+                                            getFieldStatus("phone")
+                                        )}
+                                        placeholder="+91 98765 43210"
+                                    />
+                                    {renderStatusIcon("phone")}
+                                </div>
+                                {renderErrorMessage("phone")}
                             </div>
 
                             {/* City */}
                             <div>
-                                <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-2">
+                                <label className="block text-sm font-medium text-gray-700 mb-2">
                                     City
                                 </label>
-                                <input
-                                    type="text"
-                                    name="city"
-                                    id="city"
-                                    required
-                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white/50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                                    placeholder="Your City"
-                                />
+                                <div className="relative">
+                                    <input
+                                        type="text"
+                                        name="city"
+                                        value={formData.city}
+                                        onChange={handleInputChange}
+                                        onBlur={handleBlur}
+                                        className={getInputClasses(
+                                            getFieldStatus("city")
+                                        )}
+                                        placeholder="Your City"
+                                    />
+                                    {renderStatusIcon("city")}
+                                </div>
+                                {renderErrorMessage("city")}
                             </div>
 
                             {/* Message */}
                             <div>
-                                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                                <label className="block text-sm font-medium text-gray-700 mb-2">
                                     Message
                                 </label>
-                                <textarea
-                                    name="message"
-                                    id="message"
-                                    rows="5"
-                                    required
-                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white/50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                                    placeholder="How can we help you?"
-                                ></textarea>
+                                <div className="relative">
+                                    <textarea
+                                        name="message"
+                                        rows="5"
+                                        value={formData.message}
+                                        onChange={handleInputChange}
+                                        onBlur={handleBlur}
+                                        className={`${getInputClasses(
+                                            getFieldStatus("message")
+                                        )} pt-3`}
+                                        placeholder="How can we help you?"
+                                    ></textarea>
+                                    <div className="absolute top-3 right-0 flex items-center pr-3 pointer-events-none">
+                                        {getFieldStatus("message") ===
+                                            "error" && (
+                                            <AlertCircle className="h-5 w-5 text-red-500" />
+                                        )}
+                                        {getFieldStatus("message") ===
+                                            "success" && (
+                                            <CheckCircle2 className="h-5 w-5 text-green-500" />
+                                        )}
+                                    </div>
+                                </div>
+                                {renderErrorMessage("message")}
                             </div>
 
                             {/* Submit */}
@@ -195,20 +465,27 @@ export default function ContactUsPage() {
                                     disabled={isSubmitting}
                                     className="w-full px-6 py-3 text-lg font-semibold rounded-lg text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 ease-in-out shadow-lg hover:shadow-xl disabled:opacity-60 disabled:cursor-not-allowed"
                                 >
-                                    {isSubmitting ? "Sending..." : "Send Message"}
+                                    {isSubmitting
+                                        ? "Sending..."
+                                        : "Send Message"}
                                 </button>
                             </div>
 
                             {/* Response Message */}
                             {formResponse && (
                                 <div
-                                    className={`mt-4 p-3 rounded-lg text-center ${
+                                    className={`mt-4 p-4 rounded-xl text-center text-sm font-bold flex items-center justify-center space-x-2 ${
                                         formResponse.status === "success"
-                                            ? "bg-green-100 text-green-800"
-                                            : "bg-red-100 text-red-800"
+                                            ? "bg-green-100 text-green-800 border border-green-200"
+                                            : "bg-red-100 text-red-800 border border-red-200"
                                     }`}
                                 >
-                                    {formResponse.message}
+                                    {formResponse.status === "success" ? (
+                                        <CheckCircle2 className="w-5 h-5" />
+                                    ) : (
+                                        <AlertCircle className="w-5 h-5" />
+                                    )}
+                                    <span>{formResponse.message}</span>
                                 </div>
                             )}
                         </form>
@@ -239,11 +516,15 @@ export default function ContactUsPage() {
                                 </InfoItem>
                                 <InfoItem title="Visit Us" icon={<MapPin />}>
                                     <p>
-                                        Learnvera, Novel Tech Park, Hosur Rd, Kudlu Gate,
-                                        Bengaluru, Karnataka - 560068
+                                        Learnvera, Novel Tech Park, Hosur Rd,
+                                        Kudlu Gate, Bengaluru, Karnataka -
+                                        560068
                                     </p>
                                 </InfoItem>
-                                <InfoItem title="Working Hours" icon={<Clock />}>
+                                <InfoItem
+                                    title="Working Hours"
+                                    icon={<Clock />}
+                                >
                                     <p>Mon - Sat : 9 AM - 9 PM </p>
                                 </InfoItem>
                             </div>
