@@ -15,6 +15,7 @@ import TermsAndConditions from "./pages/TermsAndConditions";
 import RefundPolicy from "./pages/RefundPolicy";
 
 import adVideo from "./assets/videos/ad-video.mp4";
+import NotFound from "./pages/NotFound";
 
 const router = createBrowserRouter([
     {
@@ -48,14 +49,14 @@ const router = createBrowserRouter([
 
     {
         path: "*",
-        element: <Home />,
+        element: <NotFound />,
     },
 ]);
 
 function App() {
     return (
         <Layout>
-            <RouterProvider router={router} />;
+            <RouterProvider router={router} />
         </Layout>
     );
 }
