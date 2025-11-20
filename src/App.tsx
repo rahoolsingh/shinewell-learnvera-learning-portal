@@ -71,7 +71,7 @@ const Layout = ({ children }) => {
 
             <a
                 className=""
-                href="https://wa.me/+917676720897"
+                href="https://wa.me/+917676720897?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20your%20courses."
                 target="_blank"
                 rel="noopener noreferrer"
             >
