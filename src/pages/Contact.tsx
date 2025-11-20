@@ -508,10 +508,10 @@ export default function ContactUsPage() {
                                 </InfoItem>
                                 <InfoItem title="Call Us" icon={<Phone />}>
                                     <a
-                                        href="tel:+919262386604"
+                                        href="tel:+917676720897"
                                         className="hover:text-indigo-600 transition-colors duration-200"
                                     >
-                                        +91 926 238 6604
+                                        +91 767 672 0897
                                     </a>
                                 </InfoItem>
                                 <InfoItem title="Visit Us" icon={<MapPin />}>

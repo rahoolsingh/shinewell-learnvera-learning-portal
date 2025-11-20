@@ -71,7 +71,7 @@ const Layout = ({ children }) => {
 
             <a
                 className=""
-                href="https://wa.me/+919262386604"
+                href="https://wa.me/+917676720897"
                 target="_blank"
                 rel="noopener noreferrer"
             >

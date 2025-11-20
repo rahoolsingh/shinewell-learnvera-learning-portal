@@ -279,7 +279,7 @@ export default function Contact() {
                                             Call Us
                                         </div>
                                         <div className="text-gray-600">
-                                            +91 926 238 6604
+                                            +91 767 672 0897
                                         </div>
                                     </div>
                                 </div>

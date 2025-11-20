@@ -26,7 +26,7 @@ const useScroll = () => {
 
 const CtaCallButton = () => (
     <motion.a
-        href="tel:+919262386604"
+        href="tel:+917676720897"
         aria-label="Get a free consultation by phone"
         whileTap={{ scale: 0.97 }}
         whileHover={{ scale: 1.03 }}
