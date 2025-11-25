@@ -1,6 +1,17 @@
-import React, { useState } from "react";
-import { MapPin, Phone, Mail, Clock, AlertCircle, CheckCircle2 } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import {
+    MapPin,
+    Phone,
+    Mail,
+    Clock,
+    AlertCircle,
+    CheckCircle2,
+} from "lucide-react";
 import { motion } from "framer-motion";
+
+// --- CONFIGURATION ---
+// Replace with your actual Google reCAPTCHA v3 Site Key
+const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
 export default function Contact() {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -11,7 +22,7 @@ export default function Contact() {
         name: "",
         email: "",
         phone: "",
-        message: ""
+        message: "",
     });
 
     // 2. Track which fields the user has interacted with (blurred)
@@ -19,11 +30,28 @@ export default function Contact() {
         name: false,
         email: false,
         phone: false,
-        message: false
+        message: false,
     });
 
     // 3. Track active errors
     const [errors, setErrors] = useState({});
+
+    // --- Load reCAPTCHA Script ---
+    useEffect(() => {
+        if (!RECAPTCHA_SITE_KEY) {
+            console.warn("RECAPTCHA_SITE_KEY is not set correctly.");
+            return;
+        }
+
+        const scriptId = "recaptcha-v3-script";
+        if (!document.getElementById(scriptId)) {
+            const script = document.createElement("script");
+            script.id = scriptId;
+            script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
+            script.async = true;
+            document.head.appendChild(script);
+        }
+    }, []);
 
     // --- CONSTANTS & REGEX ---
     const MIN_NAME_LENGTH = 2;
@@ -44,46 +72,52 @@ export default function Contact() {
         };
 
         // NAME Validation
-        if (!fieldName || fieldName === 'name') {
+        if (!fieldName || fieldName === "name") {
             const nameVal = data_to_validate.name?.trim();
             if (!nameVal || nameVal.length < MIN_NAME_LENGTH) {
-                 setFieldError('name', `Name must be at least ${MIN_NAME_LENGTH} characters.`);
+                setFieldError(
+                    "name",
+                    `Name must be at least ${MIN_NAME_LENGTH} characters.`
+                );
             } else if (!nameRegex.test(nameVal)) {
-                 setFieldError('name', "Name contains invalid characters.");
+                setFieldError("name", "Name contains invalid characters.");
             } else {
-                setFieldError('name', null);
+                setFieldError("name", null);
             }
         }
 
         // EMAIL Validation
-        if (!fieldName || fieldName === 'email') {
+        if (!fieldName || fieldName === "email") {
             const emailVal = data_to_validate.email?.trim();
             if (!emailVal || !emailRegex.test(emailVal)) {
-                setFieldError('email', "Please enter a valid email address.");
+                setFieldError("email", "Please enter a valid email address.");
             } else {
-                 setFieldError('email', null);
+                setFieldError("email", null);
             }
         }
 
         // PHONE Validation
-        if (!fieldName || fieldName === 'phone') {
-            const rawPhone = data_to_validate.phone?.replace(/[\s-]/g, '');
+        if (!fieldName || fieldName === "phone") {
+            const rawPhone = data_to_validate.phone?.replace(/[\s-]/g, "");
             if (!rawPhone || rawPhone.length < 7) {
-                 setFieldError('phone', "Phone number is too short.");
+                setFieldError("phone", "Phone number is too short.");
             } else if (!phoneRegex.test(data_to_validate.phone?.trim())) {
-                 setFieldError('phone', "Please enter a valid phone number.");
+                setFieldError("phone", "Please enter a valid phone number.");
             } else {
-                 setFieldError('phone', null);
+                setFieldError("phone", null);
             }
         }
 
         // MESSAGE Validation
-        if (!fieldName || fieldName === 'message') {
-             const msgVal = data_to_validate.message?.trim();
+        if (!fieldName || fieldName === "message") {
+            const msgVal = data_to_validate.message?.trim();
             if (!msgVal || msgVal.length < MIN_MESSAGE_LENGTH) {
-                setFieldError('message', `Message must be at least ${MIN_MESSAGE_LENGTH} characters long.`);
+                setFieldError(
+                    "message",
+                    `Message must be at least ${MIN_MESSAGE_LENGTH} characters long.`
+                );
             } else {
-                 setFieldError('message', null);
+                setFieldError("message", null);
             }
         }
 
@@ -95,20 +129,20 @@ export default function Contact() {
     const handleInputChange = (e) => {
         const { name, value } = e.target;
 
-        if (name === 'name' && !nameMask.test(value)) return;
-        if (name === 'phone' && !phoneMask.test(value)) return;
+        if (name === "name" && !nameMask.test(value)) return;
+        if (name === "phone" && !phoneMask.test(value)) return;
 
         const newData = { ...formData, [name]: value };
         setFormData(newData);
 
         const fieldError = validate(newData, name);
-        setErrors(prev => ({ ...prev, ...fieldError }));
+        setErrors((prev) => ({ ...prev, ...fieldError }));
     };
 
     const handleBlur = (e) => {
         const { name } = e.target;
-        setTouched(prev => ({ ...prev, [name]: true }));
-        setErrors(prev => ({...prev, ...validate(formData, name)}));
+        setTouched((prev) => ({ ...prev, [name]: true }));
+        setErrors((prev) => ({ ...prev, ...validate(formData, name) }));
     };
 
     const handleSubmit = async (e) => {
@@ -118,33 +152,54 @@ export default function Contact() {
         setTouched({ name: true, email: true, phone: true, message: true });
 
         const formErrors = validate(formData);
-        const hasErrors = Object.values(formErrors).some(error => error !== null);
+        const hasErrors = Object.values(formErrors).some(
+            (error) => error !== null
+        );
         setErrors(formErrors);
 
         if (hasErrors) return;
 
         setIsSubmitting(true);
 
-        const cleanedData = {
-            name: formData.name.trim(),
-            email: formData.email.trim(),
-            phone: formData.phone.trim(),
-            message: formData.message.trim(),
-        };
-
         try {
-            // Simulating API call for demo purposes if real endpoint is missing
-            // await new Promise(resolve => setTimeout(resolve, 2000)); 
-            // throw new Error("Demo mode: API not connected");
+            // 1. Get reCAPTCHA Token
+            let recaptchaToken = "";
+            const isConfigured =
+                RECAPTCHA_SITE_KEY &&
+                RECAPTCHA_SITE_KEY !== "YOUR_GOOGLE_RECAPTCHA_V3_SITE_KEY";
 
-            const response = await fetch(
-                "/tools/contact-form.php",
-                {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(cleanedData),
+            if (window.grecaptcha && isConfigured) {
+                try {
+                    await new Promise((resolve) => {
+                        window.grecaptcha.ready(() => resolve());
+                    });
+                    recaptchaToken = await window.grecaptcha.execute(
+                        RECAPTCHA_SITE_KEY,
+                        {
+                            action: "consultation_form",
+                        }
+                    );
+                } catch (recaptchaError) {
+                    console.error(
+                        "reCAPTCHA execution failed:",
+                        recaptchaError
+                    );
                 }
-            );
+            }
+
+            const cleanedData = {
+                name: formData.name.trim(),
+                email: formData.email.trim(),
+                phone: formData.phone.trim(),
+                message: formData.message.trim(),
+                recaptcha_token: recaptchaToken,
+            };
+
+            const response = await fetch("/tools/contact-form.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(cleanedData),
+            });
 
             const text = await response.text();
             let data;
@@ -157,7 +212,12 @@ export default function Contact() {
             if (response.ok && data.success) {
                 setFormResponse({ status: "success", message: data.success });
                 setFormData({ name: "", email: "", phone: "", message: "" });
-                setTouched({ name: false, email: false, phone: false, message: false });
+                setTouched({
+                    name: false,
+                    email: false,
+                    phone: false,
+                    message: false,
+                });
                 setErrors({});
             } else {
                 throw new Error(data.error || "An unknown error occurred.");
@@ -183,18 +243,26 @@ export default function Contact() {
     };
 
     const getInputClasses = (status) => {
-        const base = "w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition-colors pr-10";
+        const base =
+            "w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition-colors pr-10";
         switch (status) {
-            case "error": return `${base} border-red-500 focus:ring-red-500 bg-red-50 text-red-900`;
-            case "success": return `${base} border-green-500 focus:ring-green-500 bg-green-50 text-green-900`;
-            default: return `${base} border-gray-300 focus:ring-blue-600`;
+            case "error":
+                return `${base} border-red-500 focus:ring-red-500 bg-red-50 text-red-900`;
+            case "success":
+                return `${base} border-green-500 focus:ring-green-500 bg-green-50 text-green-900`;
+            default:
+                return `${base} border-gray-300 focus:ring-blue-600`;
         }
     };
 
     // --- ANIMATION VARIANTS ---
     const fadeInUp = {
         hidden: { opacity: 0, y: 40 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.6, ease: "easeOut" },
+        },
     };
 
     const staggerContainer = {
@@ -203,19 +271,27 @@ export default function Contact() {
             opacity: 1,
             transition: {
                 staggerChildren: 0.2,
-                delayChildren: 0.1
-            }
-        }
+                delayChildren: 0.1,
+            },
+        },
     };
 
     const fadeInLeft = {
         hidden: { opacity: 0, x: -40 },
-        visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
+        visible: {
+            opacity: 1,
+            x: 0,
+            transition: { duration: 0.6, ease: "easeOut" },
+        },
     };
 
     const fadeInRight = {
         hidden: { opacity: 0, x: 40 },
-        visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
+        visible: {
+            opacity: 1,
+            x: 0,
+            transition: { duration: 0.6, ease: "easeOut" },
+        },
     };
 
     return (
@@ -240,7 +316,7 @@ export default function Contact() {
                     </span>
                 </motion.h2>
 
-                <motion.div 
+                <motion.div
                     className="bg-white rounded-3xl overflow-hidden shadow-2xl"
                     initial="hidden"
                     whileInView="visible"
@@ -249,7 +325,7 @@ export default function Contact() {
                 >
                     <div className="grid lg:grid-cols-2">
                         {/* --- Left Column: Info --- */}
-                        <motion.div 
+                        <motion.div
                             className="p-8 lg:p-12 space-y-6"
                             variants={fadeInLeft}
                         >
@@ -311,11 +387,15 @@ export default function Contact() {
                         </motion.div>
 
                         {/* --- Right Column: Form --- */}
-                        <motion.div 
+                        <motion.div
                             className="bg-blue-50 p-8 lg:p-12"
                             variants={fadeInRight}
                         >
-                            <form className="space-y-4" onSubmit={handleSubmit} noValidate>
+                            <form
+                                className="space-y-4"
+                                onSubmit={handleSubmit}
+                                noValidate
+                            >
                                 {/* Name Field */}
                                 <div>
                                     <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -328,12 +408,20 @@ export default function Contact() {
                                             value={formData.name}
                                             onChange={handleInputChange}
                                             onBlur={handleBlur}
-                                            className={getInputClasses(getFieldStatus('name'))}
+                                            className={getInputClasses(
+                                                getFieldStatus("name")
+                                            )}
                                             placeholder="Enter your name"
                                         />
                                         <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                            {getFieldStatus('name') === 'error' && <AlertCircle className="h-5 w-5 text-red-500" />}
-                                            {getFieldStatus('name') === 'success' && <CheckCircle2 className="h-5 w-5 text-green-500" />}
+                                            {getFieldStatus("name") ===
+                                                "error" && (
+                                                <AlertCircle className="h-5 w-5 text-red-500" />
+                                            )}
+                                            {getFieldStatus("name") ===
+                                                "success" && (
+                                                <CheckCircle2 className="h-5 w-5 text-green-500" />
+                                            )}
                                         </div>
                                     </div>
                                     {touched.name && errors.name && (
@@ -355,12 +443,20 @@ export default function Contact() {
                                             value={formData.email}
                                             onChange={handleInputChange}
                                             onBlur={handleBlur}
-                                            className={getInputClasses(getFieldStatus('email'))}
+                                            className={getInputClasses(
+                                                getFieldStatus("email")
+                                            )}
                                             placeholder="your@email.com"
                                         />
-                                         <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                            {getFieldStatus('email') === 'error' && <AlertCircle className="h-5 w-5 text-red-500" />}
-                                            {getFieldStatus('email') === 'success' && <CheckCircle2 className="h-5 w-5 text-green-500" />}
+                                        <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                            {getFieldStatus("email") ===
+                                                "error" && (
+                                                <AlertCircle className="h-5 w-5 text-red-500" />
+                                            )}
+                                            {getFieldStatus("email") ===
+                                                "success" && (
+                                                <CheckCircle2 className="h-5 w-5 text-green-500" />
+                                            )}
                                         </div>
                                     </div>
                                     {touched.email && errors.email && (
@@ -382,12 +478,20 @@ export default function Contact() {
                                             value={formData.phone}
                                             onChange={handleInputChange}
                                             onBlur={handleBlur}
-                                            className={getInputClasses(getFieldStatus('phone'))}
-                                            placeholder="+91 98765 43210"
+                                            className={getInputClasses(
+                                                getFieldStatus("phone")
+                                            )}
+                                            placeholder="XXX-XXXX-XXXX"
                                         />
                                         <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                            {getFieldStatus('phone') === 'error' && <AlertCircle className="h-5 w-5 text-red-500" />}
-                                            {getFieldStatus('phone') === 'success' && <CheckCircle2 className="h-5 w-5 text-green-500" />}
+                                            {getFieldStatus("phone") ===
+                                                "error" && (
+                                                <AlertCircle className="h-5 w-5 text-red-500" />
+                                            )}
+                                            {getFieldStatus("phone") ===
+                                                "success" && (
+                                                <CheckCircle2 className="h-5 w-5 text-green-500" />
+                                            )}
                                         </div>
                                     </div>
                                     {touched.phone && errors.phone && (
@@ -409,12 +513,20 @@ export default function Contact() {
                                             value={formData.message}
                                             onChange={handleInputChange}
                                             onBlur={handleBlur}
-                                            className={getInputClasses(getFieldStatus('message'))}
+                                            className={getInputClasses(
+                                                getFieldStatus("message")
+                                            )}
                                             placeholder="How can we help you?"
                                         ></textarea>
-                                         <div className="absolute top-3 right-0 flex items-center pr-3 pointer-events-none">
-                                            {getFieldStatus('message') === 'error' && <AlertCircle className="h-5 w-5 text-red-500" />}
-                                            {getFieldStatus('message') === 'success' && <CheckCircle2 className="h-5 w-5 text-green-500" />}
+                                        <div className="absolute top-3 right-0 flex items-center pr-3 pointer-events-none">
+                                            {getFieldStatus("message") ===
+                                                "error" && (
+                                                <AlertCircle className="h-5 w-5 text-red-500" />
+                                            )}
+                                            {getFieldStatus("message") ===
+                                                "success" && (
+                                                <CheckCircle2 className="h-5 w-5 text-green-500" />
+                                            )}
                                         </div>
                                     </div>
                                     {touched.message && errors.message && (
@@ -435,6 +547,30 @@ export default function Contact() {
                                         ? "Sending..."
                                         : "Send Message"}
                                 </motion.button>
+
+                                {/* Privacy Text for reCAPTCHA */}
+                                <p className="text-[10px] text-gray-400 text-center mt-3">
+                                    This site is protected by reCAPTCHA and the
+                                    Google
+                                    <a
+                                        href="https://policies.google.com/privacy"
+                                        className="text-blue-500 hover:underline mx-1"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        Privacy Policy
+                                    </a>{" "}
+                                    and
+                                    <a
+                                        href="https://policies.google.com/terms"
+                                        className="text-blue-500 hover:underline mx-1"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        Terms of Service
+                                    </a>{" "}
+                                    apply.
+                                </p>
 
                                 {/* Response Message */}
                                 {formResponse && (

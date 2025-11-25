@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "../assets/images/logo.png";
 import { Link } from "react-router";
+import GetEbook from "./GetEbook";
 
 // --- Mock useScroll Hook (as provided) ---
 const useScroll = () => {
@@ -162,6 +163,13 @@ export default function Header() {
 
                     <div className="flex items-center space-x-4">
                         <div className="hidden lg:flex items-center space-x-3">
+                            <GetEbook
+                                title="Brochure/Syllabus"
+                                buttonText="Get Brochure/Syllabus"
+                                className="!bg-transparent !border-none"
+                                ebook="brochure.pdf"
+                                smallText=""
+                            />
                             <CtaCallButton />
                         </div>
                         <button
@@ -228,13 +236,17 @@ export default function Header() {
                             ))}
 
                             <div className="flex-1" />
-                            <motion.div
-                                variants={linkVariants}
-                                custom={NAV_LINKS.length}
-                                className="flex"
-                            >
+                            <div className="flex flex-col gap-4">
+                                <GetEbook
+                                    title="Brochure/Syllabus"
+                                    buttonText="Get Brochure/Syllabus"
+                                    className="!bg-blue-600 !text-white !hover:bg-blue-700 !rounded-full !px-6 !py-3 !text-center !font-semibold"
+                                    ebook="brochure.pdf"
+                                    smallText=""
+                                />
+
                                 <CtaCallButton />
-                            </motion.div>
+                            </div>
                         </motion.nav>
                     </motion.div>
                 )}

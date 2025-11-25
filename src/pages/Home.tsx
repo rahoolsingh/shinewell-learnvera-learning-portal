@@ -14,6 +14,7 @@ import CourseOfferSection from "../components/CourseOfferSection";
 import HiringPartners from "../components/HiringPartners";
 import PlacementSuccess from "../components/PlacementSuccess";
 import PlacementJourney from "../components/PlacementJourney";
+import CertificatesShowcase from "../components/CertificatesShowcase";
 
 function Home() {
     return (
@@ -26,6 +27,7 @@ function Home() {
             <PlacementJourney />
             <PlacementSuccess />
             <Courses />
+            <CertificatesShowcase />
             {/* <CourseOfferSection /> */}
             <RecordedCourses />
             <Testimonials />

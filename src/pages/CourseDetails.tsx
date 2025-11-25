@@ -4,10 +4,13 @@ import {
     BookOpen,
     ListChecks,
     HelpCircle,
+    Download,
 } from "lucide-react";
 import { useParams } from "react-router";
 import courseData from "../data/courses.js";
 import { useEffect } from "react";
+import { motion } from "framer-motion";
+import GetEbook from "../components/GetEbook.js";
 
 // ... (colorPalettes, calculateDiscountPercentage, StarRating, DetailSection, EnrollButton components are unchanged) ...
 
@@ -267,9 +270,14 @@ export default function CourseDetailsPage() {
                                             <summary className="font-semibold text-gray-900 cursor-pointer">
                                                 {faq.question}
                                             </summary>
-                                            <p className="mt-2 text-sm text-gray-700">
+                                            <motion.p
+                                                className="mt-2 text-sm text-gray-700"
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                transition={{ duration: 0.3 }}
+                                            >
                                                 {faq.answer}
-                                            </p>
+                                            </motion.p>
                                         </details>
                                     ))}
                                 </div>
@@ -278,9 +286,9 @@ export default function CourseDetailsPage() {
                     </div>
 
                     {/* --- Right Sticky Card --- */}
-                    <div className="lg:sticky lg:top-24 h-fit">
+                    <div className="lg:sticky lg:top-24 h-fit overflow-hidden">
                         <div
-                            className={`bg-white rounded-2xl border shadow-md overflow-hidden hover:shadow-lg transition-shadow`}
+                            className={`bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden hover:shadow-xl hover:border-blue-100 transition-all duration-300`}
                         >
                             <img
                                 src={course?.image}
@@ -288,78 +296,85 @@ export default function CourseDetailsPage() {
                                 className="w-full aspect-video object-cover"
                             />
                             <div className="p-6">
-                                <div className="flex justify-between items-start mb-1 gap-1">
-                                    <h2 className="text-xl font-bold text-gray-900">
+                                {/* Header Section */}
+                                <div className="flex justify-between items-start mb-2 gap-3">
+                                    <h2 className="text-xl font-bold text-gray-900 leading-tight">
                                         {course?.headline}
                                     </h2>
                                     {course?.duration && (
-                                        <span className="px-3 py-1 text-xs font-bold rounded-full bg-gray-100 text-gray-700 whitespace-nowrap">
+                                        <span className="px-3 py-1 text-xs font-bold rounded-full bg-slate-100 text-slate-700 whitespace-nowrap border border-slate-200">
                                             {course?.duration}
                                         </span>
                                     )}
                                 </div>
 
-                                <p className="text-gray-700 mb-3 text-sm">
+                                <p className="text-gray-700 mb-3 text-sm font-medium">
                                     {course?.subheadline}
                                 </p>
 
-                                <p className="text-gray-700 mb-6 text-xs">
+                                <p className="text-gray-500 mb-6 text-xs leading-relaxed line-clamp-3">
                                     {course?.description}
                                 </p>
 
-                                <div className="flex items-end justify-between mb-4">
+                                {/* Pricing Section */}
+                                <div className="flex items-end justify-between mb-6 pt-4 border-t border-gray-100">
                                     <div className="flex flex-col">
-                                        <span className="text-xs text-slate-400 font-medium">
+                                        <span className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold mb-1">
                                             EMI Starting At
                                         </span>
-                                        <div className="flex items-baseline gap-2">
+                                        <div className="flex items-baseline gap-1">
                                             <span className="text-2xl md:text-3xl font-extrabold text-slate-900">
-                                                {course.emi?.split("/")[0]}{" "}
-                                                <span className="text-sm md:text-base font-normal text-slate-500">
-                                                    /mo
-                                                </span>
+                                                {course.emi?.split("/")[0]}
+                                            </span>
+                                            <span className="text-sm font-medium text-slate-500">
+                                                /mo
                                             </span>
                                         </div>
                                     </div>
                                     <div className="text-right">
-                                        <p className="text-lg font-bold text-gray-500 relative">
+                                        <p className="text-lg font-bold text-slate-400 decoration-slate-400/50">
                                             {course.mrp}
                                         </p>
-                                        <p className="text-xs text-gray-400">
+                                        <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide">
                                             Course Price
                                         </p>
                                     </div>
                                 </div>
 
-                                {/* === RE-USING EXISTING BUTTON COMPONENT === */}
-
-                                <a
-                                    href={course.enrollmentUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <button
-                                        className={`relative px-8 py-3 w-full rounded-xl text-lg font-bold text-white 
-        bg-gradient-to-r ${palette.buttonFrom} ${palette.buttonTo}
-        transition-all duration-300 ease-out hover:scale-[1.03] hover:shadow-lg active:scale-[0.98]
-        
-        overflow-hidden 
-        
-        before:content-[''] before:absolute before:inset-0 before:-translate-x-full 
-        before:animate-[shine_2.5s_infinite] 
-        before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent
-        before:skew-x-[-25deg]
-        `}
+                                {/* === ACTION BUTTONS === */}
+                                <div className="space-y-3">
+                                    {/* 1. Primary Button (Enroll) */}
+                                    <a
+                                        href={course.enrollmentUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="block w-full"
                                     >
-                                        <span className="relative z-10">
-                                            Invest In Your Career
-                                        </span>
-                                    </button>
-                                </a>
-                                <p className="text-center text-xs text-gray-400 mt-4">
-                                    {course?.availability}
-                                </p>
-                                {/* === END OF UPDATED SECTION === */}
+                                        <button
+                                            className={`px-8 py-3.5 w-full rounded-xl text-lg font-bold text-white 
+                                            bg-gradient-to-r ${palette.buttonFrom} ${palette.buttonTo}
+                                            transition-all duration-300 ease-out hover:scale-[1.02]  active:scale-[0.98]
+                                            overflow-hidden 
+                                            before:content-[''] before:absolute before:inset-0 before:-translate-x-full 
+                                            before:animate-[shine_2.5s_infinite] 
+                                            before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent
+                                            before:skew-x-[-25deg]
+                                        `}
+                                        >
+                                            <span className="z-10 flex items-center justify-center gap-2">
+                                                Invest In Your Career
+                                            </span>
+                                        </button>
+                                    </a>
+
+                                    <GetEbook
+                                        ebook={course.ebook}
+                                        title={course.headline + " Ebook"}
+                                        className="w-full py-3.5"
+                                        buttonText="Get Ebook worth ₹999/- for Free"
+                                        smallText=""
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -368,10 +383,10 @@ export default function CourseDetailsPage() {
 
             {/* --- Sticky Offer Banner --- */}
             <div
-                className={`fixed bottom-0 left-0 right-0 z-50 backdrop-blur-md bg-white/80 border-t border-gray-200 shadow-lg animate-slideUp`}
+                className={`fixed bottom-0 left-0 right-0 z-50 backdrop-blur-md bg-white     border-t border-gray-200 shadow-lg animate-slideUp`}
             >
                 <div className="container mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div className="text-center sm:text-left">
+                    <div className="text-center sm:text-left hidden xl:block">
                         <h3 className="text-lg font-semibold text-gray-900">
                             {course.headline}
                         </h3>
@@ -405,11 +420,23 @@ export default function CourseDetailsPage() {
                                 </p>
                             </div>
                         </div>
-                        <EnrollButton
-                            palette={palette}
-                            text="Invest In Your Career"
-                            enrollmentUrl={course.enrollmentUrl}
-                        />
+
+                        {/* Action Buttons Group */}
+                        <div className="flex gap-3 w-full sm:w-auto items-center">
+                            {/* Secondary Button: Free Ebook */}
+                            <GetEbook
+                                ebook={course.ebook}
+                                title={course.headline + " Ebook"}
+                                buttonText="Get Free Ebook"
+                                smallText="worth ₹999/-"
+                            />
+
+                            <EnrollButton
+                                palette={palette}
+                                text="Invest In Your Career"
+                                enrollmentUrl={course.enrollmentUrl}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

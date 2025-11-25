@@ -9,7 +9,6 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CourseDetails from "./pages/CourseDetails";
 import About from "./pages/About";
-import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import RefundPolicy from "./pages/RefundPolicy";
@@ -20,6 +19,8 @@ import whatsAppIcon from "./assets/whatsapp.webp";
 import adVideo from "./assets/videos/ad-video.mp4";
 import "./animation.css";
 import SuccessStoriesPage from "./pages/SuccessStoriesPage";
+import MasterclassPopup from "./components/MasterClassPopup";
+import ContactUsPage from "./pages/ContactPage";
 
 // 1. Define Layout Component using <Outlet />
 const Layout = () => {
@@ -42,6 +43,7 @@ const Layout = () => {
                 />
             </a>
             <AdVideo />
+            <MasterclassPopup />
             <Footer />
         </div>
     );
@@ -72,7 +74,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "contact",
-                element: <Contact />,
+                element: <ContactUsPage />,
             },
             {
                 path: "privacy-policy",

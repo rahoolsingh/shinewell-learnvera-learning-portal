@@ -13,6 +13,7 @@ import zomatoLogo from "../assets/brands/zomato.png";
 import adobeLogo from "../assets/brands/adobe.png";
 import cognizantLogo from "../assets/brands/cognizant.png";
 import PlacementProcess from "../components/PlacementJourney";
+import { useEffect } from "react";
 
 // --- Mock Data ---
 const allStories = [
@@ -151,6 +152,11 @@ const allStories = [
 ];
 
 export default function SuccessStoriesPage() {
+    // scroll to top on page load
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <div className="min-h-screen bg-gray-50 font-sans text-slate-900">
             {/* 1. Hero Section */}

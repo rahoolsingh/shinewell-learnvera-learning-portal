@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
     Mail,
     Phone,
@@ -7,6 +7,10 @@ import {
     AlertCircle,
     CheckCircle2,
 } from "lucide-react";
+
+// --- CONFIGURATION ---
+// Replace with your actual Google reCAPTCHA v3 Site Key
+const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
 // Reusable info item
 const InfoItem = ({ icon, title, children }) => (
@@ -47,6 +51,26 @@ export default function ContactUsPage() {
 
     // 3. Track active errors
     const [errors, setErrors] = useState({});
+
+    // --- Load reCAPTCHA Script ---
+    useEffect(() => {
+        if (
+            !RECAPTCHA_SITE_KEY ||
+            RECAPTCHA_SITE_KEY === "YOUR_GOOGLE_RECAPTCHA_V3_SITE_KEY"
+        ) {
+            console.warn("RECAPTCHA_SITE_KEY is not set correctly.");
+            return;
+        }
+
+        const scriptId = "recaptcha-v3-script";
+        if (!document.getElementById(scriptId)) {
+            const script = document.createElement("script");
+            script.id = scriptId;
+            script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
+            script.async = true;
+            document.head.appendChild(script);
+        }
+    }, []);
 
     // --- CONSTANTS & REGEX ---
     const MIN_NAME_LENGTH = 2;
@@ -178,18 +202,44 @@ export default function ContactUsPage() {
 
         setIsSubmitting(true);
 
-        // Map state keys back to the expected form field names for the API
-        const apiData = {
-            "first-name": formData.firstName.trim(),
-            "last-name": formData.lastName.trim(),
-            email: formData.email.trim(),
-            phone: formData.phone.trim(),
-            city: formData.city.trim(),
-            message: formData.message.trim(),
-            form_id: "contact_page",
-        };
-
         try {
+            // 1. Get reCAPTCHA Token
+            let recaptchaToken = "";
+            const isConfigured =
+                RECAPTCHA_SITE_KEY &&
+                RECAPTCHA_SITE_KEY !== "YOUR_GOOGLE_RECAPTCHA_V3_SITE_KEY";
+
+            if (window.grecaptcha && isConfigured) {
+                try {
+                    await new Promise((resolve) => {
+                        window.grecaptcha.ready(() => resolve());
+                    });
+                    recaptchaToken = await window.grecaptcha.execute(
+                        RECAPTCHA_SITE_KEY,
+                        {
+                            action: "contact_form",
+                        }
+                    );
+                } catch (recaptchaError) {
+                    console.error(
+                        "reCAPTCHA execution failed:",
+                        recaptchaError
+                    );
+                }
+            }
+
+            // 2. Prepare API Data with Token
+            const apiData = {
+                "first-name": formData.firstName.trim(),
+                "last-name": formData.lastName.trim(),
+                email: formData.email.trim(),
+                phone: formData.phone.trim(),
+                city: formData.city.trim(),
+                message: formData.message.trim(),
+                form_id: "contact_page",
+                recaptcha_token: recaptchaToken, // Added token
+            };
+
             const response = await fetch("/tools/contact-form.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -398,7 +448,7 @@ export default function ContactUsPage() {
                                         className={getInputClasses(
                                             getFieldStatus("phone")
                                         )}
-                                        placeholder="+91 98765 43210"
+                                        placeholder="XXX-XXXX-XXXX"
                                     />
                                     {renderStatusIcon("phone")}
                                 </div>
@@ -469,6 +519,29 @@ export default function ContactUsPage() {
                                         ? "Sending..."
                                         : "Send Message"}
                                 </button>
+                                {/* Privacy Text for reCAPTCHA */}
+                                <p className="text-[10px] text-gray-400 text-center mt-3">
+                                    This site is protected by reCAPTCHA and the
+                                    Google
+                                    <a
+                                        href="https://policies.google.com/privacy"
+                                        className="text-indigo-500 hover:underline mx-1"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        Privacy Policy
+                                    </a>{" "}
+                                    and
+                                    <a
+                                        href="https://policies.google.com/terms"
+                                        className="text-indigo-500 hover:underline mx-1"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        Terms of Service
+                                    </a>{" "}
+                                    apply.
+                                </p>
                             </div>
 
                             {/* Response Message */}
