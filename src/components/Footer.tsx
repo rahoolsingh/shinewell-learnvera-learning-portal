@@ -5,6 +5,7 @@ import { faInstagram } from "@fortawesome/free-brands-svg-icons/faInstagram";
 import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons/faLinkedinIn";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons/faYoutube";
 import logo from "../assets/images/logo-square-white.png";
+import { Link } from "react-router";
 
 export default function Footer() {
     return (
@@ -27,36 +28,36 @@ export default function Footer() {
                         </h3>
                         <ul className="space-y-3">
                             <li>
-                                <a
-                                    href="/"
+                                <Link
+                                    to="/"
                                     className="hover:text-white transition-colors duration-200"
                                 >
                                     Home
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a
-                                    href="/about"
+                                <Link
+                                    to="/about"
                                     className="hover:text-white transition-colors duration-200"
                                 >
                                     About Us
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a
-                                    href="/#courses"
+                                <Link
+                                    to="/#courses"
                                     className="hover:text-white transition-colors duration-200"
                                 >
                                     Courses
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a
-                                    href="/contact"
+                                <Link
+                                    to="/contact"
                                     className="hover:text-white transition-colors duration-200"
                                 >
                                     Contact Us
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>
@@ -68,28 +69,28 @@ export default function Footer() {
                         </h3>
                         <ul className="space-y-3">
                             <li>
-                                <a
-                                    href="terms-and-conditions"
+                                <Link
+                                    to="terms-and-conditions"
                                     className="hover:text-white transition-colors duration-200"
                                 >
                                     Terms & Conditions
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a
-                                    href="privacy-policy"
+                                <Link
+                                    to="privacy-policy"
                                     className="hover:text-white transition-colors duration-200"
                                 >
                                     Privacy Policy
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a
-                                    href="refund-policy"
+                                <Link
+                                    to="refund-policy"
                                     className="hover:text-white transition-colors duration-200"
                                 >
                                     Refund Policy
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>
@@ -105,54 +106,49 @@ export default function Footer() {
 
                     {/* Social Media Icons */}
                     <div className="flex space-x-5">
-                        <a
-                            href="https://www.facebook.com/learnveraindia/"
+                        <Link
+                            to="https://www.facebook.com/learnveraindia/"
                             target="_blank"
                             className="hover:text-white transition-colors duration-200"
                             aria-label="Facebook"
                         >
                             <FontAwesomeIcon icon={faFacebookF} />
-                        </a>
-                        <a
-                            href="https://x.com/learnvera"
+                        </Link>
+                        <Link
+                            to="https://x.com/learnvera"
                             target="_blank"
                             className="hover:text-white transition-colors duration-200"
                             aria-label="Twitter"
                         >
                             <FontAwesomeIcon icon={faXTwitter} />
-                        </a>
-                        <a
-                            href="https://www.instagram.com/learnvera/"
+                        </Link>
+                        <Link
+                            to="https://www.instagram.com/learnvera/"
                             target="_blank"
                             className="hover:text-white transition-colors duration-200"
                             aria-label="Instagram"
                         >
                             <FontAwesomeIcon icon={faInstagram} />
-                        </a>
-                        <a
-                            href="https://www.linkedin.com/company/learnvera"
+                        </Link>
+                        <Link
+                            to="https://www.linkedin.com/company/learnvera"
                             target="_blank"
                             className="hover:text-white transition-colors duration-200"
                             aria-label="LinkedIn"
                         >
                             <FontAwesomeIcon icon={faLinkedinIn} />
-                        </a>
-                        <a
-                            href="https://www.youtube.com/@Learnvera"
+                        </Link>
+                        <Link
+                            to="https://www.youtube.com/@Learnvera"
                             target="_blank"
                             className="hover:text-white transition-colors duration-200"
                             aria-label="YouTube"
                         >
                             <FontAwesomeIcon icon={faYoutube} />
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>
         </footer>
     );
 }
-// https://www.youtube.com/@Learnvera
-// https://www.instagram.com/learnvera/
-// https://www.linkedin.com/company/learnvera
-// https://www.facebook.com/learnveraindia/
-// https://x.com/learnvera
