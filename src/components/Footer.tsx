@@ -8,13 +8,16 @@ import logo from "../assets/images/logo-square-white.png";
 
 export default function Footer() {
     return (
-        <footer className="bg-gray-900 text-gray-400 font-inter">
+        <footer className="bg-gray-900 text-gray-400 font-inter md:pb-10 pb-44">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 {/* --- Top Section: Columns --- */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
                     {/* Column 1: Brand & Tagline */}
-                    <div>
+                    <div className="flex flex-col items-center md:items-start w-fit">
                         <img src={logo} alt="LearnVera Logo" className="h-40" />
+                        <p className="mt-1 text-xs font-normal text-gray-200">
+                            (An initiative by Shinewell)
+                        </p>
                     </div>
 
                     {/* Column 2: Navigation Links */}

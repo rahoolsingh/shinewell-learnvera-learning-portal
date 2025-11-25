@@ -10,6 +10,7 @@ import {
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import courseData from "../data/courses.js";
+import { Link } from "react-router";
 
 // --- THEME COLORS (Unchanged) ---
 const colorPalettes = {
@@ -237,15 +238,6 @@ const CourseCard = ({
         <div
             className={`flex flex-col bg-white rounded-2xl shadow-lg border-2 ${palette.border} hover:border-dashed transition-all duration-300 relative`}
         >
-            {/* DISCOUNT BADGE (Unchanged) */}
-            {discountPercent && (
-                <div className="absolute -top-6 -right-6 bg-gradient-to-bl from-yellow-300 to-yellow-400 text-gray-900 p-4 rounded-full shadow-lg rotate-12 z-20 text-xs font-extrabold aspect-square flex flex-col items-center justify-center scale-75 overflow-hidden">
-                    <span className="text-xl align-top">{discountPercent}</span>
-                    <span className="">OFF!</span>
-                    <div className="absolute w-32 h-32 bg-white opacity-40 blur-lg animate-shine z-10"></div>
-                </div>
-            )}
-
             {/* BADGE (Unchanged) */}
             {badge && (
                 <div
@@ -385,59 +377,43 @@ const CourseCard = ({
                     )}
                 </AnimatePresence>
 
-                {/* --- *** MODIFIED: FOOTER/OFFER SECTION *** --- */}
-                {/* Removed mt-auto, added fixed margin */}
                 <div
                     className={`relative border -m-2 px-4 py-2 rounded-2xl pt-3 bg-gray-50 ${
                         isExpanded && "mt-auto"
                     }`}
                 >
-                    {/* Offer Banner (Unchanged) */}
-                    <motion.p
-                        className="text-center text-sm font-bold text-red-600 mb-3"
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                    >
-                        Anniversary Week Special Offer!
-                    </motion.p>
-
-                    {/* New Price Display Component (Unchanged) */}
-                    <div className="flex justify-center items-center mb-5">
-                        <div className="flex items-baseline gap-2 justify-center">
-                            <span className="text-3xl font-extrabold text-gray-900">
-                                {course.discountedPrice}
+                    <div className="flex items-end justify-between mb-4">
+                        <div className="flex flex-col">
+                            <span className="text-xs text-slate-400 font-medium">
+                                EMI Starting At
                             </span>
-                            <span className="text-lg font-bold text-gray-500 relative px-2">
+                            <div className="flex items-baseline gap-2">
+                                <span className="text-2xl md:text-3xl font-extrabold text-slate-900">
+                                    {course.emi?.split("/")[0]}{" "}
+                                    <span className="text-sm md:text-base font-normal text-slate-500">
+                                        /mo
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <div className="text-right">
+                            <p className="text-sm font-medium text-gray-500 relative">
                                 {course.mrp}
-                                <span className="absolute inset-0 top-1/2 border-t-4 border-red-500 transform -rotate-12"></span>
-                            </span>
+                            </p>
+                            <p className="text-xs text-gray-400">
+                                Course Price
+                            </p>
                         </div>
                     </div>
 
                     {/* Enroll Button (Unchanged) */}
                     <div className="relative group w-full">
-                        <motion.p
-                            className="inline-block bg-red-500 text-white text-xs px-2 py-0.5 rounded-full absolute -top-3 left-3 z-10"
-                            initial={{ scale: 0.8, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            transition={{
-                                duration: 0.3,
-                                yoyo: Infinity,
-                                ease: "easeInOut",
-                            }}
-                        >
-                            OFFER
-                        </motion.p>
+                        {/* <motios */}
                         <div className="absolute -inset-[2px] bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 rounded-xl blur-sm opacity-70 group-hover:opacity-100 animate-borderFlow"></div>
-                        <a
-                            href={`course-details/${
-                                course.id
-                            }?q=${course.headline
+                        <Link
+                            to={`course-details/${course.id}?q=${course.headline
                                 ?.toLowerCase()
                                 .replace(/\s+/g, "-")}`}
-                            target="_blank"
-                            rel="noreferrer"
                         >
                             <button
                                 className="relative w-full px-8 py-2 text-xl font-extrabold text-white rounded-xl overflow-hidden transform skew-x-[-10deg]
@@ -450,7 +426,7 @@ const CourseCard = ({
                             >
                                 Enroll Now
                             </button>
-                        </a>
+                        </Link>
                     </div>
 
                     <p className="text-center text-xs text-gray-400 mt-4">

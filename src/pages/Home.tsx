@@ -11,6 +11,7 @@ import CallToAction from "../components/CallToAction";
 import LearningEnvironment from "../components/LearningEnvironment";
 import Contact from "../components/Contact";
 import CourseOfferSection from "../components/CourseOfferSection";
+import HiringPartners from "../components/HiringPartners";
 
 function Home() {
     return (
@@ -18,9 +19,10 @@ function Home() {
             <Hero />
             {/* <StatsBar /> */}
             <Features />
-            <Opportunities />
+            {/* <Opportunities /> */}
+            <HiringPartners />
             <Courses />
-            <CourseOfferSection />
+            {/* <CourseOfferSection /> */}
             <RecordedCourses />
             <Testimonials />
             <FounderMessage />

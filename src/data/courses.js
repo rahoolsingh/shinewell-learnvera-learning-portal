@@ -9,7 +9,7 @@ const courseData = [
         id: 1,
         theme: "purple",
         image: DigitalMarketingThumbnail,
-        duration: "45-60 Days",
+        duration: "90 Days",
         enrollmentUrl: "https://rzp.io/rzp/mPFd8DW",
         headline: "Digital Marketing Foundation",
         subheadline: "(The Perfect Start for Beginners & Career Switchers)",
@@ -89,6 +89,7 @@ const courseData = [
         ],
         mrp: "₹29,999",
         discountedPrice: "₹2,999",
+        emi: "₹1,055/month",
         faq: [
             {
                 question: "Who is this course for?",
@@ -112,7 +113,7 @@ const courseData = [
         id: 2,
         theme: "green",
         image: socialMediaMarketingThumbnail,
-        duration: "45–60 Days",
+        duration: "90 Days",
         enrollmentUrl: "https://rzp.io/rzp/mqASYyN2",
         headline: "Social Media, Content & Influencer Growth Mastery",
         subheadline: "(Dominate Organic Marketing & Personal Branding)",
@@ -193,6 +194,7 @@ const courseData = [
         ],
         mrp: "₹29,999",
         discountedPrice: "₹2,999",
+        emi: "₹1,055/month",
         faq: [
             {
                 question: "Who is this course for?",
@@ -216,7 +218,7 @@ const courseData = [
         id: 3,
         theme: "blue",
         image: PerformanceMarketingThumbnail,
-        duration: "45–60 Days",
+        duration: "90 Days",
         enrollmentUrl: "https://rzp.io/rzp/4AM3LL5",
         headline: "Performance Marketing Pro",
         subheadline: "(Meta & Google Ads Deep Dive)",
@@ -296,6 +298,7 @@ const courseData = [
         ],
         mrp: "₹39,999",
         discountedPrice: "₹3,999",
+        emi: "₹1,406/month",
         faq: [
             {
                 question: "What makes this course different from others?",
@@ -316,7 +319,7 @@ const courseData = [
         id: 4,
         theme: "cyan",
         image: MarketingAutomationThumbnail,
-        duration: "45–60 Days",
+        duration: "90 Days",
         enrollmentUrl: "https://rzp.io/rzp/6APrwe9",
         headline:
             "Marketing Automation, AI Tools & Freelancing Success Blueprint",
@@ -403,6 +406,7 @@ const courseData = [
         ],
         mrp: "₹49,999",
         discountedPrice: "₹4,999",
+        emi: "₹1,758/month",
         faq: [
             {
                 question: "Who is this course for?",
@@ -423,100 +427,5 @@ const courseData = [
         ],
     },
 ];
-
-// const a = [
-//     {
-//         id: 5,
-//         theme: "purple",
-//         badge: "LaunchPad",
-//         image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//         category: "Foundation",
-//         duration: "1 Month",
-//         enrollmentUrl: "https://example.com/enroll-foundation",
-//         rating: 5,
-//         tags: ["Beginner", "Live Cohort", "Hands-on Projects"],
-//         headline: "TESTING FOR COURSE DETAILS PAGE",
-//         description:
-//             "Build a solid base in websites, SEO, ads, and analytics-perfect for beginners and career switchers looking to enter the field.",
-//         deliverables: [
-//             "Set up a professional WordPress website from scratch.",
-//             "Configure Google Analytics (GA4) and Google Search Console.",
-//             "Publish 2 fully SEO-optimized blog posts and pages.",
-//             "Draft complete Google & Meta ad campaigns with compelling creatives.",
-//             "Track key conversion events and build a simple performance report.",
-//         ],
-//         availability: "ONLINE & OFFLINE BOTH AVAILABLE",
-//         instructor: {
-//             name: "Priya Sharma",
-//             title: "Senior Marketing Strategist",
-//             image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1888&auto=format&fit=crop&ixlib-rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//         },
-//         whoIsThisFor: [
-//             "Absolute beginners with no prior marketing experience.",
-//             "Small business owners wanting to manage their own online presence.",
-//             "Students and recent graduates looking for a high-demand skill.",
-//             "Professionals in other fields considering a career change.",
-//         ],
-//         prerequisites: [
-//             "No prior experience required.",
-//             "A computer with a stable internet connection.",
-//             "Basic computer literacy (browsing, file management).",
-//         ],
-//         curriculum: [
-//             {
-//                 module: 1,
-//                 title: "Digital Marketing & Website Setup",
-//                 topics: [
-//                     "Understanding the Digital Marketing Ecosystem",
-//                     "Intro to WordPress: Setup & Configuration",
-//                     "Choosing a Domain, Hosting, and Themes",
-//                     "Building Your First Pages & Blog Posts",
-//                 ],
-//             },
-//             {
-//                 module: 2,
-//                 title: "SEO & Content Marketing",
-//                 topics: [
-//                     "On-Page, Off-Page, and Technical SEO Basics",
-//                     "Keyword Research and Competitor Analysis",
-//                     "Writing High-Quality, SEO-Friendly Content",
-//                     "Google Search Console: Indexing & Performance",
-//                 ],
-//             },
-//             {
-//                 module: 3,
-//                 title: "Paid Advertising (PPC)",
-//                 topics: [
-//                     "Introduction to Google Ads & Meta Ads",
-//                     "Creating Your First Ad Campaign (Search & Social)",
-//                     "Writing Ad Copy & Designing Simple Creatives",
-//                     "Understanding Bidding & Budgets",
-//                 ],
-//             },
-//             {
-//                 module: 4,
-//                 title: "Analytics & Reporting",
-//                 topics: [
-//                     "Setting up Google Analytics 4 (GA4)",
-//                     "Understanding Key Metrics (Users, Sessions, Bounce Rate)",
-//                     "Tracking Goals & Conversion Events",
-//                     "Building a Basic Monthly Performance Report",
-//                 ],
-//             },
-//         ],
-// mrp: "₹30,000",
-// discountedPrice: "₹2,499",
-// faq: [
-//             {
-//                 question: "Is this course really for complete beginners?",
-//                 answer: "Yes! We start from the absolute basics. As long as you know how to use a computer and browse the internet, you'll be able to follow along.",
-//             },
-//             {
-//                 question: "Will I need to buy any extra software?",
-//                 answer: "You will need to purchase a domain name and hosting for your WordPress site, which typically costs a small amount. We will guide you through budget-friendly options.",
-//             },
-//         ],
-//     },
-// ];
 
 export default courseData;

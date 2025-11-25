@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { useParams } from "react-router";
 import courseData from "../data/courses.js";
+import { useEffect } from "react";
 
 // ... (colorPalettes, calculateDiscountPercentage, StarRating, DetailSection, EnrollButton components are unchanged) ...
 
@@ -96,6 +97,11 @@ const EnrollButton = ({
 );
 
 export default function CourseDetailsPage() {
+    // scroll to top on mount
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const { id } = useParams();
     const course = courseData.find((c) => c.id === Number(id));
     if (!course)
@@ -282,12 +288,12 @@ export default function CourseDetailsPage() {
                                 className="w-full aspect-video object-cover"
                             />
                             <div className="p-6">
-                                <div className="flex justify-between items-center mb-1">
+                                <div className="flex justify-between items-start mb-1 gap-1">
                                     <h2 className="text-xl font-bold text-gray-900">
                                         {course?.headline}
                                     </h2>
                                     {course?.duration && (
-                                        <span className="px-3 py-1 text-xs font-bold rounded-full bg-gray-100 text-gray-700">
+                                        <span className="px-3 py-1 text-xs font-bold rounded-full bg-gray-100 text-gray-700 whitespace-nowrap">
                                             {course?.duration}
                                         </span>
                                     )}
@@ -301,26 +307,27 @@ export default function CourseDetailsPage() {
                                     {course?.description}
                                 </p>
 
-                                {/* === NEW INTEGRATED UI === */}
-                                <div className="mb-5 text-center">
-                                    <p className="text-sm font-bold text-red-600 mb-2 flex items-center justify-center gap-2">
-                                        {/* --- NEW --- */}
-                                        {discountPercent && (
-                                            <span className="text-lg font-bold text-green-600">
-                                                ({discountPercent} OFF)
+                                <div className="flex items-end justify-between mb-4">
+                                    <div className="flex flex-col">
+                                        <span className="text-xs text-slate-400 font-medium">
+                                            EMI Starting At
+                                        </span>
+                                        <div className="flex items-baseline gap-2">
+                                            <span className="text-2xl md:text-3xl font-extrabold text-slate-900">
+                                                {course.emi?.split("/")[0]}{" "}
+                                                <span className="text-sm md:text-base font-normal text-slate-500">
+                                                    /mo
+                                                </span>
                                             </span>
-                                        )}
-                                        Anniversary Week Special Offer!
-                                    </p>
-                                    <div className="flex items-baseline gap-2 justify-center">
-                                        <span className="text-3xl font-extrabold text-gray-900">
-                                            {course.discountedPrice}
-                                        </span>
-                                        <span className="text-lg font-bold text-gray-500 relative px-2">
+                                        </div>
+                                    </div>
+                                    <div className="text-right">
+                                        <p className="text-lg font-bold text-gray-500 relative">
                                             {course.mrp}
-                                            {/* Strikethrough line */}
-                                            <span className="absolute inset-0 top-1/2 border-t-2 border-red-500 transform -rotate-12"></span>
-                                        </span>
+                                        </p>
+                                        <p className="text-xs text-gray-400">
+                                            Course Price
+                                        </p>
                                     </div>
                                 </div>
 
@@ -345,7 +352,7 @@ export default function CourseDetailsPage() {
         `}
                                     >
                                         <span className="relative z-10">
-                                            Enroll Now & Save {discountPercent}
+                                            Invest In Your Career
                                         </span>
                                     </button>
                                 </a>
@@ -375,30 +382,32 @@ export default function CourseDetailsPage() {
                     </div>
 
                     <div className="w-full sm:w-auto flex flex-col sm:flex-row items-center gap-4">
-                        <div>
-                            <div className="flex items-baseline gap-2 justify-center mb-1">
-                                <span className="text-2xl font-extrabold text-gray-900">
-                                    {course.discountedPrice}
+                        <div className="flex items-end justify-between w-full sm:w-auto gap-6">
+                            <div className="flex flex-col">
+                                <span className="text-xs text-slate-400 font-medium">
+                                    EMI Starting At
                                 </span>
-                                <span className="text-lg font-bold text-gray-500 relative px-2">
-                                    {course.mrp}
-                                    {/* Strikethrough line */}
-                                    <span className="absolute inset-0 top-1/2 border-t-2 border-red-500 transform -rotate-12"></span>
-                                </span>
-                                {/* --- NEW --- */}
-                                {discountPercent && (
-                                    <span className="text-base font-bold text-green-600">
-                                        ({discountPercent} OFF)
+                                <div className="flex items-baseline gap-2">
+                                    <span className="text-2xl md:text-3xl font-extrabold text-slate-900">
+                                        {course.emi?.split("/")[0]}{" "}
+                                        <span className="text-sm md:text-base font-normal text-slate-500">
+                                            /mo
+                                        </span>
                                     </span>
-                                )}
+                                </div>
                             </div>
-                            <p className="text-xs text-red-600 text-center">
-                                Anniversary Week Special Offer!
-                            </p>
+                            <div className="text-right">
+                                <p className="text-lg font-bold text-gray-500 relative">
+                                    {course.mrp}
+                                </p>
+                                <p className="text-xs text-gray-400">
+                                    Course Price
+                                </p>
+                            </div>
                         </div>
                         <EnrollButton
                             palette={palette}
-                            text="Get This Course"
+                            text="Invest In Your Career"
                             enrollmentUrl={course.enrollmentUrl}
                         />
                     </div>

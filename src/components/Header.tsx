@@ -2,6 +2,7 @@ import { Menu, X, Phone } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "../assets/images/logo.png";
+import { Link } from "react-router";
 
 // --- Mock useScroll Hook (as provided) ---
 const useScroll = () => {
@@ -57,7 +58,7 @@ const CtaCallButton = () => (
                     repeatDelay: 0.8,
                 }}
             >
-                <Phone className="w-4 h-4" />
+                <Phone className="w-4 h-4" fill="currentColor" />
             </motion.div>
             <span>Get Free Consultation</span>
         </span>
@@ -128,14 +129,13 @@ export default function Header() {
             >
                 {/* --- Desktop Header Pill (Already light-themed and good) --- */}
                 <motion.div
-                    whileHover={{ scale: 1.01 }}
-                    className="flex items-center justify-between w-full max-w-md lg:max-w-5xl px-4 lg:px-8 py-2.5 lg:py-3
-            bg-white/90 backdrop-blur-2xl shadow-[0_4px_20px_rgba(0,0,0,0.2)]
-            border border-white/20 rounded-full relative overflow-hidden"
+                    // whileHover={{ scale: 1.01 }}
+                    className="flex items-center justify-between w-full max-w-md lg:container px-4 lg:px-8 py-2.5 lg:py-3
+                    bg-white/90 backdrop-blur-2xl shadow-lg border border-white/20 rounded-full relative overflow-hidden"
                 >
                     <motion.a
                         href="/"
-                        className="flex items-center font-bold text-xl lg:text-2xl"
+                        className="flex items-center font-bold text-xl lg:text-2xl flex-col"
                     >
                         <img
                             src={logo}
@@ -146,17 +146,17 @@ export default function Header() {
 
                     <nav className="hidden lg:flex items-center space-x-10 text-gray-800 font-medium">
                         {NAV_LINKS.map((link) => (
-                            <motion.a
-                                key={link.label}
-                                href={link.href}
-                                whileHover={{ y: -2, color: "#2563eb" }} // Darker blue
-                                transition={{
-                                    type: "spring",
-                                    stiffness: 300,
-                                }}
-                            >
-                                {link.label}
-                            </motion.a>
+                            <Link to={link?.href} key={link.label}>
+                                <motion.span
+                                    whileHover={{ y: -2, color: "#2563eb" }} // Darker blue
+                                    transition={{
+                                        type: "spring",
+                                        stiffness: 300,
+                                    }}
+                                >
+                                    {link.label}
+                                </motion.span>
+                            </Link>
                         ))}
                     </nav>
 
@@ -192,7 +192,11 @@ export default function Header() {
                                 href="/"
                                 className="flex items-center space-x-1 font-bold text-2xl"
                             >
-                                <img src={logo} alt="LearnVera Logo" className="h-8" />
+                                <img
+                                    src={logo}
+                                    alt="LearnVera Logo"
+                                    className="h-8"
+                                />
                             </a>
                             <button
                                 onClick={() => setIsMobileMenuOpen(false)}

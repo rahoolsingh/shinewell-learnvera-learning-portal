@@ -27,18 +27,10 @@ export default function Opportunities() {
                         THE OPPORTUNITIES
                     </h2>
                     <p className="text-xl text-gray-600">
-                        In a world run by AI and innovation, digital skills aren’t optional — they’re the only way to a secured future. 
+                        In a world run by AI and innovation, digital skills
+                        aren’t optional — they’re the only way to a secured
+                        future.
                     </p>
-                    {/* <p className="text-xs text-gray-600">
-                        LearnVera is dedicated to transforming lives by providing
-                        accessible and high-quality digital education. Through our
-                        comprehensive courses and expert-led training programs, we
-                        equip individuals with the skills and knowledge needed to
-                        thrive in the digital age. Our mission is to bridge the gap
-                        between traditional education and the evolving demands of the
-                        modern workforce, enabling our learners to unlock new career
-                        opportunities and achieve their professional goals.
-                    </p> */}
                 </div>
 
                 <div className="mb-8">
