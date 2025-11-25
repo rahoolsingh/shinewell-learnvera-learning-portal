@@ -19,6 +19,7 @@ import NotFound from "./pages/NotFound";
 import whatsAppIcon from "./assets/whatsapp.webp";
 import adVideo from "./assets/videos/ad-video.mp4";
 import "./animation.css";
+import SuccessStoriesPage from "./pages/SuccessStoriesPage";
 
 // 1. Define Layout Component using <Outlet />
 const Layout = () => {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
             {
                 path: "about",
                 element: <About />,
+            },
+            {
+                path: "success-stories",
+                element: <SuccessStoriesPage />,
             },
             {
                 path: "contact",

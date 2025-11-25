@@ -101,10 +101,10 @@ export default function PlacementSuccess() {
 
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center mb-16 max-w-3xl mx-auto">
-                    <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 mb-6 tracking-tight">
+                    {/* <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 mb-6 tracking-tight">
                         From Learning to{" "}
                         <span className="text-blue-600">Leading</span>
-                    </h2>
+                    </h2> */}
                     <p className="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
                         Our students don't just find jobs; they embark on
                         transformative careers at the forefront of technology.

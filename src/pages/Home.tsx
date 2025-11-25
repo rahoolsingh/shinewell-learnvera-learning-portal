@@ -13,6 +13,7 @@ import Contact from "../components/Contact";
 import CourseOfferSection from "../components/CourseOfferSection";
 import HiringPartners from "../components/HiringPartners";
 import PlacementSuccess from "../components/PlacementSuccess";
+import PlacementJourney from "../components/PlacementJourney";
 
 function Home() {
     return (
@@ -22,6 +23,7 @@ function Home() {
             <Features />
             {/* <Opportunities /> */}
             <HiringPartners />
+            <PlacementJourney />
             <PlacementSuccess />
             <Courses />
             {/* <CourseOfferSection /> */}
