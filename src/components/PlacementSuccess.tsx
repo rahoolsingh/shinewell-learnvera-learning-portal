@@ -173,7 +173,7 @@ export default function PlacementSuccess() {
                 {/* Optional: "View All" Button */}
                 <div className="mt-12 text-center">
                     <Link
-                        to="/success-stories"
+                        to="/placements"
                         className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors"
                     >
                         View All Success Stories

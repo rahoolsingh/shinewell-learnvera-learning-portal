@@ -359,7 +359,7 @@ export default function ContactUsPage() {
                     {/* ---- Form ---- */}
                     <div className="bg-white/70 backdrop-blur-md rounded-2xl shadow-xl p-8 md:p-10 border border-gray-100 h-fit">
                         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-                            Send us a Message
+                            Book A Free Demo
                         </h2>
 
                         <form

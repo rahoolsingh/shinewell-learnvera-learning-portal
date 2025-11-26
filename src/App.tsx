@@ -69,7 +69,7 @@ const router = createBrowserRouter([
                 element: <About />,
             },
             {
-                path: "success-stories",
+                path: "placements",
                 element: <SuccessStoriesPage />,
             },
             {

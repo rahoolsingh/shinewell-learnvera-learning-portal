@@ -70,6 +70,7 @@ const NAV_LINKS = [
     { label: "Home", href: "/" },
     { label: "About Us", href: "/about" },
     { label: "Courses", href: "/#courses" },
+    { label: "Placements", href: "/placements" },
     { label: "Contact Us", href: "/contact" },
 ];
 

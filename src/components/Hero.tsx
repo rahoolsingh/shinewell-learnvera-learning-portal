@@ -81,7 +81,7 @@ export default function Hero() {
                         </h1>
 
                         <p className="text-sm md:text-lg lg:text-2xl max-w-4xl text-gray-300 font-medium">
-                            At LearnVera, we merge highly skilled human
+                            At LearnVera (An initiative by Shinewell), we merge highly skilled human
                             expertise with AI to help you master the most
                             in-demand digital skills. From performance marketing
                             to AI-powered growth strategies. Learn smarter. Grow
