@@ -56,11 +56,11 @@ export default function BrochureSection() {
                             {/* Download Action */}
                             <div className="mt-auto border-blue-100/50">
                                 <GetEbook
-                                    ebook="Learnvera_Course_Brochure.pdf"
+                                    ebook="Learnvera Brochure.pdf"
                                     title="Program Brochure"
                                     buttonText="Download Brochure"
                                     smallText="Placement & Career Guide"
-                                    className="hover:!bg-blue-100 !bg-blue-50 hover:!border-blue-200 !border-blue-200 hover:!text-blue-700 !text-blue-700 !flex-row-reverse !w-full !justify-between !py-3"
+                                    className="hover:!bg-blue-100 !bg-blue-50 hover:!border-blue-200 !border-blue-200 hover:!text-blue-700 !text-blue-700 !flex-row-reverse !w-full !justify-between !py-3 !text-left"
                                 />
                             </div>
                         </div>
@@ -92,11 +92,11 @@ export default function BrochureSection() {
                             {/* Download Action */}
                             <div className="mt-auto border-purple-100/50">
                                 <GetEbook
-                                    ebook="Learnvera_Course_Syllabus.pdf"
+                                    ebook="Learnvera Course Syllabus.pdf"
                                     title="Detailed Syllabus"
                                     buttonText="Download Syllabus"
                                     smallText="Full Curriculum Breakdown"
-                                    className="hover:!bg-purple-100 !bg-purple-50 hover:!border-purple-200 !border-purple-200 hover:!text-purple-700 !text-purple-700 !flex-row-reverse !w-full !justify-between !py-3"
+                                    className="hover:!bg-purple-100 !bg-purple-50 hover:!border-purple-200 !border-purple-200 hover:!text-purple-700 !text-purple-700 !flex-row-reverse !w-full !justify-between !py-3 !text-left"
                                 />
                             </div>
                         </div>
@@ -128,11 +128,11 @@ export default function BrochureSection() {
                             {/* Download Action */}
                             <div className="mt-auto border-emerald-100/50">
                                 <GetEbook
-                                    ebook="Learnvera_Ebook.pdf"
+                                    ebook="Learnvera Career Ebook.pdf"
                                     title="Skill Up Guide"
                                     buttonText="Download Free Ebook"
-                                    smallText="Interview Prep & Tips"
-                                    className="hover:!bg-emerald-100 !bg-emerald-50 hover:!border-emerald-200 !border-emerald-200 hover:!text-emerald-700 !text-emerald-700 !flex-row-reverse !w-full !justify-between !py-3"
+                                    smallText="Digital Marketing Career Blueprint"
+                                    className="hover:!bg-emerald-100 !bg-emerald-50 hover:!border-emerald-200 !border-emerald-200 hover:!text-emerald-700 !text-emerald-700 !flex-row-reverse !w-full !justify-between !py-3 !text-left"
                                 />
                             </div>
                         </div>

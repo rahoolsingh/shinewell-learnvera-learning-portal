@@ -1,6 +1,7 @@
 import hero1 from "../assets/hero-3.png";
 import background1 from "../assets/background-1.gif";
 import { Rocket } from "lucide-react";
+import { Link } from "react-router";
 
 export default function Hero() {
     return (
@@ -82,11 +83,23 @@ export default function Hero() {
                         </h1>
 
                         <p className="text-sm md:text-lg lg:text-2xl max-w-4xl text-gray-300 font-medium">
-                            At LearnVera, we merge highly skilled human
-                            expertise with AI to help you master the most
-                            in-demand digital skills. From performance marketing
-                            to AI-powered growth strategies. Learn smarter. Grow
-                            faster. Lead the future.
+                            At LearnVera{" "}
+                            <span className="text-cyan-400 transition-colors">
+                                (An initiative by{" "}
+                                <Link
+                                    to={"https://shinewell.in"}
+                                    target="_blank"
+                                    className="underline hover:text-cyan-300 transition-colors"
+                                >
+                                    Shinewell
+                                </Link>
+                                )
+                            </span>
+                            , we merge highly skilled human expertise with AI to
+                            help you master the most in-demand digital skills.
+                            From performance marketing to AI-powered growth
+                            strategies. Learn smarter. Grow faster. Lead the
+                            future.
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4">

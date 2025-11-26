@@ -1,22 +1,26 @@
 import React from "react";
 import { Check, Award, ShieldCheck, Eye } from "lucide-react";
 
+import certificate1 from "../assets/certificate-1.png";
+import certificate2 from "../assets/certificate-2.png";
+import certificate3 from "../assets/certificate-3.png";
+
 // Placeholder data - replace 'src' with your actual certificate image paths
 const certificateImages = [
     {
-        title: "Course Completion",
-        src: "https://images.unsplash.com/photo-1544531586-fde5298cdd40?auto=format&fit=crop&q=80&w=1000",
-        description: "Official verification of your technical mastery.",
+        title: "Certificate of Achievement",
+        src: certificate1,
+        description: "Recognition for course completion and excellence.",
     },
     {
-        title: "Internship Experience",
-        src: "https://images.unsplash.com/photo-1544531586-fde5298cdd40?auto=format&fit=crop&q=80&w=1000",
-        description: "Proof of real-world project contribution.",
+        title: "Certificate of Participation",
+        src: certificate2,
+        description: "Acknowledgment for active involvement.",
     },
     {
-        title: "Letter of Recommendation",
-        src: "https://images.unsplash.com/photo-1544531586-fde5298cdd40?auto=format&fit=crop&q=80&w=1000",
-        description: "Endorsement for top-tier performers.",
+        title: "Certificate of Completion",
+        src: certificate3,
+        description: "Proof of successfully finishing the program.",
     },
 ];
 
@@ -61,12 +65,13 @@ export default function CertificatesShowcase() {
                             className="group relative flex flex-col"
                         >
                             {/* Image Frame */}
-                            <div className="relative aspect-video bg-slate-50 rounded-lg overflow-hidden border border-slate-100 shadow-sm group-hover:shadow-xl group-hover:border-blue-100 transition-all duration-500">
+
+                            <div className="relative bg-slate-50 rounded-lg overflow-hidden border border-slate-100 shadow-sm group-hover:shadow-xl group-hover:border-blue-100 transition-all duration-500">
                                 {/* Image */}
                                 <img
                                     src={cert.src}
                                     alt={cert.title}
-                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                                    className="w-full h-full object-cover transition-transform duration-700 ease-out aspect-[1000/707]"
                                 />
                             </div>
 

@@ -4,7 +4,7 @@ import { faXTwitter } from "@fortawesome/free-brands-svg-icons/faXTwitter";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons/faInstagram";
 import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons/faLinkedinIn";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons/faYoutube";
-import logo from "../assets/images/logo-square-white.png";
+import logo from "../assets/images/logo-white.png";
 import { Link } from "react-router";
 
 export default function Footer() {
@@ -15,10 +15,7 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
                     {/* Column 1: Brand & Tagline */}
                     <div className="flex flex-col items-center md:items-start w-fit">
-                        <img src={logo} alt="LearnVera Logo" className="h-40" />
-                        <p className="mt-1 text-xs font-normal text-gray-200">
-                            (An initiative by Shinewell)
-                        </p>
+                        <img src={logo} alt="LearnVera Logo" className="w-60" />
                     </div>
 
                     {/* Column 2: Navigation Links */}
