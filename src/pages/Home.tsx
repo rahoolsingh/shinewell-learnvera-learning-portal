@@ -1,4 +1,3 @@
-
 import Hero from "../components/Hero";
 import StatsBar from "../components/StatsBar";
 import Features from "../components/Features";
@@ -15,6 +14,8 @@ import HiringPartners from "../components/HiringPartners";
 import PlacementSuccess from "../components/PlacementSuccess";
 import PlacementJourney from "../components/PlacementJourney";
 import CertificatesShowcase from "../components/CertificatesShowcase";
+import BrochureSection from "../components/Brochure";
+import WhatsAppCommunity from "../components/WhatsAppCommunity";
 
 function Home() {
     return (
@@ -22,11 +23,12 @@ function Home() {
             <Hero />
             {/* <StatsBar /> */}
             <Features />
-            {/* <Opportunities /> */}
+            <Opportunities />
             <HiringPartners />
             <PlacementJourney />
             <PlacementSuccess />
             <Courses />
+            <BrochureSection />
             <CertificatesShowcase />
             {/* <CourseOfferSection /> */}
             <RecordedCourses />
@@ -34,6 +36,7 @@ function Home() {
             <FounderMessage />
             {/* <CallToAction /> */}
             <LearningEnvironment />
+            <WhatsAppCommunity />
             <Contact />
         </>
     );

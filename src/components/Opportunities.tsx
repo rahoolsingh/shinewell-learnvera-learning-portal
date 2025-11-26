@@ -23,13 +23,13 @@ export default function Opportunities() {
         <section className="py-16 bg-white">
             <div className="   mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12 max-w-7xl mx-auto">
-                    <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                        THE OPPORTUNITIES
+                    <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 mb-6 tracking-tight">
+                        In The Media
                     </h2>
-                    <p className="text-xl text-gray-600">
-                        In a world run by AI and innovation, digital skills
-                        aren’t optional — they’re the only way to a secured
-                        future.
+                    <p className="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
+                        As featured in leading popular channels. We are proud to
+                        be recognized for our commitment to quality education
+                        and innovation.
                     </p>
                 </div>
 

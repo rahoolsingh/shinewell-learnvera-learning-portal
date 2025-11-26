@@ -7,6 +7,7 @@ import {
     AlertCircle,
     CheckCircle2,
 } from "lucide-react";
+import WhatsAppCommunity from "../components/WhatsAppCommunity";
 
 // --- CONFIGURATION ---
 // Replace with your actual Google reCAPTCHA v3 Site Key
@@ -570,7 +571,7 @@ export default function ContactUsPage() {
                             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
                                 Contact Information
                             </h2>
-                            <div className="space-y-6">
+                            <div className="space-y-6 mb-8">
                                 <InfoItem title="Email Us" icon={<Mail />}>
                                     <a
                                         href="mailto:learnveraindia@gmail.com"
@@ -601,6 +602,7 @@ export default function ContactUsPage() {
                                     <p>Mon - Sat : 9 AM - 9 PM </p>
                                 </InfoItem>
                             </div>
+                            <WhatsAppCommunity variant="sleek" />
                         </div>
 
                         <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-200">

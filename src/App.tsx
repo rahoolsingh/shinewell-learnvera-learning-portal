@@ -15,12 +15,11 @@ import RefundPolicy from "./pages/RefundPolicy";
 import NotFound from "./pages/NotFound";
 
 // Asset Imports
-import whatsAppIcon from "./assets/whatsapp.webp";
 import adVideo from "./assets/videos/ad-video.mp4";
 import "./animation.css";
 import SuccessStoriesPage from "./pages/SuccessStoriesPage";
-import MasterclassPopup from "./components/MasterClassPopup";
 import ContactUsPage from "./pages/ContactPage";
+import WhatsAppWidget from "./components/WhatsAppWidget";
 
 // 1. Define Layout Component using <Outlet />
 const Layout = () => {
@@ -31,19 +30,8 @@ const Layout = () => {
             <main className="flex-grow">
                 <Outlet />
             </main>
-            <a
-                href="https://wa.me/+917676720897?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20your%20courses."
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <img
-                    src={whatsAppIcon}
-                    alt="WhatsApp"
-                    className="w-12 h-12 fixed bottom-6 right-6 cursor-pointer z-50 drop-shadow-lg hover:scale-105 transition-transform duration-300"
-                />
-            </a>
-            <AdVideo />
-            <MasterclassPopup />
+            <WhatsAppWidget />
+            <AdVideo />\
             <Footer />
         </div>
     );

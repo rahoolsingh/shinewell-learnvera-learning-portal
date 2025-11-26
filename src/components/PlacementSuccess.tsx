@@ -151,8 +151,13 @@ export default function PlacementSuccess() {
                             {/* Card Footer: Company Brand */}
                             <div className="mt-4 pt-4 border-t border-dashed border-gray-200 group-hover:border-solid group-hover:border-blue-50 transition-colors">
                                 <div className="flex items-center justify-between">
-                                    <div className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">
-                                        Hired By
+                                    <div>
+                                        <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">
+                                            Hired By
+                                        </p>
+                                        <p className="text-sm font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">
+                                            {student.company}
+                                        </p>
                                     </div>
                                     <img
                                         src={student.companyLogo}

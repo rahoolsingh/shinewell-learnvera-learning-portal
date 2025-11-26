@@ -1,5 +1,6 @@
 import hero1 from "../assets/hero-3.png";
 import background1 from "../assets/background-1.gif";
+import { Rocket } from "lucide-react";
 
 export default function Hero() {
     return (
@@ -81,24 +82,24 @@ export default function Hero() {
                         </h1>
 
                         <p className="text-sm md:text-lg lg:text-2xl max-w-4xl text-gray-300 font-medium">
-                            At LearnVera (An initiative by Shinewell), we merge highly skilled human
+                            At LearnVera, we merge highly skilled human
                             expertise with AI to help you master the most
                             in-demand digital skills. From performance marketing
                             to AI-powered growth strategies. Learn smarter. Grow
                             faster. Lead the future.
                         </p>
 
-                        <div className="flex flex-col sm:flex-row gap-4 mb-1">
+                        <div className="flex flex-col sm:flex-row gap-4">
                             <a href="/#courses">
                                 <button
                                     className="relative px-12 py-4 text-2xl font-extrabold rounded-xl overflow-hidden
-                         bg-gradient-to-r from-teal-400 to-cyan-500 text-white
-                         shadow-lg transform skew-x-[-10deg]
-                         transition-all duration-300 ease-out
-                         hover:skew-x-[0deg] hover:scale-105 active:scale-98
-                         before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent
-                         before:transform before:translate-x-[-100%] before:skew-x-[-20deg] before:transition-transform before:duration-700 before:ease-out
-                         hover:before:translate-x-[100%]"
+                                        bg-gradient-to-r from-teal-400 to-cyan-500 text-white
+                                        shadow-lg transform skew-x-[-10deg]
+                                        transition-all duration-300 ease-out
+                                        hover:skew-x-[0deg] hover:scale-105 active:scale-98
+                                        before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent
+                                        before:transform before:translate-x-[-100%] before:skew-x-[-20deg] before:transition-transform before:duration-700 before:ease-out
+                                        hover:before:translate-x-[100%]"
                                 >
                                     <span className="relative z-10 transform skew-x-[10deg] drop-shadow-md text-lg xl:text-xl">
                                         Explore Courses
@@ -108,15 +109,15 @@ export default function Hero() {
                             <a href="/#consultation">
                                 <button
                                     className="relative px-12 py-4 text-xl font-bold rounded-lg overflow-hidden
-                         bg-gradient-to-r from-green-500 to-lime-500 text-white
-                         shadow-lg
-                         transition-all duration-300 ease-out
-                         hover:scale-105 active:scale-98
-                         after:content-[''] after:absolute after:inset-0 after:bg-white after:opacity-0 after:transition-opacity after:duration-300
-                         hover:after:opacity-10
-                         before:content-[''] before:absolute before:w-full before:h-full before:bg-gradient-to-b from-transparent to-white/30
-                         before:bottom-[-100%] before:left-0 before:transition-all before:duration-500 before:ease-out before:rounded-lg
-                         hover:before:bottom-0"
+                                        bg-gradient-to-r from-green-500 to-lime-500 text-white
+                                        shadow-lg
+                                        transition-all duration-300 ease-out
+                                        hover:scale-105 active:scale-98
+                                        after:content-[''] after:absolute after:inset-0 after:bg-white after:opacity-0 after:transition-opacity after:duration-300
+                                        hover:after:opacity-10
+                                        before:content-[''] before:absolute before:w-full before:h-full before:bg-gradient-to-b from-transparent to-white/30
+                                        before:bottom-[-100%] before:left-0 before:transition-all before:duration-500 before:ease-out before:rounded-lg
+                                        hover:before:bottom-0"
                                 >
                                     <span className="relative z-10 drop-shadow-md text-sm xl:text-xl">
                                         Book a Free Career Consultation
@@ -128,6 +129,33 @@ export default function Hero() {
                                         Tools)
                                     </span>
                                 </p>
+                            </a>
+                        </div>
+
+                        <div className="flex items-center gap-6 pb-2">
+                            <div className="text-left">
+                                <h2 className="text-lg md:text-xl font-semibold mb-1">
+                                    What are you waiting for?
+                                </h2>
+                                <p className="text-xs text-gray-400">
+                                    Access{" "}
+                                    <span className="text-cyan-400 font-medium">
+                                        free resources
+                                    </span>{" "}
+                                    to kickstart your career!
+                                </p>
+                            </div>
+                            <a href="/#resources" className="w-full sm:w-auto">
+                                <button className="group relative w-full sm:w-auto px-8 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold overflow-hidden shadow-lg transition-transform duration-300">
+                                    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 skew-y-12"></div>
+                                    <div className="relative flex items-center justify-center gap-2">
+                                        <Rocket
+                                            size={20}
+                                            className="group-hover:rotate-12 transition-transform"
+                                        />
+                                        <span>Get Free Resources</span>
+                                    </div>
+                                </button>
                             </a>
                         </div>
                     </div>

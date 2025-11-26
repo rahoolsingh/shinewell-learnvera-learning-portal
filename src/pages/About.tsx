@@ -19,6 +19,7 @@ import FounderProfile from "../components/FounderProfile";
 import ourVisionImage from "../assets/images/our-vision.png";
 import ourMissionImage from "../assets/images/our-mission.png";
 import ourJourneyImage from "../assets/images/env-4.jpg";
+import WhatsAppCommunity from "../components/WhatsAppCommunity";
 
 // --- Reusable StarRating ---
 const StarRating = ({ rating, className = "" }) => {
@@ -455,6 +456,8 @@ export default function AboutUsPage() {
                     </div>
                 </div>
             </section>
+
+            <WhatsAppCommunity />
 
             {/* --- 8. CTA Section (Responsive) --- */}
             <section className="bg-gray-50">
