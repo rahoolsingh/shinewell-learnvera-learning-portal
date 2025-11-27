@@ -411,7 +411,7 @@ const CourseCard = ({
                         {/* <motios */}
                         <div className="absolute -inset-[2px] bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 rounded-xl blur-sm opacity-70 group-hover:opacity-100 animate-borderFlow"></div>
                         <Link
-                            to={`course-details/${course.id}?q=${course.headline
+                            to={`/course-details/${course.id}?q=${course.headline
                                 ?.toLowerCase()
                                 .replace(/\s+/g, "-")}`}
                         >
