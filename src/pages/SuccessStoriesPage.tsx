@@ -3,6 +3,7 @@ import { Link } from "react-router"; // Ensure react-router-dom is installed
 import PlacementProcess from "../components/PlacementJourney";
 import { useEffect } from "react";
 import placements from "../data/successStories.js";
+import HiringPartners from "../components/HiringPartners.js";
 const allStories = placements;
 
 export default function SuccessStoriesPage() {
@@ -27,13 +28,16 @@ export default function SuccessStoriesPage() {
 
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
                     <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-slate-900 mb-6">
-                        Our Wall of{" "}
-                        <span className="text-blue-600">Impact</span>
+                        From Beginners To{" "}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600">
+                            Professionals
+                        </span>
                     </h1>
-                    <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-                        Read the stories of students who transformed their
-                        careers. From curiosity to code, from learning to
-                        leading.
+                    <p className="text-lg md:text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+                        Journeys shaped by learning, consistency and growth.
+                        Dreams turned into job offers, goals into new
+                        beginnings, and careers taking flight. Yours could be
+                        the next.
                     </p>
 
                     {/* Stats Bar */}
@@ -162,6 +166,8 @@ export default function SuccessStoriesPage() {
                 </div>
             </section>
 
+            {/* <HiringPartners /> */}
+
             {/* 3. CTA Section */}
             <section className="py-20 bg-blue-900 text-white overflow-hidden relative">
                 {/* Decorative Elements */}
@@ -173,8 +179,9 @@ export default function SuccessStoriesPage() {
                         Ready to write your own story?
                     </h2>
                     <p className="text-slate-300 text-lg max-w-2xl mx-auto mb-10">
-                        Join the community of developers who are shaping the
-                        future. Your logo could be next on our wall.
+                        Thousands are learning future-proof skills & landing
+                        real opportunities through Learnvera. Your seat is open
+                        — if you choose it.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <a
@@ -185,7 +192,7 @@ export default function SuccessStoriesPage() {
                         </a>
                         <Link
                             to="/contact"
-                            className="w-full sm:w-auto px-8 py-4 bg-transparent border border-slate-700 hover:border-slate-500 text-white rounded-xl font-bold transition-all hover:bg-slate-800"
+                            className="w-full sm:w-auto px-8 py-4 border-2 border-white hover:border-blue-300 text-white hover:text-blue-300 rounded-xl font-bold transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2"
                         >
                             Talk to Counselor
                         </Link>

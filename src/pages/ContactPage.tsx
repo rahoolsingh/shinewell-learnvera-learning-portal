@@ -578,12 +578,28 @@ export default function ContactUsPage() {
                             </h2>
                             <div className="space-y-6 mb-8">
                                 <InfoItem title="Email Us" icon={<Mail />}>
-                                    <a
-                                        href="mailto:learnveraindia@gmail.com"
-                                        className="hover:text-indigo-600 transition-colors duration-200"
-                                    >
-                                        learnveraindia@gmail.com
-                                    </a>
+                                    <p>
+                                        <a
+                                            href="mailto:enroll@learnvera.com"
+                                            className="hover:text-indigo-600 transition-colors duration-200"
+                                        >
+                                            enroll@learnvera.com
+                                        </a>{" "}
+                                        <span className="font-normal text-sm text-gray-500">
+                                            ( For Course Related Queries)
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <a
+                                            href="mailto:support@learnvera.com"
+                                            className="hover:text-indigo-600 transition-colors duration-200"
+                                        >
+                                            support@learnvera.com
+                                        </a>{" "}
+                                        <span className="font-normal text-sm text-gray-500">
+                                            (For General Queries)
+                                        </span>
+                                    </p>
                                 </InfoItem>
                                 <InfoItem title="Call Us" icon={<Phone />}>
                                     <a

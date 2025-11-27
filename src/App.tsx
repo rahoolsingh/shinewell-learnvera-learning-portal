@@ -31,7 +31,7 @@ const Layout = () => {
                 <Outlet />
             </main>
             <WhatsAppWidget />
-            <AdVideo />\
+            <AdVideo />
             <Footer />
         </div>
     );

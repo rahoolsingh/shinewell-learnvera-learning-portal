@@ -367,7 +367,19 @@ export default function Contact() {
                                             Email Us
                                         </div>
                                         <div className="text-gray-600">
-                                            learnveraindia@gmail.com
+                                            <p>
+                                                enroll@learnvera.com{" "}
+                                                <span className="font-normal text-sm text-gray-500">
+                                                    ( For Course Related
+                                                    Queries)
+                                                </span>
+                                            </p>
+                                            <p>
+                                                support@learnvera.com{" "}
+                                                <span className="font-normal text-sm text-gray-500">
+                                                    (For General Queries)
+                                                </span>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>

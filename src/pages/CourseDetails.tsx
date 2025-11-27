@@ -290,7 +290,7 @@ export default function CourseDetailsPage() {
                                         {course?.headline}
                                     </h2>
                                     {course?.duration && (
-                                        <span className="px-3 py-1 text-xs font-bold rounded-full bg-slate-100 text-slate-700 border border-slate-200">
+                                        <span className="px-3 py-1 text-xs font-bold rounded-full bg-slate-100 text-slate-700 border border-slate-200 whitespace-nowrap">
                                             {course?.duration}
                                         </span>
                                     )}
@@ -310,12 +310,11 @@ export default function CourseDetailsPage() {
                                         </div>
                                     </div>
                                     <div className="text-right">
-                                        <p className="text-lg font-bold text-slate-400 decoration-slate-400/50 line-through">
+                                        <p className="text-lg font-bold decoration-slate-400/50">
                                             {course.mrp}
                                         </p>
-                                        <p className="text-xl font-bold text-slate-900">
-                                            {course.discountedPrice ||
-                                                course.mrp}
+                                        <p>
+                                            Course Price
                                         </p>
                                     </div>
                                 </div>

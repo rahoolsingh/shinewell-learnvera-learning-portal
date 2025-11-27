@@ -12,7 +12,6 @@ import shinewellLogo from "../assets/brands/shinewell.png";
 import brandVantageLogo from "../assets/brands/brandvantage.png";
 import palmonasLogo from "../assets/brands/palmonas.png";
 
-
 import abubakarImg from "../assets/students/abubakar.jpeg";
 import surajImg from "../assets/students/suraj.jpeg";
 import avikImg from "../assets/students/avik.jpeg";
@@ -28,7 +27,7 @@ const placements = [
         name: "Abubakar S.",
         role: "Front-end Developer",
         company: "Shinewell",
-        quote: "The practical skills I gained through LearnVera were instrumental in landing my role at Shinewell. The hands-on projects and real-world scenarios prepared me well for the challenges I face daily.",
+        quote: "The practical skills I gained while learning and training with Shinewell were instrumental in landing my job role. The hands-on projects and real-world scenarios prepared me well for the challenges I face daily.",
         studentImg: abubakarImg,
         companyLogo: shinewellLogo,
     },
@@ -55,7 +54,7 @@ const placements = [
         name: "Aditya N.",
         role: "Performance Marketing Executive",
         company: "Palmonas",
-        quote: "LearnVera provided me with a solid foundation in digital marketing. The practical approach to learning enabled me to apply concepts directly in my role at Palmonas.",
+        quote: "Training with the Shinewell team provided me with a solid foundation in digital marketing. The practical approach to learning enabled me to apply concepts directly in my role at Palmonas.",
         studentImg: adityaImg,
         companyLogo: palmonasLogo,
     },
@@ -64,7 +63,7 @@ const placements = [
         name: "Bindu N.",
         role: "SEO Analyst",
         company: "Brand Vantage Marketing Pvt. Ltd",
-        quote: "The SEO strategies and techniques I learned at LearnVera have been crucial in my role as an SEO Analyst. The course content was relevant and immediately applicable.",
+        quote: "The SEO strategies and techniques I learned during my training with Shinewell, have been crucial in my role as an SEO Analyst. The course content was relevant and immediately applicable.",
         studentImg: binduImg,
         companyLogo: brandVantageLogo,
     },

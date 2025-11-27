@@ -25,10 +25,11 @@ const certificateImages = [
 ];
 
 const additionalCertificates = [
-    "Hackathon Participation Badge",
-    "Real-world Project Experience",
-    "Soft Skills & Communication Training",
-    "Agile/Scrum Methodology Certification",
+    "Google Digital Garage: Fundamentals of Digital Marketing",
+    "HubSpot Academy: Digital Marketing / Inbound Marketing / Content Marketing / Social Media & Email Marketing Certifications",
+    "SEMrush Academy: SEO, PPC, Content & Performance-Marketing Courses with Certifications",
+    "Meta Blueprint: Facebook & Instagram Ads / Digital Marketing Associate",
+    "Alison: Free Marketing, Digital Marketing & E-Business Courses with Free Certificates/Badges",
 ];
 
 export default function CertificatesShowcase() {
@@ -102,42 +103,43 @@ export default function CertificatesShowcase() {
 
                 {/* 2. Additional Credentials (Horizontal Divider Layout) */}
                 <div className="border-t border-slate-100 pt-16">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-                        {/* Title Column */}
-                        <div className="lg:col-span-4">
-                            <h3 className="text-2xl font-bold text-slate-900 mb-2">
-                                Additional Perks
-                            </h3>
-                            <p className="text-slate-500">
-                                Beyond the main certificates, you'll earn badges
-                                and recognitions for specific achievements
-                                during the cohort.
-                            </p>
-                        </div>
+                    {/* <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start"> */}
+                    {/* Title Column */}
 
-                        {/* List Column */}
-                        <div className="lg:col-span-8">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-                                {additionalCertificates.map((item, index) => (
-                                    <div
-                                        key={index}
-                                        className="flex items-start gap-3 group"
-                                    >
-                                        <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-blue-600 group-hover:border-blue-600 transition-colors duration-300">
-                                            <Check
-                                                size={10}
-                                                className="text-blue-600 group-hover:text-white transition-colors duration-300"
-                                                strokeWidth={3}
-                                            />
-                                        </div>
-                                        <span className="text-slate-700 font-medium group-hover:text-slate-900 transition-colors">
-                                            {item}
+                    {/* List Column */}
+                    <div className="lg:col-span-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
+                            <div className="">
+                                <h3 className="text-2xl font-bold text-slate-900">
+                                    Additional Perks
+                                </h3>
+                                <p className="text-slate-500">
+                                    Beyond the main certificates, you'll earn
+                                    badges and recognitions for specific
+                                    achievements during the cohort.
+                                </p>
+                            </div>
+                            {additionalCertificates.map((item, index) => (
+                                <div
+                                    key={index}
+                                    className="flex items-start gap-3 group"
+                                >
+                                    <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-blue-600 group-hover:border-blue-600 transition-colors duration-300">
+                                        <span className="text-blue-600 group-hover:text-white text-xs font-bold">
+                                            {index + 1}
                                         </span>
                                     </div>
-                                ))}
-                            </div>
+                                    <div className="text-slate-700 font-bold group-hover:text-slate-900 transition-colors">
+                                        <h3>{item.split(": ")[0]}</h3>{" "}
+                                        <p className="text-slate-500 font-normal">
+                                            {item.split(": ")[1]}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
+                    {/* </div> */}
                 </div>
             </div>
         </section>
