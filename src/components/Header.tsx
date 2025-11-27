@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "../assets/images/logo.png";
 import { Link } from "react-router";
-import GetEbook from "./GetEbook"; // Keeping imports as requested
 import MasterclassPopup from "./MasterClassPopup";
 
 // --- Mock useScroll Hook (Unchanged) ---
@@ -88,7 +87,7 @@ const WorkshopButton = ({ onClick, className = "" }) => (
 const NAV_LINKS = [
     { label: "Home", href: "/" },
     { label: "About Us", href: "/about" },
-    { label: "Courses", href: "/#courses", type: "anchor" },
+    { label: "Courses", href: "/courses" },
     { label: "Placements", href: "/placements" },
     { label: "Contact Us", href: "/contact" },
 ];

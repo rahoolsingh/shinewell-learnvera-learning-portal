@@ -20,6 +20,7 @@ import "./animation.css";
 import SuccessStoriesPage from "./pages/SuccessStoriesPage";
 import ContactUsPage from "./pages/ContactPage";
 import WhatsAppWidget from "./components/WhatsAppWidget";
+import CoursesPage from "./pages/CoursesPage";
 
 // 1. Define Layout Component using <Outlet />
 const Layout = () => {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home />,
+            },
+            {
+                path: "courses",
+                element: <CoursesPage />,
             },
             {
                 path: "course-details/:id",

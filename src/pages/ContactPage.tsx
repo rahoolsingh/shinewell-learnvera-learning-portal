@@ -337,31 +337,40 @@ export default function ContactUsPage() {
     }, []);
 
     return (
-        <section
-            className="relative py-16 md:py-32 xl:pt-44 bg-gray-50 overflow-hidden"
-            id="contact"
-        >
-            {/* Decorative gradient background */}
-            <div
-                className="absolute top-0 left-1/4 w-full h-full transform -translate-x-1/2 -translate-y-1/2"
-                aria-hidden="true"
-            >
-                <div className="aspect-square w-[80rem] bg-gradient-to-r from-purple-200 via-indigo-200 to-transparent opacity-30 rounded-full blur-3xl" />
-            </div>
+        <div className="min-h-screen bg-gray-50 font-sans text-slate-900">
+            {/* 1. Hero Section */}
+            <section className="relative pt-40 pb-12 bg-white overflow-hidden border-b border-gray-100">
+                {/* Background Grid Pattern */}
 
-            <div className="relative z-10 container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                {/* Header */}
-                <div className="max-w-7xl mx-auto text-center mb-12 md:mb-16">
-                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
-                        Let's Connect
+                {/* Decorative gradient background */}
+                <div
+                    className="absolute top-0 left-1/4 w-full h-full transform -translate-x-1/2 -translate-y-1/2"
+                    aria-hidden="true"
+                >
+                    <div className="aspect-square w-[80rem] bg-gradient-to-r from-purple-200 via-indigo-200 to-transparent opacity-30 rounded-full blur-3xl" />
+                </div>
+                <div
+                    className="absolute inset-0 opacity-[0.03]"
+                    style={{
+                        backgroundImage:
+                            "radial-gradient(#000 1px, transparent 1px)",
+                        backgroundSize: "20px 20px",
+                    }}
+                ></div>
+
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                    <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-slate-900 mb-6">
+                        Let's{" "}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600">
+                            Connect
+                        </span>
                     </h1>
-                    <p className="text-lg md:text-xl text-gray-600">
+                    <p className="text-lg md:text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
                         Have a question, a project, or just want to say hello?
                         We'd love to hear from you.
                     </p>
                 </div>
-
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 container mx-auto px-4 sm:px-6 lg:px-8 mt-16 relative z-10">
                     {/* ---- Form ---- */}
                     <div className="bg-white/70 backdrop-blur-md rounded-2xl shadow-xl p-8 md:p-10 border border-gray-100 h-fit">
                         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
@@ -639,7 +648,7 @@ export default function ContactUsPage() {
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     );
 }

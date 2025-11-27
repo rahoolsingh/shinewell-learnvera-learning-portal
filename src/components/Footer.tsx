@@ -42,7 +42,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <Link
-                                    to="/#courses"
+                                    to="/courses"
                                     className="hover:text-white transition-colors duration-200"
                                 >
                                     Courses

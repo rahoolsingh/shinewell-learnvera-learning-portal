@@ -184,12 +184,12 @@ export default function SuccessStoriesPage() {
                         — if you choose it.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <a
-                            href="/#courses"
+                        <Link
+                            to="/courses"
                             className="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold transition-all transform hover:-translate-y-1 shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2"
                         >
                             Explore Courses <ArrowRight size={20} />
-                        </a>
+                        </Link>
                         <Link
                             to="/contact"
                             className="w-full sm:w-auto px-8 py-4 border-2 border-white hover:border-blue-300 text-white hover:text-blue-300 rounded-xl font-bold transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2"

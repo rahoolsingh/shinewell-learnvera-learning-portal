@@ -15,7 +15,7 @@ export default function BrochureSection() {
                 }}
             ></div>
 
-            <div className="text-center mb-12 max-w-7xl mx-auto">
+            <div className="text-center mb-12 max-w-7xl mx-auto px-2">
                 <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 mb-6 tracking-tight">
                     Get Started with{" "}
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600">
