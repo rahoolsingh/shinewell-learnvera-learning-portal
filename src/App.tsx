@@ -148,7 +148,7 @@ const AdVideo = () => {
 
     return (
         <motion.div
-            className="fixed bottom-6 left-6 w-40 md:w-48 aspect-[9/16] rounded-xl shadow-2xl z-50 group border border-black cursor-pointer overflow-hidden"
+            className="fixed bottom-6 left-6 w-40 md:w-48 aspect-[9/16] rounded-xl shadow-2xl z-50 group border border-black cursor-pointer overflow-hidden bg-black"
             onClick={togglePlayPause}
             initial={{ x: -300, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
