@@ -1,155 +1,9 @@
 import { ArrowRight, Quote, Briefcase } from "lucide-react";
 import { Link } from "react-router"; // Ensure react-router-dom is installed
-
-// --- Asset Imports (Using placeholders where needed) ---
-import amazonLogo from "../assets/brands/amazon.png";
-import googleLogo from "../assets/brands/google.png";
-import microsoftLogo from "../assets/brands/microsoft.png";
-import infosysLogo from "../assets/brands/infosys.png";
-import tcsLogo from "../assets/brands/tcs.png";
-import flipkartLogo from "../assets/brands/flipkart.png";
-import swiggyLogo from "../assets/brands/swiggy.png";
-import zomatoLogo from "../assets/brands/zomato.png";
-import adobeLogo from "../assets/brands/adobe.png";
-import cognizantLogo from "../assets/brands/cognizant.png";
 import PlacementProcess from "../components/PlacementJourney";
 import { useEffect } from "react";
-
-// --- Mock Data ---
-const allStories = [
-    {
-        id: 1,
-        name: "Arjun Verma",
-        role: "SDE II",
-        company: "Amazon",
-        category: "Full Stack",
-        quote: "The curriculum bridges the gap between theory and what industry actually needs.",
-        studentImg:
-            "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=150&h=150&fit=crop",
-        companyLogo: amazonLogo,
-    },
-    {
-        id: 2,
-        name: "Sarah Jen",
-        role: "UX Designer",
-        company: "Google",
-        category: "Design",
-        quote: "From zero knowledge to a Google offer. The mentorship was life-changing.",
-        studentImg:
-            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop",
-        companyLogo: googleLogo,
-    },
-    {
-        id: 3,
-        name: "Rohan Das",
-        role: "Frontend Dev",
-        company: "Microsoft",
-        category: "Frontend",
-        quote: "React and Tailwind modules were spot on. I use them every day now.",
-        studentImg:
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop",
-        companyLogo: microsoftLogo,
-    },
-    {
-        id: 4,
-        name: "Priya Sethi",
-        role: "Data Analyst",
-        company: "Flipkart",
-        category: "Data",
-        quote: "The capstone projects gave me the confidence to crack the technical rounds.",
-        studentImg:
-            "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop",
-        companyLogo: flipkartLogo,
-    },
-    {
-        id: 5,
-        name: "Vikram Singh",
-        role: "Backend Eng.",
-        company: "Swiggy",
-        category: "Backend",
-        quote: "Backend system design concepts were explained beautifully.",
-        studentImg:
-            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop",
-        companyLogo: swiggyLogo,
-    },
-    {
-        id: 6,
-        name: "David Chen",
-        role: "DevOps Eng.",
-        company: "IBM",
-        category: "DevOps",
-        quote: "Learned more here in 6 months than 4 years of college.",
-        studentImg:
-            "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop",
-        companyLogo: infosysLogo,
-    },
-    {
-        id: 7,
-        name: "Meera Nair",
-        role: "Systems Eng.",
-        company: "TCS",
-        category: "Full Stack",
-        quote: "The mock interviews were harder than the real thing, which made me ready.",
-        studentImg:
-            "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop",
-        companyLogo: tcsLogo,
-    },
-    {
-        id: 8,
-        name: "Kabir Khan",
-        role: "Full Stack",
-        company: "Zomato",
-        category: "Full Stack",
-        quote: "I built a clone of Zomato in class, now I work there. Surreal.",
-        studentImg:
-            "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop",
-        companyLogo: zomatoLogo,
-    },
-    {
-        id: 9,
-        name: "Tara Lewis",
-        role: "QA Engineer",
-        company: "Adobe",
-        category: "QA",
-        quote: "The testing strategies I learned landed me a role at Adobe.",
-        studentImg:
-            "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop",
-        companyLogo: adobeLogo,
-    },
-    {
-        id: 10,
-        name: "Anil Kapoor",
-        role: "Cloud Architect",
-        company: "Cognizant",
-        category: "Cloud",
-        quote: "The cloud computing modules were in-depth and industry-relevant.",
-        studentImg:
-            "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=150&h=150&fit=crop",
-        companyLogo: cognizantLogo,
-    },
-    {
-        id: 11,
-        name: "Sneha Reddy",
-        role: "AI Specialist",
-        company: "IBM",
-        category: "AI/ML",
-        quote: "The AI projects were challenging but rewarding. Got my dream job!",
-        studentImg:
-            "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&h=150&fit=crop",
-        companyLogo: infosysLogo,
-    },
-    {
-        id: 12,
-        name: "Karan Mehta",
-        role: "Mobile Developer",
-        company: "Google",
-        category: "Mobile",
-        quote: "The Android course was top-notch. Landed a role at Google right after.",
-        studentImg:
-            "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop",
-        companyLogo: googleLogo,
-    },
-];
+import placements from "../data/successStories.js";
+const allStories = placements;
 
 export default function SuccessStoriesPage() {
     // scroll to top on page load
@@ -296,7 +150,6 @@ export default function SuccessStoriesPage() {
                                             alt={student.company}
                                             className="
                                         h-6 w-auto max-w-[90px] object-contain 
-                                        filter grayscale opacity-60
                                         group-hover:grayscale-0 group-hover:opacity-100 
                                         transition-all duration-500
                                     "
@@ -324,12 +177,12 @@ export default function SuccessStoriesPage() {
                         future. Your logo could be next on our wall.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link
-                            to="/courses"
+                        <a
+                            href="/#courses"
                             className="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold transition-all transform hover:-translate-y-1 shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2"
                         >
                             Explore Courses <ArrowRight size={20} />
-                        </Link>
+                        </a>
                         <Link
                             to="/contact"
                             className="w-full sm:w-auto px-8 py-4 bg-transparent border border-slate-700 hover:border-slate-500 text-white rounded-xl font-bold transition-all hover:bg-slate-800"

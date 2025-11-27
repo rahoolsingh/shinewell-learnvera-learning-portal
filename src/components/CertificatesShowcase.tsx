@@ -33,7 +33,11 @@ const additionalCertificates = [
 
 export default function CertificatesShowcase() {
     return (
-        <section className="py-24 bg-white relative overflow-hidden">
+        <section className="py-24 bg-gray-50 overflow-hidden relative">
+            {/* Decorative Blobs */}
+            <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+            <div className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+
             {/* Minimal Background Pattern */}
             <div
                 className="absolute inset-0 opacity-[0.03]"
@@ -49,7 +53,9 @@ export default function CertificatesShowcase() {
                 <div className="max-w-3xl mx-auto text-center mb-20">
                     <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 mb-6 tracking-tight">
                         Credentials That{" "}
-                        <span className="text-blue-600">Matter</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600">
+                            Matter
+                        </span>
                     </h2>
                     <p className="text-lg text-slate-500 leading-relaxed">
                         Don't just learn, prove it. Our certificates are more

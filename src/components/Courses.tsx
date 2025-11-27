@@ -480,13 +480,15 @@ export default function CompleteDigitalMarketingCourses() {
                     </span>
                 </div>
 
-                <h1
-                    className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-12"
+                <h2
+                    className="text-3xl md:text-4xl font-semibold text-slate-900 mb-6 tracking-tight"
                     id="courses"
                 >
                     Complete Digital Marketing{" "}
-                    <span className="text-blue-600 relative">Courses</span>
-                </h1>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600">
+                        Courses
+                    </span>
+                </h2>
 
                 {/* --- MODIFIED: Course Grid --- */}
                 {/* Now passes down the global state and toggle function */}

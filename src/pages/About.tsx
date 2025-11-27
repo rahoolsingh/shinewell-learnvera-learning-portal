@@ -2,9 +2,6 @@ import {
     Star,
     Rocket,
     Eye,
-    Users,
-    Briefcase,
-    Medal,
     Zap,
     Lightbulb,
     Heart,
@@ -13,7 +10,7 @@ import {
 } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import CountUp from "react-countup";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import FounderProfile from "../components/FounderProfile";
 
 import ourVisionImage from "../assets/images/our-vision.png";
@@ -108,6 +105,11 @@ const testimonialsData = [
 ];
 
 export default function AboutUsPage() {
+    // scroll to top on page load
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <div className="bg-white overflow-x-hidden">
             {/* --- 1. Hero Section (Responsive) --- */}

@@ -17,8 +17,10 @@ export default function BrochureSection() {
 
             <div className="text-center mb-12 max-w-7xl mx-auto">
                 <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 mb-6 tracking-tight">
-                    Get Started with
-                    <span className="text-blue-600"> Free Resources</span>
+                    Get Started with{" "}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600">
+                        Free Resources
+                    </span>
                 </h2>
                 <p className="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
                     Download our comprehensive course brochure, detailed
@@ -117,9 +119,14 @@ export default function BrochureSection() {
 
                             {/* Text Content */}
                             <h3 className="text-2xl font-bold text-slate-900 mb-3 leading-tight">
-                                Skill Up Guide
+                                Skill Up Guide Worth ₹999/-
                             </h3>
+
                             <p className="text-slate-500 text-sm leading-relaxed mb-8 flex-grow">
+                                <span className="font-semibold">
+                                    Get FREE access to our exclusive Skill Up
+                                    Guide
+                                </span>
                                 Boost your learning with our exclusive guide.
                                 Packed with interview questions, soft skills
                                 tips, and productivity hacks for developers.
@@ -130,7 +137,7 @@ export default function BrochureSection() {
                                 <GetEbook
                                     ebook="Learnvera Career Ebook.pdf"
                                     title="Skill Up Guide"
-                                    buttonText="Download Free Ebook"
+                                    buttonText="Download Free Ebook Worth ₹999/-"
                                     smallText="Digital Marketing Career Blueprint"
                                     className="hover:!bg-emerald-100 !bg-emerald-50 hover:!border-emerald-200 !border-emerald-200 hover:!text-emerald-700 !text-emerald-700 !flex-row-reverse !w-full !justify-between !py-3 !text-left"
                                 />

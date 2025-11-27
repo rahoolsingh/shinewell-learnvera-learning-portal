@@ -88,7 +88,7 @@ const WorkshopButton = ({ onClick, className = "" }) => (
 const NAV_LINKS = [
     { label: "Home", href: "/" },
     { label: "About Us", href: "/about" },
-    { label: "Courses", href: "/#courses" },
+    { label: "Courses", href: "/#courses", type: "anchor" },
     { label: "Placements", href: "/placements" },
     { label: "Contact Us", href: "/contact" },
 ];
@@ -161,14 +161,26 @@ export default function Header() {
                     {/* 2. Center: Desktop Nav */}
                     <nav className="hidden lg:flex items-center space-x-8 text-slate-600 font-medium text-sm">
                         {NAV_LINKS.map((link) => (
-                            <Link to={link?.href} key={link.label}>
-                                <motion.span
-                                    whileHover={{ color: "#2563eb" }}
-                                    className="hover:text-blue-600 transition-colors relative group"
-                                >
-                                    {link.label}
-                                </motion.span>
-                            </Link>
+                            <>
+                                {link.type === "anchor" ? (
+                                    <a
+                                        href={link.href}
+                                        key={link.label}
+                                        className="hover:text-blue-600 transition-colors relative group"
+                                    >
+                                        {link.label}
+                                    </a>
+                                ) : (
+                                    <Link to={link?.href} key={link.label}>
+                                        <motion.span
+                                            whileHover={{ color: "#2563eb" }}
+                                            className="hover:text-blue-600 transition-colors relative group"
+                                        >
+                                            {link.label}
+                                        </motion.span>
+                                    </Link>
+                                )}
+                            </>
                         ))}
                     </nav>
 

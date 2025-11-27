@@ -66,7 +66,10 @@ export default function HiringPartners() {
             <div className="mx-auto px-4 sm:px-6 lg:px-8 container">
                 <div className="text-center mb-12 max-w-4xl mx-auto">
                     <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 mb-6 tracking-tight">
-                        Learn From Us & Get Hired In
+                        Learn From Us &{" "}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600">
+                            Get Hired In
+                        </span>
                     </h2>
                     <p className="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
                         Join thousands of students who have secured careers at

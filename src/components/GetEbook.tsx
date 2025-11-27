@@ -388,7 +388,7 @@ export default function GetEbook({
                                                     Submitting...
                                                 </>
                                             ) : (
-                                                "Download Ebook"
+                                                buttonText || "Download Now"
                                             )}
                                         </button>
 

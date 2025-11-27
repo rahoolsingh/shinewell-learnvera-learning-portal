@@ -1,90 +1,5 @@
-import amazonLogo from "../assets/brands/amazon.png";
-import googleLogo from "../assets/brands/google.png";
-import microsoftLogo from "../assets/brands/microsoft.png";
-import infosysLogo from "../assets/brands/infosys.png";
-import cognizantLogo from "../assets/brands/cognizant.png";
-import tcsLogo from "../assets/brands/tcs.png";
-import adobeLogo from "../assets/brands/adobe.png";
-import flipkartLogo from "../assets/brands/flipkart.png";
-import swiggyLogo from "../assets/brands/swiggy.png";
-import zomatoLogo from "../assets/brands/zomato.png";
 import { Link } from "react-router";
-
-// 10 Success Stories
-const placements = [
-    {
-        name: "Arjun Verma",
-        role: "SDE II",
-        company: "Amazon",
-        studentImg:
-            "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=150&h=150&fit=crop",
-        companyLogo: amazonLogo,
-    },
-    {
-        name: "Sarah Jen",
-        role: "UX Designer",
-        company: "Google",
-        companyLogo: googleLogo,
-    },
-    {
-        name: "Rohan Das",
-        role: "Frontend Dev",
-        company: "Microsoft",
-        companyLogo: microsoftLogo,
-    },
-    {
-        name: "Priya Sethi",
-        role: "Data Analyst",
-        company: "Flipkart",
-        companyLogo: flipkartLogo,
-    },
-    {
-        name: "Vikram Singh",
-        role: "Backend Eng.",
-        company: "Swiggy",
-        companyLogo: swiggyLogo,
-    },
-    {
-        name: "David Chen",
-        role: "DevOps Eng.",
-        company: "IBM",
-        studentImg:
-            "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop",
-        companyLogo: infosysLogo,
-    },
-    {
-        name: "Meera Nair",
-        role: "Systems Eng.",
-        company: "TCS",
-        studentImg:
-            "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop",
-        companyLogo: tcsLogo,
-    },
-    {
-        name: "Kabir Khan",
-        role: "Full Stack",
-        company: "Zomato",
-        studentImg:
-            "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop",
-        companyLogo: zomatoLogo,
-    },
-    {
-        name: "Tara Lewis",
-        role: "QA Engineer",
-        company: "Adobe",
-        studentImg:
-            "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop",
-        companyLogo: adobeLogo,
-    },
-    {
-        name: "Anil Kapoor",
-        role: "Cloud Architect",
-        company: "Cognizant",
-        studentImg:
-            "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=150&h=150&fit=crop",
-        companyLogo: cognizantLogo,
-    },
-];
+import placements from "../data/successStories.js";
 
 export default function PlacementSuccess() {
     return (
@@ -114,18 +29,19 @@ export default function PlacementSuccess() {
                 </div>
 
                 {/* Masonry-style Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                    {placements.map((student, index) => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    {placements.slice(0, 8).map((student, index) => (
                         <div
                             key={index}
                             className="
-                group
-                relative
-                flex flex-col justify-between
-                border border-dashed border-gray-400
-                transition-all duration-300 ease-in-out
-                p-5 h-full
-              "
+                                group
+                                relative
+                                flex flex-col justify-between
+                                border border-dashed border-gray-400
+                                transition-all duration-300 ease-in-out
+                                p-5 h-full rounded-2xl
+                                hover:border-blue-200 
+                            "
                         >
                             {/* Card Header: Student Profile */}
                             <div className="flex gap-4 items-center">

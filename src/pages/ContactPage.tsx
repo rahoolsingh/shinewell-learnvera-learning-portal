@@ -331,6 +331,11 @@ export default function ContactUsPage() {
             </p>
         );
 
+    // scroll to top on page load
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <section
             className="relative py-16 md:py-32 xl:pt-44 bg-gray-50 overflow-hidden"
