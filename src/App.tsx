@@ -15,7 +15,7 @@ import RefundPolicy from "./pages/RefundPolicy";
 import NotFound from "./pages/NotFound";
 
 // Asset Imports
-import adVideo from "./assets/videos/ad-video.mp4";
+import adVideo from "./assets/videos/ad-video.webm";
 import "./animation.css";
 import SuccessStoriesPage from "./pages/SuccessStoriesPage";
 import ContactUsPage from "./pages/ContactPage";
@@ -148,7 +148,7 @@ const AdVideo = () => {
 
     return (
         <motion.div
-            className="fixed bottom-6 left-6 w-40 md:w-48 aspect-[9/16] overflow-hidden rounded-lg shadow-2xl z-50 group bg-black cursor-pointer"
+            className="fixed bottom-6 left-6 w-40 md:w-48 aspect-[9/16] rounded-xl shadow-2xl z-50 group border border-black cursor-pointer overflow-hidden"
             onClick={togglePlayPause}
             initial={{ x: -300, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}

@@ -50,9 +50,9 @@ export default function BrochureSection() {
                                 Course Brochure
                             </h3>
                             <p className="text-slate-500 text-sm leading-relaxed mb-8 flex-grow">
-                                Explore placement statistics, alumni success
-                                stories, and detailed fee structures. This is
-                                your roadmap to a successful tech career.
+                                Discover real-world success stories, placement
+                                stats, and detailed program insights. Your
+                                roadmap to an exciting career starts here.
                             </p>
 
                             {/* Download Action */}
@@ -86,9 +86,10 @@ export default function BrochureSection() {
                                 Detailed Syllabus
                             </h3>
                             <p className="text-slate-500 text-sm leading-relaxed mb-8 flex-grow">
-                                A complete technical breakdown of every module,
-                                tool, and project. See exactly what technologies
-                                you will master week by week.
+                                Get a complete breakdown of every module, tool,
+                                and strategy. Learn how to master SEO, social
+                                media, paid ads, content marketing, AI tools and
+                                more.
                             </p>
 
                             {/* Download Action */}
@@ -119,17 +120,14 @@ export default function BrochureSection() {
 
                             {/* Text Content */}
                             <h3 className="text-2xl font-bold text-slate-900 mb-3 leading-tight">
-                                Skill Up Guide Worth ₹999/-
+                                Skill Up Guide
                             </h3>
 
                             <p className="text-slate-500 text-sm leading-relaxed mb-8 flex-grow">
-                                <span className="font-semibold">
-                                    Get FREE access to our exclusive Skill Up
-                                    Guide
-                                </span>
-                                Boost your learning with our exclusive guide.
-                                Packed with interview questions, soft skills
-                                tips, and productivity hacks for developers.
+                                Supercharge your career with our exclusive
+                                guide. Packed with interview strategies,
+                                client-winning tips, growth hacks, and
+                                productivity techniques.
                             </p>
 
                             {/* Download Action */}
