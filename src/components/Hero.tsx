@@ -103,7 +103,7 @@ export default function Hero() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4">
-                            <a href="/#courses">
+                            <Link to="/#courses">
                                 <button
                                     className="relative px-12 py-4 text-2xl font-extrabold rounded-xl overflow-hidden
                                         bg-gradient-to-r from-teal-400 to-cyan-500 text-white
@@ -118,8 +118,8 @@ export default function Hero() {
                                         Explore Courses
                                     </span>
                                 </button>
-                            </a>
-                            <a href="/#consultation">
+                            </Link>
+                            <Link to="/#consultation">
                                 <button
                                     className="relative px-12 py-4 text-xl font-bold rounded-lg overflow-hidden
                                         bg-gradient-to-r from-green-500 to-lime-500 text-white
@@ -142,7 +142,7 @@ export default function Hero() {
                                         Tools)
                                     </span>
                                 </p>
-                            </a>
+                            </Link>
                         </div>
 
                         <div className="flex items-center gap-6 pb-2">
@@ -158,7 +158,7 @@ export default function Hero() {
                                     to kickstart your career!
                                 </p>
                             </div>
-                            <a href="/#resources" className="w-full sm:w-auto">
+                            <Link to="/#resources" className="w-full sm:w-auto">
                                 <button className="group relative w-full sm:w-auto px-8 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold overflow-hidden shadow-lg transition-transform duration-300">
                                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 skew-y-12"></div>
                                     <div className="relative flex items-center justify-center gap-2">
@@ -169,7 +169,7 @@ export default function Hero() {
                                         <span>Get Free Resources</span>
                                     </div>
                                 </button>
-                            </a>
+                            </Link>
                         </div>
                     </div>
 
