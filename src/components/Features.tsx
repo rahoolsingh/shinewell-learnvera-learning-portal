@@ -15,7 +15,6 @@ export default function ResponsiveInfoBlock() {
                     <div className="md:col-span-2 lg:col-span-1 flex flex-col bg-white rounded-lg overflow-hidden border border-gray-200">
                         <img
                             src={Asset1}
-                            // src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1470"
                             alt="Students in a training session"
                             className="w-full h-auto object-cover md:h-80 lg:h-96"
                         />
@@ -34,7 +33,6 @@ export default function ResponsiveInfoBlock() {
                         <div className="md:col-span-2 lg:col-span-1 flex bg-white rounded-lg overflow-hidden border border-gray-200">
                             <img
                                 src={Asset2}
-                                // src="https://plus.unsplash.com/premium_photo-1661281337214-c5f344300d92?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1471"
                                 alt="Students in a training session"
                                 className="object-cover aspect-square h-48 md:h-auto w-48"
                             />
@@ -94,7 +92,6 @@ export default function ResponsiveInfoBlock() {
                     <div className="md:col-span-2 lg:col-span-1 flex flex-col bg-white rounded-lg overflow-hidden border border-gray-200">
                         <img
                             src={Asset3}
-                            // src="https://images.unsplash.com/photo-1576267423048-15c0040fec78?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1470"
                             alt="Mentor leading a session with students"
                             className="w-full h-auto object-cover md:h-80 lg:h-96"
                         />

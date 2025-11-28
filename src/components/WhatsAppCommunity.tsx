@@ -46,7 +46,7 @@ const FullVariant = () => {
                             </h2>
 
                             <p className="text-lg text-green-50/90 leading-relaxed max-w-xl">
-                                Join our exclusive WhatsApp community. Get
+                                Join our exclusive WhatsApp Channel. Get
                                 access to resources that aren't shared anywhere
                                 else.
                             </p>
@@ -220,7 +220,7 @@ const SleekVariant = () => {
                         <div>
                             <div className="flex items-center gap-2 mb-1">
                                 <span className="bg-white/20 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1">
-                                    <Users size={10} /> WhatsApp Community
+                                    <Users size={10} /> WhatsApp Channel
                                 </span>
                             </div>
                             <h3 className="text-2xl font-bold text-white leading-tight">
@@ -242,7 +242,7 @@ const SleekVariant = () => {
                         >
                             <img
                                 src={whatsAppIcon}
-                                alt="WhatsApp Community"
+                                alt="WhatsApp Channel"
                                 className="w-8 h-8"
                             />
                             Join Now

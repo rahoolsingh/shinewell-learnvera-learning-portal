@@ -103,9 +103,7 @@ const EnrollButton = ({
 );
 
 export default function CourseDetailsPage() {
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+    
 
     const { id } = useParams();
     const course = courseData.find((c) => c.id === Number(id));

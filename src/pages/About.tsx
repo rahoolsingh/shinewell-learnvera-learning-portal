@@ -105,10 +105,8 @@ const testimonialsData = [
 ];
 
 export default function AboutUsPage() {
-    // scroll to top on page load
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+    
+    
 
     return (
         <div className="bg-white overflow-x-hidden">

@@ -12,7 +12,7 @@ const WhatsAppWidget = () => {
 
     return (
         <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
-            {/* --- Option 2: Join Community --- */}
+            {/* --- Option 2: Join Channel --- */}
             <Link
                 to="https://whatsapp.com/channel/0029VbBm6Mh7DAWy5XJH433k"
                 target="_blank"
@@ -26,7 +26,7 @@ const WhatsAppWidget = () => {
                     }
                 `}
             >
-                <span className="font-medium text-sm">Join Community</span>
+                <span className="font-medium text-sm">Join Channel</span>
                 {/* Replace with your community icon or <img /> */}
                 <div className="bg-blue-100 p-1.5 rounded-full">
                     <Users size={18} className="text-blue-600" />

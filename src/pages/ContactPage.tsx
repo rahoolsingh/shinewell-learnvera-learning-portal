@@ -331,10 +331,8 @@ export default function ContactUsPage() {
             </p>
         );
 
-    // scroll to top on page load
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+    
+    
 
     return (
         <div className="min-h-screen bg-gray-50 font-sans text-slate-900">

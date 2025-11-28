@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { createNoise3D } from "simplex-noise";
 import { motion } from "framer-motion";
-import { Linkedin } from "lucide-react";
+import founder from "../assets/images/asset-6.jpeg";
+import { Link } from "react-router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faYoutube } from "@fortawesome/free-brands-svg-icons/faYoutube";
+import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons/faLinkedinIn";
 
 const FounderProfile = ({
-    children,
     className,
     containerClassName,
     colors,
@@ -15,7 +18,6 @@ const FounderProfile = ({
     waveOpacity = 0.5,
     ...props
 }: {
-    children?: any;
     className?: string;
     containerClassName?: string;
     colors?: string[];
@@ -144,11 +146,14 @@ const FounderProfile = ({
                                 viewport={{ once: true, amount: 0.3 }}
                                 transition={{ duration: 0.6 }}
                             >
-                                <img
-                                    src="https://media.licdn.com/dms/image/v2/D5603AQEq_uek4fsYVQ/profile-displayphoto-shrink_800_800/B56Zh25PTsHQAc-/0/1754341375924?e=1763596800&v=beta&t=1bHOyZUqof1SKURIbAxYBPvaDsMiFVenvMxTnyA0v-8"
-                                    alt="Deepesh Raj"
-                                    className="w-full lg:w-1/3 h-48 sm:h-56 lg:h-auto object-cover"
-                                />
+                                {/* fit the image properly to card height */}
+                                <div className="lg:w-1/3 h-64 lg:h-auto overflow-hidden">
+                                    <img
+                                        src={founder}
+                                        alt="Deepesh Raj"
+                                        className="w-full h-full object-cover object-top"
+                                    />
+                                </div>
                                 <div className="p-5 sm:p-6 md:p-7 lg:p-8 lg:w-2/3">
                                     <div className="flex justify-between items-start mb-3 md:mb-4">
                                         <div>
@@ -159,15 +164,32 @@ const FounderProfile = ({
                                                 Growth Strategist & Founder
                                             </p>
                                         </div>
-                                        <a
-                                            href="https://www.linkedin.com/in/deeepeshraj/"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-gray-400 hover:text-blue-600"
-                                            aria-label="LinkedIn"
-                                        >
-                                            <Linkedin className="w-5 h-5 sm:w-6 sm:h-6" />
-                                        </a>
+                                        <div className="flex gap-3">
+                                            <Link
+                                                to="https://www.linkedin.com/in/deeepeshraj/"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-gray-400 hover:text-blue-600"
+                                                aria-label="LinkedIn"
+                                            >
+                                                <FontAwesomeIcon
+                                                    icon={faLinkedinIn}
+                                                    className="w-5 h-5 sm:w-6 sm:h-6"
+                                                />
+                                            </Link>
+                                            <Link
+                                                to="https://www.youtube.com/@deeepeshraj"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-gray-400 hover:text-red-600"
+                                                aria-label="YouTube"
+                                            >
+                                                <FontAwesomeIcon
+                                                    icon={faYoutube}
+                                                    className="w-5 h-5 sm:w-6 sm:h-6"
+                                                />
+                                            </Link>
+                                        </div>
                                     </div>
                                     <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">
                                         He's a growth strategist, entrepreneur,

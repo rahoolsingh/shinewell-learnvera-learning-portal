@@ -1,4 +1,9 @@
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
+import {
+    createBrowserRouter,
+    RouterProvider,
+    Outlet,
+    ScrollRestoration,
+} from "react-router";
 import { useState, useRef, useEffect } from "react";
 import { X, Volume2, VolumeX, Play } from "lucide-react";
 import { motion } from "framer-motion";
@@ -26,6 +31,8 @@ import CoursesPage from "./pages/CoursesPage";
 const Layout = () => {
     return (
         <div className="min-h-screen flex flex-col">
+            <ScrollRestoration />{" "}
+            {/* Manages scroll restoration automatically: basically does what ScrollToTop was intended for */}
             <Header /> {/* Now safely inside the Router */}
             {/* <Outlet /> renders the child route (Home, About, etc.) */}
             <main className="flex-grow">

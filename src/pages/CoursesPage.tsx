@@ -4,10 +4,8 @@ import Courses from "../components/Courses";
 import WhatsAppCommunity from "../components/WhatsAppCommunity";
 
 function CoursesPage() {
-    // scroll to top on page load
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+    
+    
     return (
         <div className="min-h-screen bg-gray-50 font-sans text-slate-900">
             {/* 1. Hero Section */}

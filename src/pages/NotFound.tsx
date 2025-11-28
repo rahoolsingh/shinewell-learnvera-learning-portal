@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 // --- SVG Icons ---
 const icons = {
@@ -63,6 +64,9 @@ const FloatingElement = ({ children, x, y, delay, color }) => (
 
 // --- Main Component ---
 export default function NotFound() {
+    // scroll to top on mount
+    
+
     const colors = [
         "text-blue-500",
         "text-pink-500",

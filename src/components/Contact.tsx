@@ -296,11 +296,6 @@ export default function Contact() {
 
     return (
         <section className="py-16 bg-blue-800/90 relative overflow-hidden">
-            <img
-                src="https://placehold.co/1920x1080/1e3a8a/FFFFFF?text=Background+Image"
-                alt="Background"
-                className="absolute inset-0 w-full h-full object-cover opacity-60 object-bottom"
-            />
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <motion.h2
                     className="text-3xl lg:text-4xl font-bold text-white text-center mb-12"
