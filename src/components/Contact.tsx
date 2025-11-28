@@ -8,6 +8,7 @@ import {
     CheckCircle2,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router";
 
 // --- CONFIGURATION ---
 // Replace with your actual Google reCAPTCHA v3 Site Key
@@ -559,23 +560,23 @@ export default function Contact() {
                                 <p className="text-[10px] text-gray-400 text-center mt-3">
                                     This site is protected by reCAPTCHA and the
                                     Google
-                                    <a
-                                        href="https://policies.google.com/privacy"
+                                    <Link
+                                        to="https://policies.google.com/privacy"
                                         className="text-blue-500 hover:underline mx-1"
                                         target="_blank"
                                         rel="noreferrer"
                                     >
                                         Privacy Policy
-                                    </a>{" "}
+                                    </Link>{" "}
                                     and
-                                    <a
-                                        href="https://policies.google.com/terms"
+                                    <Link
+                                        to="https://policies.google.com/terms"
                                         className="text-blue-500 hover:underline mx-1"
                                         target="_blank"
                                         rel="noreferrer"
                                     >
                                         Terms of Service
-                                    </a>{" "}
+                                    </Link>{" "}
                                     apply.
                                 </p>
 

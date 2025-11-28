@@ -1,4 +1,5 @@
 import { ShieldCheck } from "lucide-react";
+import { Link } from "react-router";
 
 export default function PrivacyPolicy() {
     return (
@@ -106,12 +107,12 @@ export default function PrivacyPolicy() {
                         <p>
                             You may request to review, update, or delete your
                             personal data by contacting our support team at{" "}
-                            <a
-                                href="mailto:support@learnvera.com"
+                            <Link
+                                to="mailto:support@learnvera.com"
                                 className="transition-colors hover:text-indigo-800 font-medium"
                             >
                                 support@learnvera.com
-                            </a>
+                            </Link>
                             . Certain data may be retained as required by law or
                             for legitimate business purposes (e.g., transaction
                             records or attendance records for offline classes).

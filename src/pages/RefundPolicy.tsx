@@ -1,4 +1,5 @@
 import { RotateCcw } from "lucide-react";
+import { Link } from "react-router";
 
 export default function RefundPolicy() {
     return (
@@ -100,12 +101,12 @@ export default function RefundPolicy() {
                         </h2>
                         <p>
                             For any concerns or issues, please contact{" "}
-                            <a
-                                href="mailto:support@learnvera.com"
+                            <Link
+                                to="mailto:support@learnvera.com"
                                 className="transition-colors hover:text-indigo-800 font-medium"
                             >
                                 support@learnvera.com
-                            </a>{" "}
+                            </Link>{" "}
                             with your transaction details for prompt assistance.
                         </p>
                     </div>

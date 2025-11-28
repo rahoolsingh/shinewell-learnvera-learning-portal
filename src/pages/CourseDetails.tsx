@@ -6,7 +6,7 @@ import {
     HelpCircle,
     Download,
 } from "lucide-react";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import courseData from "../data/courses.js";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
@@ -79,8 +79,8 @@ const EnrollButton = ({
     text = "Enroll Now",
     enrollmentUrl = "#",
 }) => (
-    <a
-        href={enrollmentUrl}
+    <Link
+        to={enrollmentUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="block w-full sm:w-auto"
@@ -99,7 +99,7 @@ const EnrollButton = ({
         >
             <span className="relative z-10">{text}</span>
         </button>
-    </a>
+    </Link>
 );
 
 export default function CourseDetailsPage() {
@@ -317,8 +317,8 @@ export default function CourseDetailsPage() {
                                     </div>
                                 </div>
                                 <div className="space-y-3">
-                                    <a
-                                        href={course.enrollmentUrl}
+                                    <Link
+                                        to={course.enrollmentUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="block w-full"
@@ -328,7 +328,7 @@ export default function CourseDetailsPage() {
                                         >
                                             Invest In Your Career
                                         </button>
-                                    </a>
+                                    </Link>
                                     <GetEbook
                                         ebook={course.ebook}
                                         title={course.headline + " Ebook"}

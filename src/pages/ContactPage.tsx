@@ -8,6 +8,7 @@ import {
     CheckCircle2,
 } from "lucide-react";
 import WhatsAppCommunity from "../components/WhatsAppCommunity";
+import { Link } from "react-router";
 
 // --- CONFIGURATION ---
 // Replace with your actual Google reCAPTCHA v3 Site Key
@@ -331,9 +332,6 @@ export default function ContactUsPage() {
             </p>
         );
 
-    
-    
-
     return (
         <div className="min-h-screen bg-gray-50 font-sans text-slate-900">
             {/* 1. Hero Section */}
@@ -536,23 +534,23 @@ export default function ContactUsPage() {
                                 <p className="text-[10px] text-gray-400 text-center mt-3">
                                     This site is protected by reCAPTCHA and the
                                     Google
-                                    <a
-                                        href="https://policies.google.com/privacy"
+                                    <Link
+                                        to="https://policies.google.com/privacy"
                                         className="text-indigo-500 hover:underline mx-1"
                                         target="_blank"
                                         rel="noreferrer"
                                     >
                                         Privacy Policy
-                                    </a>{" "}
+                                    </Link>{" "}
                                     and
-                                    <a
-                                        href="https://policies.google.com/terms"
+                                    <Link
+                                        to="https://policies.google.com/terms"
                                         className="text-indigo-500 hover:underline mx-1"
                                         target="_blank"
                                         rel="noreferrer"
                                     >
                                         Terms of Service
-                                    </a>{" "}
+                                    </Link>{" "}
                                     apply.
                                 </p>
                             </div>
@@ -586,35 +584,35 @@ export default function ContactUsPage() {
                             <div className="space-y-6 mb-8">
                                 <InfoItem title="Email Us" icon={<Mail />}>
                                     <p>
-                                        <a
-                                            href="mailto:enroll@learnvera.com"
+                                        <Link
+                                            to="mailto:enroll@learnvera.com"
                                             className="hover:text-indigo-600 transition-colors duration-200"
                                         >
                                             enroll@learnvera.com
-                                        </a>{" "}
+                                        </Link>{" "}
                                         <span className="font-normal text-sm text-gray-500">
                                             ( For Course Related Queries)
                                         </span>
                                     </p>
                                     <p>
-                                        <a
-                                            href="mailto:support@learnvera.com"
+                                        <Link
+                                            to="mailto:support@learnvera.com"
                                             className="hover:text-indigo-600 transition-colors duration-200"
                                         >
                                             support@learnvera.com
-                                        </a>{" "}
+                                        </Link>{" "}
                                         <span className="font-normal text-sm text-gray-500">
                                             (For General Queries)
                                         </span>
                                     </p>
                                 </InfoItem>
                                 <InfoItem title="Call Us" icon={<Phone />}>
-                                    <a
-                                        href="tel:+917676720897"
+                                    <Link
+                                        to="tel:+917676720897"
                                         className="hover:text-indigo-600 transition-colors duration-200"
                                     >
                                         +91 767 672 0897
-                                    </a>
+                                    </Link>
                                 </InfoItem>
                                 <InfoItem title="Visit Us" icon={<MapPin />}>
                                     <p>

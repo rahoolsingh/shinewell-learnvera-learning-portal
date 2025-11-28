@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Download, X, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
+import { Link } from "react-router";
 
 // --- CONFIGURATION ---
 const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
@@ -396,23 +397,23 @@ export default function GetEbook({
                                         <p className="text-[10px] text-slate-400 text-center mt-2">
                                             This site is protected by reCAPTCHA
                                             and the Google
-                                            <a
-                                                href="https://policies.google.com/privacy"
+                                            <Link
+                                                to="https://policies.google.com/privacy"
                                                 className="text-blue-500 hover:underline mx-1"
                                                 target="_blank"
                                                 rel="noreferrer"
                                             >
                                                 Privacy Policy
-                                            </a>{" "}
+                                            </Link>{" "}
                                             and
-                                            <a
-                                                href="https://policies.google.com/terms"
+                                            <Link
+                                                to="https://policies.google.com/terms"
                                                 className="text-blue-500 hover:underline mx-1"
                                                 target="_blank"
                                                 rel="noreferrer"
                                             >
                                                 Terms of Service
-                                            </a>{" "}
+                                            </Link>{" "}
                                             apply.
                                         </p>
                                     </form>
