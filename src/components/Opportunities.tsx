@@ -18,13 +18,20 @@ const channels = [
     "https://learnmize.com/wp-content/uploads/2025/09/TEDx.png",
 ];
 
+const isMobile = () => {
+    if (typeof window !== "undefined") {
+        return window.innerWidth <= 768;
+    }
+    return false;
+};
+
 export default function Opportunities() {
     return (
         <section className="py-16 bg-white">
-            <div className="   mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-12 max-w-7xl mx-auto">
+            <div className="mx-auto ">
+                <div className="text-center mb-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 mb-6 tracking-tight">
-                        In The {" "}
+                        In The{" "}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600">
                             Media
                         </span>
@@ -37,7 +44,11 @@ export default function Opportunities() {
                 </div>
 
                 <div className="mb-8">
-                    <Marquee gradient={true} speed={50} pauseOnHover={true}>
+                    <Marquee
+                        gradient={isMobile() ? false : true}
+                        speed={50}
+                        pauseOnHover={true}
+                    >
                         <span className="flex items-center gap-10">
                             {channels.map((channel, index) => (
                                 <img
@@ -51,7 +62,7 @@ export default function Opportunities() {
                 </div>
                 <div>
                     <Marquee
-                        gradient={true}
+                        gradient={isMobile() ? false : true}
                         speed={50}
                         pauseOnHover={true}
                         direction="right"

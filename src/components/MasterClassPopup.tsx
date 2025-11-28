@@ -218,7 +218,7 @@ export default function MasterclassPopup({ manualOpen, onManualClose }) {
                             </h3>
                         </div>
 
-                        <div className="p-6 overflow-y-auto custom-scrollbar text-sm text-slate-600 leading-relaxed space-y-4">
+                        <div className="p-6 overflow-y-auto custom-scrollbar text-sm text-slate-600 leading-relaxed space-y-4 max-h-[60vh] flex-grow">
                             <p className="font-medium text-slate-800">
                                 By clicking "I Agree", you acknowledge and
                                 consent that:

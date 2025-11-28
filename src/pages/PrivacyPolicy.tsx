@@ -107,10 +107,10 @@ export default function PrivacyPolicy() {
                             You may request to review, update, or delete your
                             personal data by contacting our support team at{" "}
                             <a
-                                href="mailto:learnveraindia@gmail.com"
+                                href="mailto:support@learnvera.com"
                                 className="transition-colors hover:text-indigo-800 font-medium"
                             >
-                                learnveraindia@gmail.com
+                                support@learnvera.com
                             </a>
                             . Certain data may be retained as required by law or
                             for legitimate business purposes (e.g., transaction

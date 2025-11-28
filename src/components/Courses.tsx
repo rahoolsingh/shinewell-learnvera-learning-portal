@@ -411,7 +411,9 @@ const CourseCard = ({
                         {/* <motios */}
                         <div className="absolute -inset-[2px] bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 rounded-xl blur-sm opacity-70 group-hover:opacity-100 animate-borderFlow"></div>
                         <Link
-                            to={`/course-details/${course.id}?q=${course.headline
+                            to={`/course-details/${
+                                course.id
+                            }?q=${course.headline
                                 ?.toLowerCase()
                                 .replace(/\s+/g, "-")}`}
                         >
@@ -445,7 +447,7 @@ export default function CompleteDigitalMarketingCourses() {
     const [isGlobalExpanded, setIsGlobalExpanded] = useState(false);
 
     return (
-        <section className="py-16 md:py-24 bg-gray-50">
+        <section className="py-16 md:py-24 bg-gray-50" id="courses">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header (Unchanged) */}
                 <div className="flex items-center gap-2 mb-3">

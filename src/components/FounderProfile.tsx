@@ -113,7 +113,7 @@ const FounderProfile = ({
 
     return (
         <div
-            className={`h-screen flex flex-col items-center justify-center relative ${containerClassName}`}
+            className={`min-h-screen flex flex-col items-center justify-center relative ${containerClassName}`}
         >
             <canvas
                 className="absolute inset-0 z-0"

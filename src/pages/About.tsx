@@ -105,9 +105,6 @@ const testimonialsData = [
 ];
 
 export default function AboutUsPage() {
-    
-    
-
     return (
         <div className="bg-white overflow-x-hidden">
             {/* --- 1. Hero Section (Responsive) --- */}
@@ -224,29 +221,6 @@ export default function AboutUsPage() {
                 </div>
             </section>
 
-            {/* --- 3. Stats Bar (Responsive) --- */}
-            {/* <section className="bg-gray-800 text-white py-8 md:py-12 lg:py-16 hidden">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 text-center">
-                        <AnimatedStat
-                            icon={Users}
-                            end={5000}
-                            label="Students Trained"
-                        />
-                        <AnimatedStat
-                            icon={Briefcase}
-                            end={95}
-                            label="Placement Rate %"
-                        />
-                        <AnimatedStat
-                            icon={Medal}
-                            end={50}
-                            label="Expert Instructors"
-                        />
-                    </div>
-                </div>
-            </section> */}
-
             {/* --- 4. Our Core Values (Responsive) --- */}
             <section className="py-12 md:py-16 lg:py-20 bg-gray-50">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -333,7 +307,9 @@ export default function AboutUsPage() {
                 </div>
             </section>
 
-            <FounderProfile />
+            <section>
+                <FounderProfile />
+            </section>
 
             {/* --- 6. Our Story (Responsive) --- */}
             <section className="py-12 md:py-16 lg:py-20 bg-gray-50">

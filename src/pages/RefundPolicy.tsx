@@ -101,10 +101,10 @@ export default function RefundPolicy() {
                         <p>
                             For any concerns or issues, please contact{" "}
                             <a
-                                href="mailto:learnveraindia@gmail.com"
+                                href="mailto:support@learnvera.com"
                                 className="transition-colors hover:text-indigo-800 font-medium"
                             >
-                                learnveraindia@gmail.com
+                                support@learnvera.com
                             </a>{" "}
                             with your transaction details for prompt assistance.
                         </p>

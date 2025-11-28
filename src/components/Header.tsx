@@ -2,7 +2,7 @@ import { Menu, X, Phone, Zap } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "../assets/images/logo.png";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import MasterclassPopup from "./MasterClassPopup";
 
 // --- Mock useScroll Hook (Unchanged) ---
@@ -170,14 +170,17 @@ export default function Header() {
                                         {link.label}
                                     </a>
                                 ) : (
-                                    <Link to={link?.href} key={link.label}>
-                                        <motion.span
-                                            whileHover={{ color: "#2563eb" }}
-                                            className="hover:text-blue-600 transition-colors relative group"
-                                        >
-                                            {link.label}
-                                        </motion.span>
-                                    </Link>
+                                    <NavLink
+                                        to={link?.href}
+                                        key={link.label}
+                                        className={({ isActive }) =>
+                                            isActive
+                                                ? "text-blue-600 underline underline-offset-4    transition-colors relative group"
+                                                : "hover:text-blue-600 transition-colors relative group"
+                                        }
+                                    >
+                                        {link.label}
+                                    </NavLink>
                                 )}
                             </>
                         ))}
