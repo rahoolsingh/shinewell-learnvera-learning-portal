@@ -78,7 +78,7 @@ const CourseCard = ({ course, palette }) => {
                     </div>
                 )}
 
-                <button
+                {/* <button
                     className={`w-full py-3 px-6 rounded-lg font-semibold text-white transition-all duration-300
                       ${palette.bg} shadow-md ${palette.bg.replace(
                         "bg-",
@@ -86,7 +86,7 @@ const CourseCard = ({ course, palette }) => {
                     )}/30 hover:opacity-90`}
                 >
                     Start Learning
-                </button>
+                </button> */}
             </div>
         </div>
     );
